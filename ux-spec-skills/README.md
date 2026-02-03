@@ -19,6 +19,7 @@ All specs and outputs in this repo follow these principles. See `reference/` for
 | `skills/` | Spec-generator skills (`.skill.md`). Each defines purpose, inputs, prompt, output format. |
 | `templates/` | Document skeletons with headings that match skill outputs. Copy and fill. |
 | `examples/generic/` | Sample spec outputs (daily, weekly, monthly, slide outline, one-pager). |
+| `examples/html/` | Self-contained HTML dashboard examples (Tailwind CDN, shadcn-inspired styling). |
 | `reference/` | Principle summaries (Tufte, Shneiderman, Ben Fry, Few, Munzner, Minto, Storytelling with Data). |
 | `SKILLS_INDEX.md` | Index of all skills with paths and one-line descriptions. |
 | `CHANGELOG.md` | Version history. |

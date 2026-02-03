@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alerts — In-dashboard treatment</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-primary: #0f172a;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-primary)] min-h-screen antialiased">
+  <div class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+    <!-- Header -->
+    <header>
+      <h1 class="text-xl font-semibold tracking-tight">Alerting — In-dashboard</h1>
+      <p class="text-sm text-[var(--color-muted)] mt-0.5">Revenue &amp; Error rate · Slack + in-app · Escalate P1 after 1h</p>
+    </header>
+
+    <!-- Alert banner -->
+    <section class="rounded-[var(--radius-card)] border border-amber-200 bg-amber-50 px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="flex h-2 w-2 rounded-full bg-amber-500" aria-hidden="true"></span>
+        <span class="text-sm font-medium text-amber-800">2 active alerts</span>
+        <span class="text-xs text-amber-700">1 P1, 1 P2</span>
+      </div>
+      <a href="#alerts-list" class="text-sm font-medium text-amber-800 hover:underline">View list</a>
+    </section>
+
+    <!-- Alerts list -->
+    <section id="alerts-list" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+      <div class="px-4 py-3 border-b border-[var(--color-border)] flex items-center justify-between">
+        <h2 class="font-medium text-sm">Alerts</h2>
+        <div class="flex gap-1">
+          <button class="rounded-md px-2 py-1 text-xs font-medium bg-neutral-100 text-neutral-900">All</button>
+          <button class="rounded-md px-2 py-1 text-xs text-[var(--color-muted)] hover:bg-neutral-50">New</button>
+          <button class="rounded-md px-2 py-1 text-xs text-[var(--color-muted)] hover:bg-neutral-50">Acknowledged</button>
+          <button class="rounded-md px-2 py-1 text-xs text-[var(--color-muted)] hover:bg-neutral-50">Resolved</button>
+        </div>
+      </div>
+      <ul class="divide-y divide-[var(--color-border)]">
+        <li class="px-4 py-3 hover:bg-neutral-50/50 flex items-center justify-between gap-4">
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-medium text-sm">Revenue down &gt;10% WoW</span>
+              <span class="inline-flex rounded-md bg-red-50 px-2 py-0.5 text-xs font-medium text-red-700">P1</span>
+              <span class="text-xs text-[var(--color-muted)]">Revenue</span>
+            </div>
+            <p class="text-xs text-[var(--color-muted)] mt-1">Trigger: Revenue −12.3% WoW · Fired 08:15 UTC · Slack + in-app</p>
+            <p class="text-xs text-[var(--color-muted)]">Owner: Revenue ops</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="inline-flex rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700">New</span>
+            <button class="rounded-md border border-[var(--color-border)] bg-[var(--color-card)] px-2 py-1 text-xs font-medium hover:bg-neutral-50">Acknowledge</button>
+          </div>
+        </li>
+        <li class="px-4 py-3 hover:bg-neutral-50/50 flex items-center justify-between gap-4 bg-neutral-50/30">
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-medium text-sm">Error rate &gt;5%</span>
+              <span class="inline-flex rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">P2</span>
+              <span class="text-xs text-[var(--color-muted)]">Error rate</span>
+            </div>
+            <p class="text-xs text-[var(--color-muted)] mt-1">Trigger: Error rate 5.8% · Fired 07:42 UTC · Slack + in-app</p>
+            <p class="text-xs text-[var(--color-muted)]">Owner: Platform · Acknowledged 08:00</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="inline-flex rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700">Acknowledged</span>
+            <button class="rounded-md border border-[var(--color-border)] bg-[var(--color-card)] px-2 py-1 text-xs font-medium hover:bg-neutral-50">Resolve</button>
+          </div>
+        </li>
+        <li class="px-4 py-3 hover:bg-neutral-50/50 flex items-center justify-between gap-4 opacity-75">
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-medium text-sm text-[var(--color-muted)]">Revenue down &gt;10% WoW</span>
+              <span class="inline-flex rounded-md bg-red-50 px-2 py-0.5 text-xs font-medium text-red-600">P1</span>
+            </div>
+            <p class="text-xs text-[var(--color-muted)] mt-1">Resolved 2025-02-02 14:00 UTC</p>
+          </div>
+          <span class="inline-flex rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-[var(--color-muted)]">Resolved</span>
+        </li>
+      </ul>
+      <div class="px-4 py-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)]">
+        States: New → Acknowledge → Resolve. P1 escalates to on-call after 1h if unacknowledged.
+      </div>
+    </section>
+
+    <!-- Trust layer note -->
+    <section class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm p-4">
+      <h2 class="font-medium text-sm mb-2">Trust layer</h2>
+      <p class="text-xs text-[var(--color-muted)]">Triggers defined in alert catalog. Data freshness: same as dashboard (e.g. 06:00 UTC). Caveats: threshold and time window per metric doc.</p>
+    </section>
+  </div>
+</body>
+</html>

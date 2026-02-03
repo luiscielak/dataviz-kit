@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily exec pulse — Revenue</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-primary: #0f172a;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-primary)] min-h-screen antialiased">
+  <div class="max-w-6xl mx-auto px-4 py-6 space-y-6">
+    <!-- Header -->
+    <header class="flex items-center justify-between">
+      <div>
+        <h1 class="text-xl font-semibold tracking-tight">Revenue pulse</h1>
+        <p class="text-sm text-[var(--color-muted)]">Daily · CRO, Revenue ops · Data as of 2025-02-03 06:00 UTC</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <select class="rounded-md border border-[var(--color-border)] bg-[var(--color-card)] px-3 py-2 text-sm">
+          <option>Last 7 days</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- Hero summary -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <article class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] p-4 shadow-sm flex items-start justify-between">
+        <div>
+          <p class="text-sm text-[var(--color-muted)]">Bookings</p>
+          <p class="text-2xl font-semibold mt-0.5">$412k</p>
+          <p class="text-xs text-[var(--color-muted)]">Prior day: $398k</p>
+        </div>
+        <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700">+3.5%</span>
+      </article>
+      <article class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] p-4 shadow-sm flex items-start justify-between">
+        <div>
+          <p class="text-sm text-[var(--color-muted)]">MRR</p>
+          <p class="text-2xl font-semibold mt-0.5">$2.84M</p>
+          <p class="text-xs text-[var(--color-muted)]">Prior day: $2.81M</p>
+        </div>
+        <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700">+1.1%</span>
+      </article>
+      <article class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] p-4 shadow-sm flex items-start justify-between">
+        <div>
+          <p class="text-sm text-[var(--color-muted)]">Pipeline</p>
+          <p class="text-2xl font-semibold mt-0.5">$8.2M</p>
+          <p class="text-xs text-[var(--color-muted)]">Total open</p>
+        </div>
+        <div class="w-16 h-8 flex items-end gap-0.5" aria-hidden="true">
+          <span class="w-2 bg-[var(--color-border)] rounded-t" style="height: 40%"></span>
+          <span class="w-2 bg-[var(--color-border)] rounded-t" style="height: 65%"></span>
+          <span class="w-2 bg-[var(--color-border)] rounded-t" style="height: 50%"></span>
+          <span class="w-2 bg-[var(--color-border)] rounded-t" style="height: 80%"></span>
+          <span class="w-2 bg-[var(--color-border)] rounded-t" style="height: 70%"></span>
+          <span class="w-2 bg-[var(--color-border)] rounded-t" style="height: 90%"></span>
+          <span class="w-2 bg-neutral-900 rounded-t" style="height: 100%"></span>
+        </div>
+      </article>
+    </section>
+
+    <!-- Exceptions -->
+    <section class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+      <div class="px-4 py-3 border-b border-[var(--color-border)] flex items-center justify-between">
+        <h2 class="font-medium text-sm">Exceptions</h2>
+        <div class="flex gap-1">
+          <button class="rounded-md px-2 py-1 text-xs font-medium bg-neutral-100 text-neutral-900">All</button>
+          <button class="rounded-md px-2 py-1 text-xs text-[var(--color-muted)] hover:bg-neutral-50">Critical</button>
+          <button class="rounded-md px-2 py-1 text-xs text-[var(--color-muted)] hover:bg-neutral-50">Warning</button>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[var(--color-border)] bg-neutral-50/50">
+              <th class="text-left py-2.5 px-4 font-medium text-[var(--color-muted)]">Metric</th>
+              <th class="text-right py-2.5 px-4 font-medium text-[var(--color-muted)]">Prior day</th>
+              <th class="text-right py-2.5 px-4 font-medium text-[var(--color-muted)]">Current</th>
+              <th class="text-right py-2.5 px-4 font-medium text-[var(--color-muted)]">Δ%</th>
+              <th class="text-left py-2.5 px-4 font-medium text-[var(--color-muted)]">Severity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[var(--color-border)] hover:bg-neutral-50/50">
+              <td class="py-2.5 px-4">Enterprise bookings</td>
+              <td class="text-right py-2.5 px-4">$128k</td>
+              <td class="text-right py-2.5 px-4">$98k</td>
+              <td class="text-right py-2.5 px-4 text-red-600 font-medium">−23.4%</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-red-50 px-2 py-0.5 text-xs font-medium text-red-700">Critical</span></td>
+            </tr>
+            <tr class="border-b border-[var(--color-border)] hover:bg-neutral-50/50">
+              <td class="py-2.5 px-4">SMB MRR</td>
+              <td class="text-right py-2.5 px-4">$1.02M</td>
+              <td class="text-right py-2.5 px-4">$1.18M</td>
+              <td class="text-right py-2.5 px-4 text-amber-600 font-medium">+15.7%</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">Warning</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="px-4 py-2 text-xs text-[var(--color-muted)] border-t border-[var(--color-border)]">Exception = Δ% &lt; −10% or &gt; +15% vs prior day</p>
+    </section>
+
+    <!-- Segment snapshot -->
+    <section class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+      <div class="px-4 py-3 border-b border-[var(--color-border)]">
+        <h2 class="font-medium text-sm">Segment snapshot</h2>
+        <p class="text-xs text-[var(--color-muted)] mt-0.5">Bookings by segment · Click to drill</p>
+      </div>
+      <div class="p-4">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left text-[var(--color-muted)]">
+              <th class="pb-2 font-medium">Segment</th>
+              <th class="pb-2 text-right font-medium">Bookings</th>
+              <th class="pb-2 text-right font-medium">% of total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-[var(--color-border)] hover:bg-neutral-50/50 cursor-pointer">
+              <td class="py-2.5">Enterprise</td>
+              <td class="text-right py-2.5">$198k</td>
+              <td class="text-right py-2.5">48%</td>
+            </tr>
+            <tr class="border-t border-[var(--color-border)] hover:bg-neutral-50/50 cursor-pointer">
+              <td class="py-2.5">Mid-market</td>
+              <td class="text-right py-2.5">$142k</td>
+              <td class="text-right py-2.5">34%</td>
+            </tr>
+            <tr class="border-t border-[var(--color-border)] hover:bg-neutral-50/50 cursor-pointer">
+              <td class="py-2.5">SMB</td>
+              <td class="text-right py-2.5">$72k</td>
+              <td class="text-right py-2.5">18%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
