@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rigor &amp; consulting skills — illustrative examples</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-primary: #0f172a;
+      --color-series: #2a78d6;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-primary)] min-h-screen antialiased">
+  <div class="max-w-5xl mx-auto px-4 py-6 space-y-6">
+
+    <!-- Header -->
+    <header class="space-y-1">
+      <h1 class="text-xl font-semibold tracking-tight">Rigor &amp; consulting skills — illustrative examples</h1>
+      <p class="text-sm text-[var(--color-muted)]">
+        One consolidated page covering the six skills without a standalone HTML example. Each panel visualizes the
+        matching spec in <code class="text-xs bg-neutral-100 rounded px-1 py-0.5">../generic/</code>, all against the
+        same "Revenue pulse" SaaS dashboard used by <code class="text-xs bg-neutral-100 rounded px-1 py-0.5">daily-exec-pulse.html</code>.
+      </p>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="flex flex-wrap gap-1 border-b border-[var(--color-border)] pb-2" id="tabs">
+      <button data-target="drilldown" class="tab-btn rounded-md px-3 py-1.5 text-sm font-medium bg-neutral-900 text-white">Entity drilldown</button>
+      <button data-target="provenance" class="tab-btn rounded-md px-3 py-1.5 text-sm text-[var(--color-muted)] hover:bg-neutral-100">Metric provenance</button>
+      <button data-target="annotation" class="tab-btn rounded-md px-3 py-1.5 text-sm text-[var(--color-muted)] hover:bg-neutral-100">Chart annotation plan</button>
+      <button data-target="benfry" class="tab-btn rounded-md px-3 py-1.5 text-sm text-[var(--color-muted)] hover:bg-neutral-100">Ben Fry pipeline</button>
+      <button data-target="encoding" class="tab-btn rounded-md px-3 py-1.5 text-sm text-[var(--color-muted)] hover:bg-neutral-100">Encoding accuracy</button>
+      <button data-target="munzner" class="tab-btn rounded-md px-3 py-1.5 text-sm text-[var(--color-muted)] hover:bg-neutral-100">Munzner why–what–how</button>
+    </nav>
+
+    <!-- ============ 1. ENTITY DRILLDOWN ============ -->
+    <section data-panel="drilldown" class="panel space-y-4">
+      <p class="text-xs text-[var(--color-muted)]">Spec: <code class="bg-neutral-100 rounded px-1 py-0.5">sample-entity-drilldown.md</code></p>
+
+      <div class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <div class="px-4 py-3 border-b border-[var(--color-border)] flex items-center justify-between flex-wrap gap-2">
+          <div class="text-sm flex items-center gap-1.5" id="breadcrumb">
+            <button class="drill-crumb text-[var(--color-muted)] hover:text-neutral-900 underline decoration-dotted" data-level="region">Regional summary</button>
+          </div>
+          <div class="flex gap-1">
+            <button class="drill-level-btn rounded-md px-2 py-1 text-xs font-medium bg-neutral-100 text-neutral-900" data-level="region">Region</button>
+            <button class="drill-level-btn rounded-md px-2 py-1 text-xs text-[var(--color-muted)] hover:bg-neutral-50" data-level="territory">Territory</button>
+            <button class="drill-level-btn rounded-md px-2 py-1 text-xs text-[var(--color-muted)] hover:bg-neutral-50" data-level="account">Account</button>
+          </div>
+        </div>
+
+        <!-- Level 1: Region -->
+        <div class="drill-level" data-level="region">
+          <table class="w-full text-sm">
+            <thead><tr class="text-left text-[var(--color-muted)] bg-neutral-50/50 border-b border-[var(--color-border)]">
+              <th class="py-2.5 px-4 font-medium">Region</th>
+              <th class="py-2.5 px-4 font-medium text-right">Bookings</th>
+              <th class="py-2.5 px-4 font-medium text-right">Δ% vs prior day</th>
+            </tr></thead>
+            <tbody>
+              <tr class="drill-row border-b border-[var(--color-border)] hover:bg-neutral-50/50 cursor-pointer" data-goto="territory" data-crumb="NA">
+                <td class="py-2.5 px-4">NA</td><td class="py-2.5 px-4 text-right">$198k</td>
+                <td class="py-2.5 px-4 text-right text-red-600 font-medium">−12.1%</td>
+              </tr>
+              <tr class="drill-row border-b border-[var(--color-border)] hover:bg-neutral-50/50 cursor-pointer" data-goto="territory" data-crumb="EMEA">
+                <td class="py-2.5 px-4">EMEA</td><td class="py-2.5 px-4 text-right">$142k</td>
+                <td class="py-2.5 px-4 text-right text-emerald-700 font-medium">+4.2%</td>
+              </tr>
+              <tr class="drill-row hover:bg-neutral-50/50 cursor-pointer" data-goto="territory" data-crumb="APAC">
+                <td class="py-2.5 px-4">APAC</td><td class="py-2.5 px-4 text-right">$72k</td>
+                <td class="py-2.5 px-4 text-right text-emerald-700 font-medium">+1.8%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Level 2: Territory -->
+        <div class="drill-level hidden" data-level="territory">
+          <table class="w-full text-sm">
+            <thead><tr class="text-left text-[var(--color-muted)] bg-neutral-50/50 border-b border-[var(--color-border)]">
+              <th class="py-2.5 px-4 font-medium">Territory</th>
+              <th class="py-2.5 px-4 font-medium text-right">Bookings</th>
+              <th class="py-2.5 px-4 font-medium text-right">Accounts</th>
+            </tr></thead>
+            <tbody>
+              <tr class="drill-row border-b border-[var(--color-border)] hover:bg-neutral-50/50 cursor-pointer" data-goto="account" data-crumb="Northeast">
+                <td class="py-2.5 px-4">Northeast</td><td class="py-2.5 px-4 text-right">$81k</td><td class="py-2.5 px-4 text-right">24</td>
+              </tr>
+              <tr class="drill-row hover:bg-neutral-50/50 cursor-pointer" data-goto="account" data-crumb="Southeast">
+                <td class="py-2.5 px-4">Southeast</td><td class="py-2.5 px-4 text-right">$62k</td><td class="py-2.5 px-4 text-right">19</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Level 3: Account -->
+        <div class="drill-level hidden" data-level="account">
+          <table class="w-full text-sm">
+            <thead><tr class="text-left text-[var(--color-muted)] bg-neutral-50/50 border-b border-[var(--color-border)]">
+              <th class="py-2.5 px-4 font-medium">Account</th>
+              <th class="py-2.5 px-4 font-medium text-right">Revenue</th>
+              <th class="py-2.5 px-4 font-medium">Last order</th>
+              <th class="py-2.5 px-4 font-medium">Health</th>
+            </tr></thead>
+            <tbody>
+              <tr class="border-b border-[var(--color-border)]">
+                <td class="py-2.5 px-4">Acme Corp</td><td class="py-2.5 px-4 text-right">$18.4k</td><td class="py-2.5 px-4">2025-01-29</td>
+                <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-red-50 px-2 py-0.5 text-xs font-medium text-red-700">At risk</span></td>
+              </tr>
+              <tr>
+                <td class="py-2.5 px-4">Northwind Ltd</td><td class="py-2.5 px-4 text-right">$9.1k</td><td class="py-2.5 px-4">2025-02-01</td>
+                <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">Good</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="px-4 py-2 text-xs text-[var(--color-muted)] border-t border-[var(--color-border)]">Click a row to drill in; use the breadcrumb to jump back. Details on demand only — no account list loads until requested.</p>
+      </div>
+    </section>
+
+    <!-- ============ 2. METRIC PROVENANCE ============ -->
+    <section data-panel="provenance" class="panel space-y-4 hidden">
+      <p class="text-xs text-[var(--color-muted)]">Spec: <code class="bg-neutral-100 rounded px-1 py-0.5">sample-metric-provenance.md</code></p>
+
+      <div class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <div class="px-4 py-3 border-b border-[var(--color-border)]">
+          <h2 class="font-medium text-sm">Metric definitions</h2>
+          <p class="text-xs text-[var(--color-muted)] mt-0.5">Hover the ⓘ to see the tooltip shown inline in the live dashboard.</p>
+        </div>
+        <table class="w-full text-sm">
+          <thead><tr class="text-left text-[var(--color-muted)] bg-neutral-50/50 border-b border-[var(--color-border)]">
+            <th class="py-2.5 px-4 font-medium">Metric</th>
+            <th class="py-2.5 px-4 font-medium">Definition</th>
+            <th class="py-2.5 px-4 font-medium">Source / refresh</th>
+          </tr></thead>
+          <tbody>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2.5 px-4 font-medium">
+                <span class="group relative inline-flex items-center gap-1 cursor-help">
+                  Bookings
+                  <span class="text-[var(--color-muted)]">ⓘ</span>
+                  <span class="pointer-events-none absolute left-0 top-full mt-1 w-64 rounded-md border border-[var(--color-border)] bg-neutral-900 text-white text-xs p-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                    New + expansion revenue closed in the period. Excludes renewals under $10k. As of 2025-02-03 06:00 UTC.
+                  </span>
+                </span>
+              </td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">New + expansion revenue closed in the period</td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Salesforce · nightly 02:00 UTC</td>
+            </tr>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2.5 px-4 font-medium">
+                <span class="group relative inline-flex items-center gap-1 cursor-help">
+                  MRR
+                  <span class="text-[var(--color-muted)]">ⓘ</span>
+                  <span class="pointer-events-none absolute left-0 top-full mt-1 w-64 rounded-md border border-[var(--color-border)] bg-neutral-900 text-white text-xs p-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                    sum(ARR) / 12. Billing system, daily 04:00 UTC. Currency USD-normalized at sync time.
+                  </span>
+                </span>
+              </td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Recurring revenue, monthly rate, as of period end</td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Billing system · daily 04:00 UTC</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4 font-medium">
+                <span class="group relative inline-flex items-center gap-1 cursor-help">
+                  NRR
+                  <span class="text-[var(--color-muted)]">ⓘ</span>
+                  <span class="pointer-events-none absolute left-0 top-full mt-1 w-64 rounded-md border border-[var(--color-border)] bg-neutral-900 text-white text-xs p-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+                    (start ARR + expansion − contraction − churn) / start ARR. Cohort defined at contract start, not calendar year.
+                  </span>
+                </span>
+              </td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Net revenue retention vs. same cohort last period</td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Billing system · daily 04:00 UTC</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="px-4 py-2 text-xs text-[var(--color-muted)] border-t border-[var(--color-border)]">Freshness banner shown dashboard-wide when no successful sync in 36h. See full lineage and caveats in the spec.</p>
+      </div>
+    </section>
+
+    <!-- ============ 3. CHART ANNOTATION PLAN ============ -->
+    <section data-panel="annotation" class="panel space-y-4 hidden">
+      <p class="text-xs text-[var(--color-muted)]">Spec: <code class="bg-neutral-100 rounded px-1 py-0.5">sample-chart-annotation-plan.md</code></p>
+
+      <div class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm p-4">
+        <h2 class="font-medium text-sm mb-3">Revenue trend — annotated for the exec slide</h2>
+        <svg viewBox="0 0 480 160" class="w-full h-40" role="img" aria-label="Revenue trend line chart with Q3 dip callout and Q4 reference line">
+          <line x1="0" y1="140" x2="480" y2="140" stroke="#c3c2b7" stroke-width="1" />
+          <line x1="330" y1="10" x2="330" y2="140" stroke="#898781" stroke-width="1.5" stroke-dasharray="4 3" />
+          <text x="334" y="20" font-size="10" fill="#737373">Q4 start</text>
+          <polyline fill="none" stroke="var(--color-series)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+            points="10,60 80,55 150,50 220,110 290,120 330,95 400,55 470,35" />
+          <circle cx="220" cy="110" r="4" fill="var(--color-series)" />
+          <line x1="220" y1="110" x2="220" y2="80" stroke="#737373" stroke-width="1" />
+          <text x="150" y="72" font-size="10" fill="#0f172a" font-weight="600">Q3 dip: EMEA renewal delay</text>
+        </svg>
+        <p class="text-xs text-[var(--color-muted)] mt-2 border-t border-[var(--color-border)] pt-2">Recovered in Q4 following renewed EMEA contract signed 2025-01-15.</p>
+      </div>
+
+      <div class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm p-4">
+        <h2 class="font-medium text-sm mb-3">Segment comparison — direct label, no legend</h2>
+        <div class="flex items-end gap-6 h-32 pl-1">
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs font-semibold">$198k</span>
+            <div class="w-12 bg-[var(--color-series)] rounded-t" style="height: 100%"></div>
+            <span class="text-xs text-[var(--color-muted)]">Enterprise</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-[var(--color-muted)]">$142k</span>
+            <div class="w-12 bg-neutral-300 rounded-t" style="height: 72%"></div>
+            <span class="text-xs text-[var(--color-muted)]">Mid-market</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <span class="text-xs text-[var(--color-muted)]">$72k</span>
+            <div class="w-12 bg-neutral-300 rounded-t" style="height: 36%"></div>
+            <span class="text-xs text-[var(--color-muted)]">SMB</span>
+          </div>
+        </div>
+        <p class="text-xs text-[var(--color-muted)] mt-3 border-t border-[var(--color-border)] pt-2">Enterprise: 48% of bookings — the segment driving this quarter's result.</p>
+      </div>
+    </section>
+
+    <!-- ============ 4. BEN FRY PIPELINE ============ -->
+    <section data-panel="benfry" class="panel space-y-4 hidden">
+      <p class="text-xs text-[var(--color-muted)]">Spec: <code class="bg-neutral-100 rounded px-1 py-0.5">sample-ben-fry-pipeline.md</code> — applied to <code class="bg-neutral-100 rounded px-1 py-0.5">sample-daily-dashboard.md</code></p>
+
+      <div class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <table class="w-full text-sm">
+          <thead><tr class="text-left text-[var(--color-muted)] bg-neutral-50/50 border-b border-[var(--color-border)]">
+            <th class="py-2.5 px-4 font-medium">Stage</th>
+            <th class="py-2.5 px-4 font-medium">Specified?</th>
+            <th class="py-2.5 px-4 font-medium">Note</th>
+          </tr></thead>
+          <tbody>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2.5 px-4">Acquire</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">Y</span></td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Salesforce + Billing, nightly sync by 06:00 UTC</td>
+            </tr>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2.5 px-4">Parse</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-red-50 px-2 py-0.5 text-xs font-medium text-red-700">N</span></td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">No field-mapping from raw CRM/billing rows to dashboard schema</td>
+            </tr>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2.5 px-4">Filter</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">Y</span></td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Scope implicit but present (today vs. prior day)</td>
+            </tr>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2.5 px-4">Mine</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">Y</span></td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Δ% vs. prior day, exception threshold</td>
+            </tr>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2.5 px-4">Represent</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">Y</span></td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Hero cards, sparklines, table</td>
+            </tr>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2.5 px-4">Refine</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">Partial</span></td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">No chartjunk shipped, but no record of what was cut</td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4">Interact</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">Y</span></td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Overview → date/severity filter → detail panel</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="px-4 py-3 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+          <p><span class="font-medium text-neutral-900">Gaps:</span> missing Parse mapping; Filter scope never stated as a decision; Refine has no "what we cut" note.</p>
+          <p><span class="font-medium text-neutral-900">Recommendation:</span> add a source→field mapping table, state the filter scope explicitly, and log rejected chart types (e.g. pie, gauge).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. ENCODING ACCURACY ============ -->
+    <section data-panel="encoding" class="panel space-y-4 hidden">
+      <p class="text-xs text-[var(--color-muted)]">Spec: <code class="bg-neutral-100 rounded px-1 py-0.5">sample-encoding-accuracy.md</code></p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-[var(--color-card)] border border-red-200 rounded-[var(--radius-card)] shadow-sm p-4">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-flex rounded-md bg-red-50 px-2 py-0.5 text-xs font-medium text-red-700">Avoid</span>
+            <h2 class="font-medium text-sm">Angle for 3-way comparison</h2>
+          </div>
+          <div class="flex justify-center py-2">
+            <div class="w-28 h-28 rounded-full" style="background: conic-gradient(#2a78d6 0% 48%, #eda100 48% 82%, #e34948 82% 100%);"></div>
+          </div>
+          <p class="text-xs text-[var(--color-muted)] mt-2">Mid-market (34%) vs. SMB (18%) — hard to compare by arc size alone; color does double duty as both identity and implied rank.</p>
+        </div>
+        <div class="bg-[var(--color-card)] border border-emerald-200 rounded-[var(--radius-card)] shadow-sm p-4">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">Use instead</span>
+            <h2 class="font-medium text-sm">Position + length, aligned baseline</h2>
+          </div>
+          <div class="flex items-end gap-4 h-28 pl-1 py-2">
+            <div class="flex flex-col items-center gap-1"><div class="w-8 bg-[var(--color-series)] rounded-t" style="height:100%"></div><span class="text-xs text-[var(--color-muted)]">Ent.</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-8 bg-neutral-300 rounded-t" style="height:72%"></div><span class="text-xs text-[var(--color-muted)]">Mid</span></div>
+            <div class="flex flex-col items-center gap-1"><div class="w-8 bg-neutral-300 rounded-t" style="height:36%"></div><span class="text-xs text-[var(--color-muted)]">SMB</span></div>
+          </div>
+          <p class="text-xs text-[var(--color-muted)] mt-2">Same data, zero-baseline bars — the 34% vs. 18% gap is immediately legible.</p>
+        </div>
+      </div>
+
+      <div class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <table class="w-full text-sm">
+          <thead><tr class="text-left text-[var(--color-muted)] bg-neutral-50/50 border-b border-[var(--color-border)]">
+            <th class="py-2.5 px-4 font-medium">Chart</th>
+            <th class="py-2.5 px-4 font-medium">Attribute</th>
+            <th class="py-2.5 px-4 font-medium">Channel</th>
+            <th class="py-2.5 px-4 font-medium">OK?</th>
+          </tr></thead>
+          <tbody>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2.5 px-4">Segment bar</td><td class="py-2.5 px-4">Bookings</td><td class="py-2.5 px-4 text-[var(--color-muted)]">Length, zero baseline</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">Y</span></td>
+            </tr>
+            <tr>
+              <td class="py-2.5 px-4">Draft pie (rejected)</td><td class="py-2.5 px-4">Bookings</td><td class="py-2.5 px-4 text-[var(--color-muted)]">Angle + color (double duty)</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-red-50 px-2 py-0.5 text-xs font-medium text-red-700">N</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ 6. MUNZNER WHY-WHAT-HOW ============ -->
+    <section data-panel="munzner" class="panel space-y-4 hidden">
+      <p class="text-xs text-[var(--color-muted)]">Spec: <code class="bg-neutral-100 rounded px-1 py-0.5">sample-munzner-why-what-how.md</code></p>
+
+      <div class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm p-4">
+        <div class="grid grid-cols-3 gap-2 text-center mb-4">
+          <div class="rounded-md bg-neutral-50 border border-[var(--color-border)] p-2">
+            <p class="text-[10px] uppercase tracking-wide text-[var(--color-muted)]">Why</p>
+            <p class="text-xs font-medium mt-0.5">Compare 3 segments</p>
+          </div>
+          <div class="rounded-md bg-neutral-50 border border-[var(--color-border)] p-2">
+            <p class="text-[10px] uppercase tracking-wide text-[var(--color-muted)]">What</p>
+            <p class="text-xs font-medium mt-0.5">Segment (N) × Bookings (Q)</p>
+          </div>
+          <div class="rounded-md bg-neutral-50 border border-[var(--color-border)] p-2">
+            <p class="text-[10px] uppercase tracking-wide text-[var(--color-muted)]">How</p>
+            <p class="text-xs font-medium mt-0.5">Position + length</p>
+          </div>
+        </div>
+        <div class="flex items-end gap-6 h-28 pl-1 justify-center">
+          <div class="flex flex-col items-center gap-1"><div class="w-10 bg-[var(--color-series)] rounded-t" style="height:100%"></div><span class="text-xs text-[var(--color-muted)]">Enterprise</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 bg-neutral-300 rounded-t" style="height:72%"></div><span class="text-xs text-[var(--color-muted)]">Mid-market</span></div>
+          <div class="flex flex-col items-center gap-1"><div class="w-10 bg-neutral-300 rounded-t" style="height:36%"></div><span class="text-xs text-[var(--color-muted)]">SMB</span></div>
+        </div>
+      </div>
+
+      <div class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <table class="w-full text-sm">
+          <thead><tr class="text-left text-[var(--color-muted)] bg-neutral-50/50 border-b border-[var(--color-border)]">
+            <th class="py-2.5 px-4 font-medium">Why</th>
+            <th class="py-2.5 px-4 font-medium">What</th>
+            <th class="py-2.5 px-4 font-medium">How</th>
+            <th class="py-2.5 px-4 font-medium">Aligned?</th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Compare bookings across 3 segments</td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Segment (nominal) × Bookings (quantitative)</td>
+              <td class="py-2.5 px-4 text-[var(--color-muted)]">Bar: position + length</td>
+              <td class="py-2.5 px-4"><span class="inline-flex rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">Y</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="px-4 py-2 text-xs text-[var(--color-muted)] border-t border-[var(--color-border)]">No change needed — a future "segment trend over time" request is a different <em>why</em> (trend, not compare-few) and gets its own view rather than reskinning this bar chart.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('bg-neutral-900', 'text-white'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.add('text-[var(--color-muted)]'));
+        btn.classList.remove('text-[var(--color-muted)]');
+        btn.classList.add('bg-neutral-900', 'text-white');
+
+        document.querySelectorAll('.panel').forEach(p => p.classList.add('hidden'));
+        document.querySelector(`[data-panel="${btn.dataset.target}"]`).classList.remove('hidden');
+      });
+    });
+
+    // Entity drilldown: level buttons + row clicks + breadcrumb
+    const crumbEl = document.getElementById('breadcrumb');
+    const crumbBase = ['Regional summary'];
+
+    function showLevel(level) {
+      document.querySelectorAll('.drill-level').forEach(el => el.classList.add('hidden'));
+      document.querySelector(`.drill-level[data-level="${level}"]`).classList.remove('hidden');
+      document.querySelectorAll('.drill-level-btn').forEach(b => {
+        b.classList.remove('bg-neutral-100', 'text-neutral-900');
+        b.classList.add('text-[var(--color-muted)]');
+      });
+      const activeBtn = document.querySelector(`.drill-level-btn[data-level="${level}"]`);
+      activeBtn.classList.add('bg-neutral-100', 'text-neutral-900');
+      activeBtn.classList.remove('text-[var(--color-muted)]');
+    }
+
+    function renderCrumb(trail) {
+      crumbEl.innerHTML = '';
+      trail.forEach((label, i) => {
+        const isLast = i === trail.length - 1;
+        const btn = document.createElement('button');
+        btn.textContent = label;
+        btn.className = isLast
+          ? 'font-medium text-neutral-900'
+          : 'drill-crumb text-[var(--color-muted)] hover:text-neutral-900 underline decoration-dotted';
+        if (!isLast) {
+          btn.addEventListener('click', () => {
+            const level = i === 0 ? 'region' : 'territory';
+            showLevel(level);
+            renderCrumb(trail.slice(0, i + 1));
+          });
+        }
+        crumbEl.appendChild(btn);
+        if (!isLast) {
+          const sep = document.createElement('span');
+          sep.textContent = '›';
+          sep.className = 'text-[var(--color-muted)]';
+          crumbEl.appendChild(sep);
+        }
+      });
+    }
+
+    renderCrumb(crumbBase);
+
+    document.querySelectorAll('.drill-level-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        showLevel(b.dataset.level);
+        if (b.dataset.level === 'region') {
+          currentTrail = [...crumbBase];
+          renderCrumb(currentTrail);
+        }
+      });
+    });
+
+    let currentTrail = [...crumbBase];
+
+    document.querySelectorAll('.drill-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const goto = row.dataset.goto;
+        const crumb = row.dataset.crumb;
+        showLevel(goto);
+        if (goto === 'territory') {
+          currentTrail = [...crumbBase, crumb];
+        } else {
+          currentTrail = [...currentTrail, crumb];
+        }
+        renderCrumb(currentTrail);
+      });
+    });
+  </script>
+</body>
+</html>
