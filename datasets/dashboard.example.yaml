@@ -1,0 +1,14 @@
+# Example dashboard config: multiple CSVs → spec + self-contained HTML
+# Paths are relative to the repository root.
+#
+# Copy to dashboard.yaml and point sources at your local CSVs under data/:
+#   cp datasets/dashboard.example.yaml datasets/dashboard.yaml
+
+name: my-dashboard
+cadence: weekly
+skills:
+  - weekly-performance-review
+  - metric-provenance
+sources:
+  - path: data/my-dataset/example-a.csv
+  - path: data/my-dataset/example-b.csv

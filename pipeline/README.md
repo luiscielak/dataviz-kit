@@ -1,5 +1,7 @@
 # Pipeline: multiple CSVs → spec + self-contained HTML
 
+Dataset-agnostic. Point a local config at your CSVs; nothing under `data/` or `output/` is committed.
+
 Run from the **repository root** (`dataviz-kit/`).
 
 ## Setup
@@ -10,7 +12,12 @@ pip install -r pipeline/requirements.txt
 
 ## Config
 
-Edit `datasets/dashboard.yaml` to point at your CSVs (paths relative to repo root):
+1. Put CSVs under `data/<your-dataset>/` (see `data/README.md`).
+2. Copy the example config and edit paths:
+
+```bash
+cp datasets/dashboard.example.yaml datasets/dashboard.yaml
+```
 
 ```yaml
 name: my-dashboard
@@ -18,10 +25,11 @@ cadence: weekly
 skills:
   - weekly-performance-review
 sources:
-  - path: data/my-dataset/example-a.csv
-  - path: data/my-dataset/example-b.csv
-  # ...
+  - path: data/my-dataset/file-a.csv
+  - path: data/my-dataset/file-b.csv
 ```
+
+`datasets/dashboard.yaml` is gitignored so local paths and dataset names stay private.
 
 ## Run
 

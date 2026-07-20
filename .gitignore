@@ -1,2 +1,13 @@
 .DS_Store
 **/.DS_Store
+
+# Local datasets (may contain PII) — keep data/README.md
+data/**
+!data/README.md
+
+# Local pipeline config (points at your CSVs)
+datasets/dashboard.yaml
+
+# Generated pipeline output — keep output/.gitkeep
+output/**
+!output/.gitkeep
