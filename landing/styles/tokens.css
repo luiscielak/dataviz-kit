@@ -1,0 +1,126 @@
+/*
+ * Design tokens for the Dataviz Kit landing page.
+ *
+ * Mirrors the Hooman Loop Business OS model: two orthogonal axes.
+ *   - Palette (brand hue):  data-palette="atelier|courage|minimal|hl|blueprint"
+ *   - Mode (luminance):     data-theme="light|dark"
+ *
+ * Both are set on <html>. Change a token here and the whole page moves
+ * together. When dropping this page into the Business OS portal, swap this
+ * file for the portal's real tokens.css and the semantic names line up.
+ */
+
+:root {
+  /* Type */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", Menlo,
+    Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.5rem;
+  --text-4xl: 3.5rem;
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --maxw: 1080px;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow: 0 8px 30px rgb(0 0 0 / 0.08);
+
+  /* Default brand hue (overridden per palette) */
+  --brand-h: 231;
+  --brand-s: 64%;
+}
+
+/* --- Palettes: set brand hue/sat + an accent-2 for gradients --- */
+:root[data-palette="hl"]        { --brand-h: 231; --brand-s: 64%; --brand-2-h: 268; }
+:root[data-palette="atelier"]   { --brand-h: 18;  --brand-s: 58%; --brand-2-h: 38;  }
+:root[data-palette="courage"]   { --brand-h: 348; --brand-s: 68%; --brand-2-h: 12;  }
+:root[data-palette="minimal"]   { --brand-h: 220; --brand-s: 8%;  --brand-2-h: 220; }
+:root[data-palette="blueprint"] { --brand-h: 205; --brand-s: 72%; --brand-2-h: 190; }
+
+/* --- Light mode (default) --- */
+:root,
+:root[data-theme="light"] {
+  --bg: hsl(var(--brand-h) 40% 99%);
+  --bg-elev: hsl(var(--brand-h) 30% 100%);
+  --surface: hsl(0 0% 100%);
+  --surface-2: hsl(var(--brand-h) 30% 97%);
+  --fg: hsl(var(--brand-h) 24% 12%);
+  --fg-muted: hsl(var(--brand-h) 12% 40%);
+  --fg-subtle: hsl(var(--brand-h) 10% 55%);
+  --border: hsl(var(--brand-h) 18% 88%);
+  --border-strong: hsl(var(--brand-h) 18% 78%);
+
+  --accent: hsl(var(--brand-h) var(--brand-s) 46%);
+  --accent-hover: hsl(var(--brand-h) var(--brand-s) 40%);
+  --accent-fg: hsl(0 0% 100%);
+  --accent-soft: hsl(var(--brand-h) var(--brand-s) 96%);
+  --accent-2: hsl(var(--brand-2-h) var(--brand-s) 52%);
+
+  --ring: hsl(var(--brand-h) var(--brand-s) 46% / 0.4);
+  color-scheme: light;
+}
+
+/* --- Dark mode --- */
+:root[data-theme="dark"] {
+  --bg: hsl(var(--brand-h) 24% 8%);
+  --bg-elev: hsl(var(--brand-h) 22% 11%);
+  --surface: hsl(var(--brand-h) 20% 13%);
+  --surface-2: hsl(var(--brand-h) 20% 16%);
+  --fg: hsl(var(--brand-h) 20% 96%);
+  --fg-muted: hsl(var(--brand-h) 12% 72%);
+  --fg-subtle: hsl(var(--brand-h) 10% 58%);
+  --border: hsl(var(--brand-h) 16% 22%);
+  --border-strong: hsl(var(--brand-h) 16% 32%);
+
+  --accent: hsl(var(--brand-h) calc(var(--brand-s) + 6%) 66%);
+  --accent-hover: hsl(var(--brand-h) calc(var(--brand-s) + 6%) 72%);
+  --accent-fg: hsl(var(--brand-h) 40% 10%);
+  --accent-soft: hsl(var(--brand-h) 30% 18%);
+  --accent-2: hsl(var(--brand-2-h) var(--brand-s) 66%);
+
+  --ring: hsl(var(--brand-h) var(--brand-s) 66% / 0.45);
+  color-scheme: dark;
+}
+
+/* Respect OS preference when no explicit theme is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: hsl(var(--brand-h) 24% 8%);
+    --bg-elev: hsl(var(--brand-h) 22% 11%);
+    --surface: hsl(var(--brand-h) 20% 13%);
+    --surface-2: hsl(var(--brand-h) 20% 16%);
+    --fg: hsl(var(--brand-h) 20% 96%);
+    --fg-muted: hsl(var(--brand-h) 12% 72%);
+    --fg-subtle: hsl(var(--brand-h) 10% 58%);
+    --border: hsl(var(--brand-h) 16% 22%);
+    --border-strong: hsl(var(--brand-h) 16% 32%);
+    --accent: hsl(var(--brand-h) calc(var(--brand-s) + 6%) 66%);
+    --accent-hover: hsl(var(--brand-h) calc(var(--brand-s) + 6%) 72%);
+    --accent-fg: hsl(var(--brand-h) 40% 10%);
+    --accent-soft: hsl(var(--brand-h) 30% 18%);
+    --accent-2: hsl(var(--brand-2-h) var(--brand-s) 66%);
+    --ring: hsl(var(--brand-h) var(--brand-s) 66% / 0.45);
+    color-scheme: dark;
+  }
+}
