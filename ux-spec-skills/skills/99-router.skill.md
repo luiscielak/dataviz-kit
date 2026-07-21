@@ -33,6 +33,7 @@ Given the **user request** below, select the single most appropriate spec skill 
 - **Tufte cleanup / chartjunk** → `skills/30-dataviz-rigor/tufte-cleanup.skill.md`
 - **Task/data/encoding (Munzner)** → `skills/30-dataviz-rigor/munzner-why-what-how.skill.md`
 - **Encoding accuracy** → `skills/30-dataviz-rigor/encoding-accuracy.skill.md`
+- **Critique / review / audit a dashboard or chart** (multi-lens review, scorecard, "is this chart OK?") → `skills/40-critique/dataviz-critique.skill.md`
 - **Global standards / principles** → `skills/00-global-standards.skill.md`
 
 If the request is ambiguous or could match multiple skills, pick the primary intent and mention the alternative in the reason. If no skill fits, say “No single skill; consider: [list].”

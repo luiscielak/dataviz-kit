@@ -1,0 +1,29 @@
+# Error — Mobile (broken asset / missing page)
+# Core interaction state
+# Examples: dead Related file, missing expert md, 404 profile
+
++------------------------------------------+
+| [=]  Dataviz Kit                    [☀]  |
+|      by The Hooman Loop                       |
++------------------------------------------+
+|                                          |
+| [S1] ERROR                               |
+| +--------------------------------------+ |
+| | Something went wrong                 | |
+| |                                      | |
+| | We couldn't open that page or asset. | |
+| | (No fake "success" empty chrome.)    | |
+| |                                      | |
+| | [Button: Back to Overview]           | |
+| | > Experts index                      | |
+| | > Router                             | |
+| +--------------------------------------+ |
+|                                          |
+| Optional detail (dev / QA):              |
+| path or asset id that failed             |
+|                                          |
++------------------------------------------+
+
+[A5] Prefer muted empty Related on profiles over navigating
+     to a 404 when the asset map knows the asset is missing.
+[→ flow: recover] Back to Overview / Experts / Router

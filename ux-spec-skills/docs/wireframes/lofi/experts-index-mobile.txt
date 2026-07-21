@@ -1,0 +1,43 @@
+# Experts index — Mobile (~375px)
+# Flow: Browse experts (entry)
+# FR: 012 · US-007, US-009
+
++------------------------------------------+
+| [=]  Dataviz Kit                    [☀]  |
+|      by The Hooman Loop                |
++------------------------------------------+
+|                                          |
+| [S1] PAGE HEADER                         |
+| Experts                                  |
+| Shipped dataviz authors behind kit       |
+| principles                               |
+| 7 profiles                               |
+|                                          |
+| [S2] GALLERY (flat ×7)                   |  FR-012
+| +--------------------------------------+ |
+| | Edward Tufte                         | |
+| | Data-ink, chartjunk, graphical…      | |
+| +--------------------------------------+ |
+| | Ben Shneiderman                      | |
+| | Overview first, zoom & filter…       | |
+| +--------------------------------------+ |
+| | Ben Fry                              | |
+| | Acquire → parse → filter → mine…     | |
+| +--------------------------------------+ |
+| | Stephen Few                          | |
+| | Tamara Munzner                       | |
+| | Barbara Minto                        | |
+| | Cole Nussbaumer Knaflic              | |
+|                                          |
+| [S3] NOTE                                |
+| Queued authors (Felton, Cairo, …) do     |
+| not appear until principle + expert docs |
+| ship. No Core / Practice sectioning.     |
+|                                          |
++------------------------------------------+
+
+[A3] Experts nav active (drawer)
+[A4] Each card → expert-profile
+[A5] No invented queued expert cards
+
+[→ flow: browse-experts] card → expert-profile

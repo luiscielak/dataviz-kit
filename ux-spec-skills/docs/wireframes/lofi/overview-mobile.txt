@@ -1,0 +1,95 @@
+# Overview — Mobile (~375px)
+# Flows: Browse experts · Discover skills · Ambiguous ask
+# FR: 001, 002, 003, 006, 007, 008, 009, 010, 014
+
++------------------------------------------+
+| [=]  Dataviz Kit                    [☀]  |  [S1][A1][A2]
+|      by The Hooman Loop                |
++------------------------------------------+
+|                                          |
+| [S2] PAGE HEADER                         |
+| Dataviz Kit                              |
+| Learn from dataviz experts.              |
+| Run Spec Skills with clarity.            |
+| v0.x.x · 7 experts · 16 skills           |  FR-010
+|                                          |
+| [S3] TWO DOORS                           |  FR-014
+| +--------------------------------------+ |
+| | Browse experts                       | |
+| | Who they are · works · principles    | |
+| | [Button: View experts]               | |
+| +--------------------------------------+ |
+| +--------------------------------------+ |
+| | Browse skills                        | |
+| | Choose → inputs → prompt → output    | |
+| | [Button: View skills]                | |
+| +--------------------------------------+ |
+|                                          |
+| [S4] EXPERTS GALLERY (flat ×7)           |  FR-007
+| +--------------------------------------+ |
+| | Edward Tufte                         | |
+| | Data-ink, chartjunk…                 | |
+| +--------------------------------------+ |
+| | Ben Shneiderman                      | |
+| | Ben Fry                              | |
+| | Stephen Few                          | |
+| | Tamara Munzner                       | |
+| | Barbara Minto                        | |
+| | Cole Nussbaumer Knaflic              | |
+| (no Core/Practice rows; queued omitted)  |
+|                                          |
+| [S5] HOW TO USE (skills)                 |  FR-002
+| +--------------------------------------+ |
+| | 1 Choose skill                       | |
+| | 2 Gather inputs                      | |
+| | 3 Run prompt                         | |
+| | 4 Optional template / rigor / crit   | |
+| +--------------------------------------+ |
+|                                          |
+| [S6] CRITIQUE                            |  FR-003
+| +--------------------------------------+ |
+| | CRITIQUE · Dataviz critique          | |
+| | [sample]                             | |  [A8]
+| +--------------------------------------+ |
+|                                          |
+| [S7] DATAVIZ RIGOR                       |
+| +--------------------------------------+ |
+| | RIGOR · Encoding accuracy            | |
+| | [sample] [HTML]                      | |  [A8]
+| +--------------------------------------+ |
+| | … (4 cards)                          | |
+|                                          |
+| [S8] CONSULTING STORYTELLING             |
+| | … (3 cards)                          | |
+|                                          |
+| [S9] EXECUTIVE DASHBOARDS                |
+| +--------------------------------------+ |
+| | EXEC · Daily exec pulse              | |
+| | [sample] [HTML]                      | |
+| +--------------------------------------+ |
+| | … (6 cards)                          | |
+|                                          |
+| [S10] GLOBAL                             |
+| | Global standards                     | |
+|                                          |
+| [S11] ROUTER                             |
+| | Router                               | |
+|                                          |
+| [S12] ROUTER CTA                         |  FR-006
+| +--------------------------------------+ |
+| |║ Not sure which skill?               | |
+| |║ [Button: Open Router]               | |
+| +--------------------------------------+ |
+|                                          |
++------------------------------------------+
+
+[A1] Sticky top bar; [=] → shell-drawer-mobile
+[A2] Brand + by The Hooman Loop subtitle
+[A3] Overview active in drawer
+[A4] Expert cards → expert-profile; skill cards → skill-profile
+[A5] No Felton/Cairo/queued cards
+[A8] Badges only when sample/HTML mapped
+
+[→ flow: browse-experts] gallery / door → expert-profile
+[→ flow: discover-skills] door / catalog → skill-profile
+[→ flow: ambiguous] Router CTA → router skill-profile

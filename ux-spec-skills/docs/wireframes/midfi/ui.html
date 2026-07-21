@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dataviz Kit — Mid-Fi Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F5F5F0;
+      --surface: #FFFFFF;
+      --ink: #0A0A0A;
+      --muted: #6A6A6A;
+      --accent: #067F8A;
+      --radius: 0;
+      --shadow: none;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-sans: Inter, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", "Fira Code", monospace;
+      --sidebar: 200px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #ebebe4 0%, var(--bg) 120px, var(--bg) 100%);
+      line-height: 1.45;
+    }
+    a { color: var(--ink); }
+    button { font: inherit; cursor: pointer; }
+
+    /* —— Review chrome —— */
+    .review {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+    .review-header h1 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      margin: 0 0 4px;
+      letter-spacing: -0.02em;
+    }
+    .review-header p {
+      margin: 0 0 20px;
+      color: var(--muted);
+      max-width: 52rem;
+    }
+    .review-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .review-meta code {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--ink);
+    }
+
+    .screen-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .screen-nav button {
+      border: 1px solid var(--ink);
+      background: var(--surface);
+      padding: 8px 12px;
+      border-radius: var(--radius);
+    }
+    .screen-nav button:hover { background: var(--bg); }
+    .screen-nav button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .screen-nav button[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--surface);
+    }
+
+    .frames {
+      display: grid;
+      grid-template-columns: minmax(280px, 340px) 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .frames { grid-template-columns: 1fr; }
+    }
+
+    .frame-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0 0 10px;
+      color: var(--muted);
+    }
+
+    /* Phone chrome */
+    .phone {
+      border: 2px solid var(--ink);
+      background: #1a1a1a;
+      padding: 12px 10px 16px;
+      border-radius: 0;
+    }
+    .phone-notch {
+      width: 96px;
+      height: 6px;
+      background: #333;
+      margin: 0 auto 10px;
+    }
+    .phone-screen {
+      background: var(--bg);
+      height: 640px;
+      overflow: auto;
+      border: 1px solid #333;
+    }
+
+    /* Browser chrome */
+    .browser {
+      border: 2px solid var(--ink);
+      background: #e8e8e2;
+    }
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--ink);
+      background: #dddcd4;
+    }
+    .browser-dots { display: flex; gap: 6px; }
+    .browser-dots span {
+      width: 10px; height: 10px;
+      border: 1px solid var(--ink);
+      background: var(--surface);
+    }
+    .browser-url {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--ink);
+      padding: 6px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .browser-screen {
+      background: var(--bg);
+      height: 640px;
+      overflow: auto;
+    }
+
+    .panel { display: none; }
+    .panel.is-active { display: block; }
+
+    /* —— App mid-fi primitives —— */
+    .app { min-height: 100%; }
+    .app-desktop {
+      display: grid;
+      grid-template-columns: var(--sidebar) 1fr;
+      min-height: 640px;
+    }
+    .sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--ink);
+      padding: 16px 12px;
+      position: sticky;
+      top: 0;
+      align-self: start;
+      min-height: 640px;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.2;
+    }
+    .brand-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .nav-list { list-style: none; margin: 0; padding: 0; }
+    .nav-list a {
+      display: block;
+      text-decoration: none;
+      padding: 8px 10px;
+      font-size: 0.875rem;
+      border-left: 3px solid transparent;
+    }
+    .nav-list a:hover { background: var(--bg); }
+    .nav-list a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+    }
+    .nav-list a[aria-current="page"] {
+      border-left-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--ink);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .icon-btn {
+      border: 1px solid var(--ink);
+      background: var(--surface);
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .icon-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .topbar .brand-wrap { flex: 1; min-width: 0; }
+    .topbar .brand { font-size: 0.95rem; }
+    .topbar .brand-sub { margin: 0; }
+
+    .main { padding: 20px 16px 32px; }
+    .app-desktop .main { padding: 24px 28px 40px; }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin: 0 0 6px;
+      letter-spacing: -0.02em;
+    }
+    .tagline { margin: 0 0 8px; color: var(--ink); }
+    .meta-row {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .micro {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 4px;
+    }
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 28px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .breadcrumb {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .breadcrumb a { color: var(--ink); }
+
+    .doors {
+      display: grid;
+      gap: 12px;
+    }
+    .app-desktop .doors { grid-template-columns: 1fr 1fr; }
+    .module {
+      background: var(--surface);
+      border: 1px solid var(--ink);
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+    .module.accent-left {
+      border-left: 4px solid var(--accent);
+    }
+    .module h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin: 0 0 6px;
+    }
+    .module p { margin: 0 0 10px; font-size: 0.875rem; color: var(--muted); }
+
+    .btn {
+      display: inline-block;
+      border: 1px solid var(--ink);
+      background: var(--surface);
+      padding: 8px 12px;
+      font-size: 0.875rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .btn:hover { background: var(--bg); }
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 10px;
+    }
+    .app-desktop .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .app-desktop .card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .app-desktop .card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .index-card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--ink);
+      padding: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .index-card:hover { background: var(--bg); }
+    .index-card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .card-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .index-card h3 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      margin: 0 0 4px;
+      font-weight: 600;
+    }
+    .card-detail {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin: 0;
+    }
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 8px;
+    }
+    .badge {
+      font-size: 0.65rem;
+      border: 1px solid var(--ink);
+      padding: 2px 6px;
+      background: var(--bg);
+    }
+
+    .steps {
+      display: grid;
+      gap: 8px;
+    }
+    .app-desktop .steps { grid-template-columns: repeat(4, 1fr); }
+    .step {
+      border: 1px solid var(--ink);
+      background: var(--surface);
+      padding: 10px;
+      font-size: 0.75rem;
+    }
+    .step strong {
+      display: block;
+      font-family: var(--font-display);
+      margin-bottom: 4px;
+    }
+
+    .muted { color: var(--muted); }
+    .mono { font-family: var(--font-mono); font-size: 0.75rem; }
+
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      background: var(--surface);
+    }
+    .data-table th,
+    .data-table td {
+      border: 1px solid var(--ink);
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .data-table th { background: var(--bg); font-weight: 600; }
+
+    .link-list { list-style: none; margin: 0; padding: 0; }
+    .link-list li { margin: 0 0 8px; font-size: 0.875rem; }
+    .link-list a { color: var(--accent); }
+
+    .empty-slot {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .skeleton {
+      background: #dddcd6;
+      height: 14px;
+      margin-bottom: 8px;
+    }
+    .skeleton.block { height: 72px; }
+    .skeleton.card { height: 88px; }
+
+    /* Drawer overlay demo */
+    .drawer-demo { position: relative; min-height: 640px; }
+    .drawer-backdrop {
+      position: absolute;
+      inset: 48px 0 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 3;
+    }
+    .drawer-panel {
+      position: absolute;
+      top: 48px;
+      left: 0;
+      width: 78%;
+      max-width: 280px;
+      bottom: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--ink);
+      z-index: 4;
+      padding: 12px;
+      overflow: auto;
+    }
+
+    .notes {
+      margin-top: 28px;
+      padding: 16px;
+      border: 1px solid var(--ink);
+      background: var(--surface);
+      font-size: 0.8125rem;
+    }
+    .notes h2 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      margin: 0 0 8px;
+    }
+    .notes ul { margin: 0; padding-left: 1.2rem; }
+    .notes li { margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+  <div class="review">
+    <header class="review-header">
+      <h1>Dataviz Kit — Mid-Fi UI</h1>
+      <p>
+        Unified overview of mid-fi screens with phone and browser frames.
+        Visual language follows Konstrukt (flat, zero radius, teal accent).
+        Specs: <code>tokens.md</code>, <code>components.md</code>, <code>screens/</code>.
+      </p>
+      <div class="review-meta">
+        <span>Artifact root: <code>ux-spec-skills/docs/</code></span>
+        <span>A11y: WCAG AA · focus rings · keyboard cards</span>
+        <span>Pillars: Experts · Skills</span>
+      </div>
+    </header>
+
+    <div class="screen-nav" role="toolbar" aria-label="Select screen">
+      <button type="button" data-screen="overview" aria-pressed="true">Overview</button>
+      <button type="button" data-screen="skill" aria-pressed="false">Skill profile</button>
+      <button type="button" data-screen="empty" aria-pressed="false">Empty Related</button>
+      <button type="button" data-screen="experts" aria-pressed="false">Experts index</button>
+      <button type="button" data-screen="expert" aria-pressed="false">Expert profile</button>
+      <button type="button" data-screen="drawer" aria-pressed="false">Shell drawer</button>
+      <button type="button" data-screen="loading" aria-pressed="false">Loading</button>
+      <button type="button" data-screen="error" aria-pressed="false">Error</button>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="panel is-active" id="panel-overview" aria-label="Overview frames">
+      <div class="frames">
+        <div>
+          <p class="frame-label">Phone · ~375px</p>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app">
+                <div class="topbar">
+                  <button class="icon-btn" type="button" aria-label="Open menu" aria-expanded="false">≡</button>
+                  <div class="brand-wrap">
+                    <div class="brand">Dataviz Kit</div>
+                    <div class="brand-sub">by The Hooman Loop</div>
+                  </div>
+                  <button class="icon-btn" type="button" aria-label="Toggle theme">☀</button>
+                </div>
+                <main class="main">
+                  <header class="page-header">
+                    <h1>Dataviz Kit</h1>
+                    <p class="tagline">Learn from dataviz experts. Run Spec Skills with clarity.</p>
+                    <p class="meta-row">v0.1.0 · 7 experts · 16 skills</p>
+                  </header>
+                  <div class="doors">
+                    <div class="module">
+                      <h3>Browse experts</h3>
+                      <p>Who · works · principles</p>
+                      <a class="btn" href="#experts">View experts</a>
+                    </div>
+                    <div class="module">
+                      <h3>Browse skills</h3>
+                      <p>Choose → run prompt</p>
+                      <a class="btn" href="#skills">View skills</a>
+                    </div>
+                  </div>
+                  <h2 class="section-label">Experts</h2>
+                  <div class="card-grid">
+                    <a class="index-card" href="#"><h3>Edward Tufte</h3><p class="card-detail">Data-ink, chartjunk…</p></a>
+                    <a class="index-card" href="#"><h3>Ben Shneiderman</h3><p class="card-detail">Overview first…</p></a>
+                    <a class="index-card" href="#"><h3>Ben Fry</h3><p class="card-detail">Acquire → mine…</p></a>
+                    <a class="index-card" href="#"><h3>Stephen Few</h3><p class="card-detail">Dashboard clarity…</p></a>
+                    <a class="index-card" href="#"><h3>Tamara Munzner</h3><p class="card-detail">Why–what–how…</p></a>
+                    <a class="index-card" href="#"><h3>Barbara Minto</h3><p class="card-detail">Pyramid / answer-first…</p></a>
+                    <a class="index-card" href="#"><h3>Cole Nussbaumer Knaflic</h3><p class="card-detail">Storytelling with data…</p></a>
+                  </div>
+                  <h2 class="section-label">How to use</h2>
+                  <div class="module">
+                    <ol style="margin:0;padding-left:1.2rem;font-size:0.875rem">
+                      <li>Choose skill</li>
+                      <li>Gather inputs</li>
+                      <li>Run prompt</li>
+                      <li>Optional template / rigor / critique</li>
+                    </ol>
+                  </div>
+                  <h2 class="section-label" id="skills">Critique</h2>
+                  <div class="card-grid">
+                    <a class="index-card" href="#"><div class="card-label">Critique</div><h3>Dataviz critique</h3><div class="card-meta"><span class="badge">sample</span></div></a>
+                  </div>
+                  <h2 class="section-label">Dataviz rigor</h2>
+                  <div class="card-grid">
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Ben Fry pipeline</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Tufte cleanup</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Munzner WWH</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Encoding accuracy</h3><div class="card-meta"><span class="badge">sample</span><span class="badge">HTML</span></div></a>
+                  </div>
+                  <h2 class="section-label">Consulting storytelling</h2>
+                  <div class="card-grid">
+                    <a class="index-card" href="#"><div class="card-label">Consulting</div><h3>Exec slide outline</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Consulting</div><h3>Dashboard one-pager</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Consulting</div><h3>Chart annotation</h3></a>
+                  </div>
+                  <h2 class="section-label">Executive dashboards</h2>
+                  <div class="card-grid">
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Daily exec pulse</h3><div class="card-meta"><span class="badge">sample</span><span class="badge">HTML</span></div></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Weekly performance</h3><div class="card-meta"><span class="badge">sample</span><span class="badge">HTML</span></div></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Monthly strategy</h3><div class="card-meta"><span class="badge">sample</span></div></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Entity drilldown</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Alerts</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Metric provenance</h3></a>
+                  </div>
+                  <h2 class="section-label">Global</h2>
+                  <div class="card-grid">
+                    <a class="index-card" href="#"><div class="card-label">Global</div><h3>Global standards</h3></a>
+                  </div>
+                  <h2 class="section-label">Router</h2>
+                  <div class="card-grid">
+                    <a class="index-card" href="#"><div class="card-label">Router</div><h3>Router</h3></a>
+                  </div>
+                  <div class="module accent-left" style="margin-top:20px">
+                    <h3>Not sure which skill?</h3>
+                    <p>Start with the Router.</p>
+                    <a class="btn" href="#">Open Router</a>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="frame-label">Browser · ≥1024px</p>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-url">docs/site/index.html — Dataviz Kit</div>
+            </div>
+            <div class="browser-screen">
+              <div class="app app-desktop">
+                <aside class="sidebar" aria-label="Primary">
+                  <div class="brand">Dataviz Kit</div>
+                  <div class="brand-sub">by The Hooman Loop</div>
+                  <nav>
+                    <ul class="nav-list">
+                      <li><a href="#" aria-current="page">Overview</a></li>
+                      <li><a href="#">Experts</a></li>
+                      <li><a href="#">Critique</a></li>
+                      <li><a href="#">Dataviz rigor</a></li>
+                      <li><a href="#">Consulting</a></li>
+                      <li><a href="#">Executive</a></li>
+                      <li><a href="#">Global</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </nav>
+                </aside>
+                <main class="main">
+                  <header class="page-header">
+                    <h1>Dataviz Kit</h1>
+                    <p class="tagline">Learn from dataviz experts. Run Spec Skills with clarity.</p>
+                    <p class="meta-row">v0.1.0 · 7 experts · 16 skills</p>
+                  </header>
+                  <div class="doors">
+                    <div class="module">
+                      <h3>Browse experts</h3>
+                      <p>Who they are · works · principles for specs</p>
+                      <a class="btn" href="#">View experts</a>
+                    </div>
+                    <div class="module">
+                      <h3>Browse skills</h3>
+                      <p>Choose → inputs → prompt → output</p>
+                      <a class="btn" href="#">View skills</a>
+                    </div>
+                  </div>
+                  <h2 class="section-label">Experts</h2>
+                  <div class="card-grid cols-4">
+                    <a class="index-card" href="#"><h3>Edward Tufte</h3><p class="card-detail">Data-ink &amp; chartjunk</p></a>
+                    <a class="index-card" href="#"><h3>Ben Shneiderman</h3><p class="card-detail">Overview first</p></a>
+                    <a class="index-card" href="#"><h3>Ben Fry</h3><p class="card-detail">Acquire → mine</p></a>
+                    <a class="index-card" href="#"><h3>Stephen Few</h3><p class="card-detail">Dashboard clarity</p></a>
+                    <a class="index-card" href="#"><h3>Tamara Munzner</h3><p class="card-detail">Why–what–how</p></a>
+                    <a class="index-card" href="#"><h3>Barbara Minto</h3><p class="card-detail">Pyramid / answer-first</p></a>
+                    <a class="index-card" href="#"><h3>Cole Nussbaumer Knaflic</h3><p class="card-detail">Storytelling with data</p></a>
+                  </div>
+                  <h2 class="section-label">How to use</h2>
+                  <div class="steps">
+                    <div class="step"><strong>1 Choose</strong> skill</div>
+                    <div class="step"><strong>2 Gather</strong> inputs</div>
+                    <div class="step"><strong>3 Run</strong> prompt</div>
+                    <div class="step"><strong>4 Optional</strong> template / rigor / critique</div>
+                  </div>
+                  <h2 class="section-label">Critique</h2>
+                  <div class="card-grid cols-3">
+                    <a class="index-card" href="#"><div class="card-label">Critique</div><h3>Dataviz critique</h3><div class="card-meta"><span class="badge">sample</span></div></a>
+                  </div>
+                  <h2 class="section-label">Dataviz rigor</h2>
+                  <div class="card-grid cols-4">
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Ben Fry pipeline</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Tufte cleanup</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Munzner WWH</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Encoding accuracy</h3><div class="card-meta"><span class="badge">sample</span><span class="badge">HTML</span></div></a>
+                  </div>
+                  <h2 class="section-label">Consulting storytelling</h2>
+                  <div class="card-grid cols-3">
+                    <a class="index-card" href="#"><div class="card-label">Consulting</div><h3>Exec slide outline</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Consulting</div><h3>Dashboard one-pager</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Consulting</div><h3>Chart annotation</h3></a>
+                  </div>
+                  <h2 class="section-label">Executive dashboards</h2>
+                  <div class="card-grid cols-3">
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Daily exec pulse</h3><div class="card-meta"><span class="badge">sample</span><span class="badge">HTML</span></div></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Weekly performance</h3><div class="card-meta"><span class="badge">sample</span><span class="badge">HTML</span></div></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Monthly strategy</h3><div class="card-meta"><span class="badge">sample</span></div></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Entity drilldown</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Alerts</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Exec</div><h3>Metric provenance</h3></a>
+                  </div>
+                  <h2 class="section-label">Global</h2>
+                  <div class="card-grid cols-3">
+                    <a class="index-card" href="#"><div class="card-label">Global</div><h3>Global standards</h3></a>
+                  </div>
+                  <h2 class="section-label">Router</h2>
+                  <div class="card-grid cols-3">
+                    <a class="index-card" href="#"><div class="card-label">Router</div><h3>Router</h3></a>
+                  </div>
+                  <div class="module accent-left" style="margin-top:24px">
+                    <h3>Not sure which skill?</h3>
+                    <p>Ambiguous ask → open the Router profile.</p>
+                    <a class="btn" href="#">Open Router profile</a>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILL PROFILE -->
+    <section class="panel" id="panel-skill" aria-label="Skill profile frames" hidden>
+      <div class="frames">
+        <div>
+          <p class="frame-label">Phone · Skill profile</p>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app">
+                <div class="topbar">
+                  <button class="icon-btn" type="button" aria-label="Open menu">≡</button>
+                  <div class="brand-wrap">
+                    <div class="brand">Dataviz Kit</div>
+                    <div class="brand-sub">by The Hooman Loop</div>
+                  </div>
+                  <button class="icon-btn" type="button" aria-label="Toggle theme">☀</button>
+                </div>
+                <main class="main">
+                  <nav class="breadcrumb" aria-label="Breadcrumb">Overview / Executive / Daily exec pulse</nav>
+                  <p class="micro">Executive dashboards</p>
+                  <h1 style="font-family:var(--font-display);font-size:1.35rem;margin:0 0 6px">Daily exec pulse</h1>
+                  <p class="tagline" style="font-size:0.9rem">Morning pulse for ops leaders</p>
+                  <p class="meta-row">skills/10-…/daily-exec-pulse.skill.md</p>
+                  <div class="card-meta" style="margin-bottom:16px"><span class="badge">sample</span><span class="badge">HTML</span></div>
+                  <div class="module accent-left">
+                    <h3>Purpose</h3>
+                    <p>Short purpose from .skill.md</p>
+                  </div>
+                  <div class="module">
+                    <h3>When to use</h3>
+                    <p>· Morning ops need a pulse<br>· Overnight change to surface</p>
+                  </div>
+                  <div class="module">
+                    <h3>Inputs</h3>
+                    <p>· Metrics list<br>· Time window</p>
+                  </div>
+                  <div class="module">
+                    <h3>Prompt</h3>
+                    <p class="mono" style="font-size:0.75rem;margin:0">[ mono prompt block / collapsible ]</p>
+                  </div>
+                  <div class="module">
+                    <h3>Output format</h3>
+                    <p>Spec / artifact shape</p>
+                  </div>
+                  <div class="module">
+                    <h3>Anti-patterns</h3>
+                    <p>Don’t bury the pulse in noise</p>
+                  </div>
+                  <div class="module">
+                    <h3>Related</h3>
+                    <ul class="link-list">
+                      <li><a href="#">Template — daily-dashboard…</a></li>
+                      <li><a href="#">Sample — sample-daily…</a></li>
+                      <li><a href="#">HTML demo</a></li>
+                      <li><a href="#">Expert profile</a></li>
+                      <li><a href="#">Principles checklist</a></li>
+                    </ul>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="frame-label">Browser · Skill profile</p>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-url">docs/site/skills/daily-exec-pulse.html</div>
+            </div>
+            <div class="browser-screen">
+              <div class="app app-desktop">
+                <aside class="sidebar">
+                  <div class="brand">Dataviz Kit</div>
+                  <div class="brand-sub">by The Hooman Loop</div>
+                  <nav>
+                    <ul class="nav-list">
+                      <li><a href="#">Overview</a></li>
+                      <li><a href="#">Experts</a></li>
+                      <li><a href="#">Critique</a></li>
+                      <li><a href="#">Dataviz rigor</a></li>
+                      <li><a href="#">Consulting</a></li>
+                      <li><a href="#" aria-current="page">Executive</a></li>
+                      <li><a href="#">Global</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </nav>
+                </aside>
+                <main class="main">
+                  <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="#">Overview</a> / <a href="#">Executive dashboards</a> / Daily exec pulse
+                  </nav>
+                  <p class="micro">Executive dashboards</p>
+                  <h1 style="font-family:var(--font-display);font-size:1.6rem;margin:0 0 6px">Daily exec pulse</h1>
+                  <p class="tagline">Morning pulse for ops leaders</p>
+                  <p class="meta-row">`skills/10-exec-dashboards/daily-exec-pulse.skill.md`</p>
+                  <div class="card-meta" style="margin-bottom:20px"><span class="badge">sample</span><span class="badge">HTML</span></div>
+                  <div class="module accent-left">
+                    <h3>Purpose</h3>
+                    <p>Establish a reliable morning view of overnight change for ops leaders.</p>
+                  </div>
+                  <div class="module">
+                    <h3>When to use</h3>
+                    <p>When a short, scannable daily pulse beats a weekly deep-dive.</p>
+                  </div>
+                  <div class="module">
+                    <h3>Inputs</h3>
+                    <table class="data-table">
+                      <thead><tr><th scope="col">Input</th><th scope="col">Notes</th></tr></thead>
+                      <tbody>
+                        <tr><td>Metrics</td><td>Primary KPIs + owners</td></tr>
+                        <tr><td>Window</td><td>Last 24h vs prior day</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="module">
+                    <h3>Prompt <span class="muted" style="font-weight:400;font-size:0.75rem">(quieter / collapsible)</span></h3>
+                    <p class="mono" style="font-size:0.8rem;margin:0">Generate a daily exec pulse for ops leaders covering overnight change…</p>
+                  </div>
+                  <div class="doors" style="margin-top:8px">
+                    <div class="module"><h3>Output format</h3><p>Spec / artifact shape</p></div>
+                    <div class="module"><h3>Anti-patterns</h3><p>Don’t bury the pulse in noise</p></div>
+                  </div>
+                  <div class="module">
+                    <h3>Example invocation</h3>
+                    <p class="mono" style="font-size:0.8rem;margin:0">/daily-exec-pulse metrics=… window=24h</p>
+                  </div>
+                  <h2 class="section-label">Related</h2>
+                  <div class="card-grid cols-2">
+                    <a class="index-card" href="#"><div class="card-label">Template</div><h3>daily-dashboard.spec…</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Sample</div><h3>sample-daily-dashboard</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">HTML demo</div><h3>daily-exec-pulse.html</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Expert</div><h3>Mapped author</h3></a>
+                  </div>
+                  <div class="module" style="margin-top:12px">
+                    <a href="#">Principles for specs → reference/…</a>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPTY RELATED -->
+    <section class="panel" id="panel-empty" aria-label="Empty Related frames" hidden>
+      <div class="frames">
+        <div>
+          <p class="frame-label">Phone · Empty Related</p>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app">
+                <div class="topbar">
+                  <button class="icon-btn" type="button" aria-label="Open menu">≡</button>
+                  <div class="brand-wrap">
+                    <div class="brand">Dataviz Kit</div>
+                    <div class="brand-sub">by The Hooman Loop</div>
+                  </div>
+                  <button class="icon-btn" type="button" aria-label="Toggle theme">☀</button>
+                </div>
+                <main class="main">
+                  <nav class="breadcrumb">Overview / Dataviz rigor / Tufte cleanup</nav>
+                  <p class="micro">Dataviz rigor</p>
+                  <h1 style="font-family:var(--font-display);font-size:1.35rem;margin:0 0 6px">Tufte cleanup</h1>
+                  <p class="tagline" style="font-size:0.9rem">Reduce chartjunk; raise data-ink</p>
+                  <p class="meta-row">skills/30-…/tufte-cleanup…</p>
+                  <p class="muted" style="font-size:0.8rem;margin-bottom:16px">(no sample / HTML badges)</p>
+                  <h2 class="section-label">Related</h2>
+                  <div class="empty-slot">No template yet</div>
+                  <div class="empty-slot">No sample yet</div>
+                  <div class="empty-slot">No HTML demo yet</div>
+                  <ul class="link-list" style="margin-top:12px">
+                    <li><a href="#">Expert — Edward Tufte</a></li>
+                    <li><a href="#">Principles → principles-tufte.md</a></li>
+                  </ul>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="frame-label">Browser · Empty Related</p>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-url">docs/site/skills/tufte-cleanup.html</div>
+            </div>
+            <div class="browser-screen">
+              <div class="app app-desktop">
+                <aside class="sidebar">
+                  <div class="brand">Dataviz Kit</div>
+                  <div class="brand-sub">by The Hooman Loop</div>
+                  <nav>
+                    <ul class="nav-list">
+                      <li><a href="#">Overview</a></li>
+                      <li><a href="#">Experts</a></li>
+                      <li><a href="#">Critique</a></li>
+                      <li><a href="#" aria-current="page">Dataviz rigor</a></li>
+                      <li><a href="#">Consulting</a></li>
+                      <li><a href="#">Executive</a></li>
+                      <li><a href="#">Global</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </nav>
+                </aside>
+                <main class="main">
+                  <nav class="breadcrumb"><a href="#">Overview</a> / <a href="#">Dataviz rigor</a> / Tufte cleanup</nav>
+                  <p class="micro">Dataviz rigor</p>
+                  <h1 style="font-family:var(--font-display);font-size:1.6rem;margin:0 0 6px">Tufte cleanup</h1>
+                  <p class="tagline">Reduce chartjunk; raise data-ink</p>
+                  <p class="meta-row">`skills/30-dataviz-rigor/tufte-cleanup.skill.md`</p>
+                  <p class="muted" style="margin-bottom:20px">No sample / HTML badges</p>
+                  <div class="module"><p class="muted">… Purpose · When · Inputs · Prompt modules (same as skill profile) …</p></div>
+                  <h2 class="section-label">Related</h2>
+                  <div class="card-grid cols-2">
+                    <div class="module"><p class="muted" style="margin:0">No template yet</p></div>
+                    <div class="module"><p class="muted" style="margin:0">No sample yet</p></div>
+                    <div class="module"><p class="muted" style="margin:0">No HTML demo yet</p></div>
+                    <a class="index-card" href="#"><div class="card-label">Expert</div><h3>Edward Tufte</h3></a>
+                  </div>
+                  <div class="module" style="margin-top:12px">
+                    <a href="#">Principles for specs → reference/principles-tufte.md</a>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTS INDEX -->
+    <section class="panel" id="panel-experts" aria-label="Experts index frames" hidden>
+      <div class="frames">
+        <div>
+          <p class="frame-label">Phone · Experts index</p>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app">
+                <div class="topbar">
+                  <button class="icon-btn" type="button" aria-label="Open menu">≡</button>
+                  <div class="brand-wrap">
+                    <div class="brand">Dataviz Kit</div>
+                    <div class="brand-sub">by The Hooman Loop</div>
+                  </div>
+                  <button class="icon-btn" type="button" aria-label="Toggle theme">☀</button>
+                </div>
+                <main class="main">
+                  <h1 style="font-family:var(--font-display);font-size:1.4rem;margin:0 0 6px">Experts</h1>
+                  <p class="tagline" style="font-size:0.9rem">Shipped dataviz authors behind kit principles</p>
+                  <p class="meta-row">7 profiles</p>
+                  <div class="card-grid">
+                    <a class="index-card" href="#"><h3>Edward Tufte</h3><p class="card-detail">Data-ink, chartjunk…</p></a>
+                    <a class="index-card" href="#"><h3>Ben Shneiderman</h3><p class="card-detail">Overview first…</p></a>
+                    <a class="index-card" href="#"><h3>Ben Fry</h3><p class="card-detail">Acquire → mine…</p></a>
+                    <a class="index-card" href="#"><h3>Stephen Few</h3><p class="card-detail">Dashboard clarity…</p></a>
+                    <a class="index-card" href="#"><h3>Tamara Munzner</h3><p class="card-detail">Why–what–how…</p></a>
+                    <a class="index-card" href="#"><h3>Barbara Minto</h3><p class="card-detail">Pyramid / answer-first…</p></a>
+                    <a class="index-card" href="#"><h3>Cole Nussbaumer Knaflic</h3><p class="card-detail">Storytelling with data…</p></a>
+                  </div>
+                  <p class="muted" style="font-size:0.8rem;margin-top:16px">Queued authors omitted until reference/ ships.</p>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="frame-label">Browser · Experts index</p>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-url">docs/site/experts/index.html</div>
+            </div>
+            <div class="browser-screen">
+              <div class="app app-desktop">
+                <aside class="sidebar">
+                  <div class="brand">Dataviz Kit</div>
+                  <div class="brand-sub">by The Hooman Loop</div>
+                  <nav>
+                    <ul class="nav-list">
+                      <li><a href="#">Overview</a></li>
+                      <li><a href="#" aria-current="page">Experts</a></li>
+                      <li><a href="#">Critique</a></li>
+                      <li><a href="#">Dataviz rigor</a></li>
+                      <li><a href="#">Consulting</a></li>
+                      <li><a href="#">Executive</a></li>
+                      <li><a href="#">Global</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </nav>
+                </aside>
+                <main class="main">
+                  <h1 style="font-family:var(--font-display);font-size:1.6rem;margin:0 0 6px">Experts</h1>
+                  <p class="tagline">Shipped dataviz authors behind kit principles</p>
+                  <p class="meta-row">7 profiles</p>
+                  <div class="card-grid cols-4">
+                    <a class="index-card" href="#"><h3>Edward Tufte</h3><p class="card-detail">Data-ink &amp; chartjunk</p></a>
+                    <a class="index-card" href="#"><h3>Ben Shneiderman</h3><p class="card-detail">Overview first</p></a>
+                    <a class="index-card" href="#"><h3>Ben Fry</h3><p class="card-detail">Acquire → mine</p></a>
+                    <a class="index-card" href="#"><h3>Stephen Few</h3><p class="card-detail">Dashboard clarity</p></a>
+                    <a class="index-card" href="#"><h3>Tamara Munzner</h3><p class="card-detail">Why–what–how</p></a>
+                    <a class="index-card" href="#"><h3>Barbara Minto</h3><p class="card-detail">Pyramid / answer-first</p></a>
+                    <a class="index-card" href="#"><h3>Cole Nussbaumer Knaflic</h3><p class="card-detail">Storytelling with data</p></a>
+                  </div>
+                  <p class="muted" style="font-size:0.8rem;margin-top:20px">Queued authors omitted until reference/ ships. No Core / Practice section headers.</p>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERT PROFILE -->
+    <section class="panel" id="panel-expert" aria-label="Expert profile frames" hidden>
+      <div class="frames">
+        <div>
+          <p class="frame-label">Phone · Expert profile</p>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app">
+                <div class="topbar">
+                  <button class="icon-btn" type="button" aria-label="Open menu">≡</button>
+                  <div class="brand-wrap">
+                    <div class="brand">Dataviz Kit</div>
+                    <div class="brand-sub">by The Hooman Loop</div>
+                  </div>
+                  <button class="icon-btn" type="button" aria-label="Toggle theme">☀</button>
+                </div>
+                <main class="main">
+                  <nav class="breadcrumb">Overview / Experts / Edward Tufte</nav>
+                  <p class="micro">Core</p>
+                  <h1 style="font-family:var(--font-display);font-size:1.35rem;margin:0 0 6px">Edward Tufte</h1>
+                  <p class="tagline" style="font-size:0.9rem">Why in kit: data-ink &amp; chartjunk…</p>
+                  <p style="margin:0 0 16px;font-size:0.875rem"><a href="#" style="color:var(--accent)">Principles checklist</a></p>
+                  <div class="module accent-left">
+                    <h3>Bio / context</h3>
+                    <p>2–4 short paragraphs. Attribution-level, not a CV.</p>
+                  </div>
+                  <div class="module">
+                    <h3>Known works</h3>
+                    <p style="font-size:0.8rem;margin:0">The Visual Display of… (book)<br>Envisioning Information (…)</p>
+                  </div>
+                  <div class="module">
+                    <h3>Where to learn more</h3>
+                    <ul class="link-list">
+                      <li><a href="#">Official site</a></li>
+                      <li><a href="#">Primary work</a></li>
+                      <li><a href="#">Key talk / essay</a></li>
+                    </ul>
+                  </div>
+                  <div class="module">
+                    <h3>Principles for specs</h3>
+                    <p>Rules for specs — not biography.</p>
+                    <a class="btn" href="#">Open principles-tufte.md</a>
+                  </div>
+                  <div class="module">
+                    <h3>Related skills</h3>
+                    <ul class="link-list">
+                      <li><a href="#">Tufte cleanup</a></li>
+                      <li><a href="#">Encoding accuracy</a></li>
+                    </ul>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="frame-label">Browser · Expert profile</p>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-url">docs/site/experts/edward-tufte.html</div>
+            </div>
+            <div class="browser-screen">
+              <div class="app app-desktop">
+                <aside class="sidebar">
+                  <div class="brand">Dataviz Kit</div>
+                  <div class="brand-sub">by The Hooman Loop</div>
+                  <nav>
+                    <ul class="nav-list">
+                      <li><a href="#">Overview</a></li>
+                      <li><a href="#" aria-current="page">Experts</a></li>
+                      <li><a href="#">Critique</a></li>
+                      <li><a href="#">Dataviz rigor</a></li>
+                      <li><a href="#">Consulting</a></li>
+                      <li><a href="#">Executive</a></li>
+                      <li><a href="#">Global</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </nav>
+                </aside>
+                <main class="main">
+                  <nav class="breadcrumb"><a href="#">Overview</a> / <a href="#">Experts</a> / Edward Tufte</nav>
+                  <p class="micro">Core — not a gallery section</p>
+                  <h1 style="font-family:var(--font-display);font-size:1.6rem;margin:0 0 6px">Edward Tufte</h1>
+                  <p class="tagline">Why in this kit: data-ink ratio, chartjunk, integrity…</p>
+                  <p style="margin:0 0 20px"><a href="#" style="color:var(--accent)">Open principles checklist (reference/principles-tufte)</a></p>
+                  <div class="module accent-left">
+                    <h3>Bio / context</h3>
+                    <p>Short factual bio / context (2–4 paragraphs). Distinct from the principle checklist surface.</p>
+                  </div>
+                  <div class="module">
+                    <h3>Known works</h3>
+                    <table class="data-table">
+                      <thead><tr><th scope="col">Title</th><th scope="col">Year</th><th scope="col">Type</th></tr></thead>
+                      <tbody>
+                        <tr><td>The Visual Display of Quantitative Information</td><td>…</td><td>Book</td></tr>
+                        <tr><td>Envisioning Information</td><td>…</td><td>Book</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="module">
+                    <h3>Where to learn more</h3>
+                    <ul class="link-list">
+                      <li><a href="#">Official site</a></li>
+                      <li><a href="#">Primary work</a></li>
+                      <li><a href="#">Key essay / talk</a></li>
+                    </ul>
+                  </div>
+                  <div class="module accent-left">
+                    <h3>Principles for specs</h3>
+                    <p>Rules for specs, not biography.</p>
+                    <a class="btn" href="#">Open principles-tufte.md</a>
+                  </div>
+                  <h2 class="section-label">Related skills</h2>
+                  <div class="card-grid cols-3">
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Tufte cleanup</h3></a>
+                    <a class="index-card" href="#"><div class="card-label">Rigor</div><h3>Encoding accuracy</h3></a>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DRAWER -->
+    <section class="panel" id="panel-drawer" aria-label="Shell drawer frames" hidden>
+      <div class="frames">
+        <div>
+          <p class="frame-label">Phone · Drawer open</p>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app drawer-demo">
+                <div class="topbar">
+                  <button class="icon-btn" type="button" aria-label="Close menu" aria-expanded="true">×</button>
+                  <div class="brand-wrap">
+                    <div class="brand">Dataviz Kit</div>
+                    <div class="brand-sub">by The Hooman Loop</div>
+                  </div>
+                  <button class="icon-btn" type="button" aria-label="Toggle theme">☀</button>
+                </div>
+                <div class="drawer-backdrop" aria-hidden="true"></div>
+                <div class="drawer-panel" role="dialog" aria-label="Main navigation">
+                  <nav>
+                    <ul class="nav-list">
+                      <li><a href="#" aria-current="page">Overview</a></li>
+                      <li><a href="#">Experts</a></li>
+                      <li><a href="#">Critique</a></li>
+                      <li><a href="#">Dataviz rigor</a></li>
+                      <li><a href="#">Consulting</a></li>
+                      <li><a href="#">Executive</a></li>
+                      <li><a href="#">Global</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </nav>
+                </div>
+                <main class="main" style="opacity:0.35;pointer-events:none" aria-hidden="true">
+                  <h1 style="font-family:var(--font-display)">Dataviz Kit</h1>
+                  <p class="muted">Dimmed page content behind drawer</p>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="frame-label">Browser · N/A (sidebar replaces drawer)</p>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-url">Desktop uses sticky sidebar — same nav order</div>
+            </div>
+            <div class="browser-screen">
+              <div class="app app-desktop">
+                <aside class="sidebar">
+                  <div class="brand">Dataviz Kit</div>
+                  <div class="brand-sub">by The Hooman Loop</div>
+                  <nav>
+                    <ul class="nav-list">
+                      <li><a href="#" aria-current="page">Overview</a></li>
+                      <li><a href="#">Experts</a></li>
+                      <li><a href="#">Critique</a></li>
+                      <li><a href="#">Dataviz rigor</a></li>
+                      <li><a href="#">Consulting</a></li>
+                      <li><a href="#">Executive</a></li>
+                      <li><a href="#">Global</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </nav>
+                </aside>
+                <main class="main">
+                  <div class="module accent-left">
+                    <h3>Desktop equivalent</h3>
+                    <p>Sticky left sidebar with identical IA. Active item: <code class="mono">aria-current="page"</code> + accent bar. Esc / trap apply to mobile sheet only.</p>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOADING -->
+    <section class="panel" id="panel-loading" aria-label="Loading frames" hidden>
+      <div class="frames">
+        <div>
+          <p class="frame-label">Phone · Loading</p>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app">
+                <div class="topbar">
+                  <button class="icon-btn" type="button" aria-label="Open menu">≡</button>
+                  <div class="brand-wrap">
+                    <div class="brand">Dataviz Kit</div>
+                    <div class="brand-sub">by The Hooman Loop</div>
+                  </div>
+                  <button class="icon-btn" type="button" aria-label="Toggle theme">☀</button>
+                </div>
+                <main class="main" aria-busy="true">
+                  <h1 style="font-family:var(--font-display);font-size:1.4rem;margin:0 0 6px">Dataviz Kit</h1>
+                  <p class="tagline" style="font-size:0.9rem">Learn from dataviz experts…</p>
+                  <p class="meta-row">Loading version · experts · skills…</p>
+                  <div class="skeleton block"></div>
+                  <div class="skeleton block"></div>
+                  <h2 class="section-label">Experts</h2>
+                  <div class="skeleton card"></div>
+                  <div class="skeleton card"></div>
+                  <div class="skeleton card"></div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="frame-label">Browser · Loading</p>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-url">docs/site/index.html — loading</div>
+            </div>
+            <div class="browser-screen">
+              <div class="app app-desktop">
+                <aside class="sidebar">
+                  <div class="brand">Dataviz Kit</div>
+                  <div class="brand-sub">by The Hooman Loop</div>
+                  <nav>
+                    <ul class="nav-list">
+                      <li><a href="#" aria-current="page">Overview</a></li>
+                      <li><a href="#">Experts</a></li>
+                      <li><a href="#">Critique</a></li>
+                      <li><a href="#">Dataviz rigor</a></li>
+                      <li><a href="#">Consulting</a></li>
+                      <li><a href="#">Executive</a></li>
+                      <li><a href="#">Global</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </nav>
+                </aside>
+                <main class="main" aria-busy="true">
+                  <h1 style="font-family:var(--font-display);margin:0 0 6px">Dataviz Kit</h1>
+                  <p class="tagline">Learn from dataviz experts…</p>
+                  <p class="meta-row">Loading version · expert count · skill count…</p>
+                  <div class="doors">
+                    <div class="skeleton block"></div>
+                    <div class="skeleton block"></div>
+                  </div>
+                  <h2 class="section-label">Experts gallery</h2>
+                  <div class="card-grid cols-3">
+                    <div class="skeleton card"></div>
+                    <div class="skeleton card"></div>
+                    <div class="skeleton card"></div>
+                  </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ERROR -->
+    <section class="panel" id="panel-error" aria-label="Error frames" hidden>
+      <div class="frames">
+        <div>
+          <p class="frame-label">Phone · Error</p>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="app">
+                <div class="topbar">
+                  <button class="icon-btn" type="button" aria-label="Open menu">≡</button>
+                  <div class="brand-wrap">
+                    <div class="brand">Dataviz Kit</div>
+                    <div class="brand-sub">by The Hooman Loop</div>
+                  </div>
+                  <button class="icon-btn" type="button" aria-label="Toggle theme">☀</button>
+                </div>
+                <main class="main">
+                  <div class="module accent-left" role="alert">
+                    <h1 style="font-family:var(--font-display);font-size:1.2rem;margin:0 0 8px">Something went wrong</h1>
+                    <p>We couldn’t open that page or asset. Prefer honest failure over a blank module.</p>
+                    <a class="btn" href="#">Back to Overview</a>
+                    <ul class="link-list" style="margin-top:12px">
+                      <li><a href="#">Experts index</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </div>
+                  <p class="muted" style="font-size:0.75rem">Optional: path / asset id</p>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="frame-label">Browser · Error</p>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-url">docs/site/… — error</div>
+            </div>
+            <div class="browser-screen">
+              <div class="app app-desktop">
+                <aside class="sidebar">
+                  <div class="brand">Dataviz Kit</div>
+                  <div class="brand-sub">by The Hooman Loop</div>
+                  <nav>
+                    <ul class="nav-list">
+                      <li><a href="#" aria-current="page">Overview</a></li>
+                      <li><a href="#">Experts</a></li>
+                      <li><a href="#">Critique</a></li>
+                      <li><a href="#">Dataviz rigor</a></li>
+                      <li><a href="#">Consulting</a></li>
+                      <li><a href="#">Executive</a></li>
+                      <li><a href="#">Global</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </nav>
+                </aside>
+                <main class="main">
+                  <div class="module accent-left" role="alert" style="max-width:36rem">
+                    <h1 style="font-family:var(--font-display);font-size:1.4rem;margin:0 0 8px">Something went wrong</h1>
+                    <p>We couldn’t open that page or asset. Prefer honest failure over a blank module.</p>
+                    <a class="btn" href="#">Back to Overview</a>
+                    <ul class="link-list" style="margin-top:14px">
+                      <li><a href="#">Experts index</a></li>
+                      <li><a href="#">Router</a></li>
+                    </ul>
+                  </div>
+                  <p class="muted mono" style="margin-top:16px">Optional: missing path / asset id</p>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="notes">
+      <h2>Acceptance checklist</h2>
+      <ul>
+        <li>Interactive elements: default / hover / focus / disabled (omit) / loading / error defined in <code>components.md</code></li>
+        <li>Contrast: ink on bg/surface; muted empties at text-sm+; accent focus rings</li>
+        <li>Keyboard: cards, nav, drawer Esc + trap, skip-to-main (implement in site)</li>
+        <li>Device frames: phone + browser for each screen above</li>
+        <li>Konstrukt fidelity: Space Grotesk / Inter / mono, #F5F5F0, radius 0, accent #067F8A, no shadows</li>
+      </ul>
+    </aside>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll(".screen-nav button");
+    const panels = {
+      overview: document.getElementById("panel-overview"),
+      skill: document.getElementById("panel-skill"),
+      empty: document.getElementById("panel-empty"),
+      experts: document.getElementById("panel-experts"),
+      expert: document.getElementById("panel-expert"),
+      drawer: document.getElementById("panel-drawer"),
+      loading: document.getElementById("panel-loading"),
+      error: document.getElementById("panel-error"),
+    };
+
+    function show(name) {
+      Object.entries(panels).forEach(([key, el]) => {
+        const on = key === name;
+        el.classList.toggle("is-active", on);
+        el.hidden = !on;
+      });
+      buttons.forEach((btn) => {
+        const on = btn.dataset.screen === name;
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => show(btn.dataset.screen));
+    });
+  </script>
+</body>
+</html>

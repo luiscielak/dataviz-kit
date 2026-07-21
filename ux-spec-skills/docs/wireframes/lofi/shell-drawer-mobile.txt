@@ -1,0 +1,31 @@
+# Shell drawer — Mobile (nav open)
+# FR: 009 · US-008 · NFR-006
+
++------------------------------------------+
+| [×]  Dataviz Kit                    [☀]  |  [A1]
+|      by The Hooman Loop                |  [A2]
++------------------------------------------+
+| DRAWER (overlay / push)                  |
+| +--------------------------------------+ |
+| | |› Overview                      [A3]| |
+| | |  Experts                           | |
+| | |  Critique                          | |
+| | |  Dataviz rigor                     | |
+| | |  Consulting                        | |
+| | |  Executive                         | |
+| | |  Global                            | |
+| | |  Router                            | |
+| +--------------------------------------+ |
+| | (dimmed page content behind)         | |
+| |                                      | |
++------------------------------------------+
+
+Notes:
+- [=] hamburger → open; [×] or backdrop tap → close
+- Active item: aria-current="page" + left accent
+- Nav order matches desktop (Experts early; Executive later)
+- Keyboard: items reachable
+
+[→ flow: browse-experts] Experts → experts-index
+[→ flow: discover-skills] Dataviz rigor / … → overview section
+[→ flow: ambiguous] Router → router skill-profile

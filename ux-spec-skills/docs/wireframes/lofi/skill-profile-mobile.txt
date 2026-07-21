@@ -1,0 +1,76 @@
+# Skill profile — Mobile (~375px)
+# Example: Daily exec pulse (full Related path)
+# Flows: Run path · Demo path
+# FR: 004, 005, 008, 009, 013
+
++------------------------------------------+
+| [=]  Dataviz Kit                    [☀]  |  [A1]
+|      by The Hooman Loop                       |
++------------------------------------------+
+|                                          |
+| [S1] BREADCRUMB                          |
+| Overview / Executive / Daily exec pulse  |
+|                                          |
+| [S2] PAGE HEADER                         |  FR-004, FR-008
+| EXECUTIVE DASHBOARDS                     |
+| Daily exec pulse                         |
+| Morning pulse for ops leaders            |
+| path: skills/10-…/daily-exec-pulse…      |
+| [sample] [HTML]                          |  badges
+|                                          |
+| [S3] PURPOSE                    accent-left
+| +--------------------------------------+ |
+| |║ Why this skill exists (from .md)    | |
+| +--------------------------------------+ |
+|                                          |
+| [S4] WHEN TO USE                         |
+| +--------------------------------------+ |
+| | Bullet situations / triggers         | |
+| +--------------------------------------+ |
+|                                          |
+| [S5] INPUTS                              |
+| +--------------------------------------+ |
+| | · input A                            | |
+| | · input B                            | |
+| +--------------------------------------+ |
+|                                          |
+| [S6] PROMPT                    (secondary)
+| +--------------------------------------+ |
+| | [ mono block / collapsible ]         | |
+| +--------------------------------------+ |
+|                                          |
+| [S7] OUTPUT FORMAT                       |
+| +--------------------------------------+ |
+| | Expected artifact shape              | |
+| +--------------------------------------+ |
+|                                          |
+| [S8] ANTI-PATTERNS                       |
+| +--------------------------------------+ |
+| | What not to do                       | |
+| +--------------------------------------+ |
+|                                          |
+| [S9] EXAMPLE (when present)              |
+| +--------------------------------------+ |
+| | Example invocation                   | |
+| +--------------------------------------+ |
+|                                          |
+| [S10] RELATED                            |  FR-005, FR-013
+| +--------------------------------------+ |
+| | > Template  daily-dashboard.spec…    | |  [A8]
+| | > Sample    sample-daily-dashboard…  | |
+| | > HTML demo daily-exec-pulse.html    | |
+| | > Expert    (linked principles map)  | |  [A7]
+| | > Principles checklist → reference/  | |
+| +--------------------------------------+ |
+|                                          |
++------------------------------------------+
+
+[A3] Drawer: Executive dashboards active when opened
+[A4] Related links only when mapped in asset map
+[A5] See skill-profile-empty-related-* for muted empties
+[A7] Expert profile ≠ checklist (both linked distinctly)
+[A8] External demos/templates open outside shell
+
+[→ flow: run] scroll Purpose → Inputs → Prompt → Output
+[→ flow: demo] Related HTML / Sample
+[→ flow: theory] Related Expert / Principles

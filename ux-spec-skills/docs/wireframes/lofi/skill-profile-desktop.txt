@@ -1,0 +1,72 @@
+# Skill profile — Desktop (≥1024px)
+# Example: Daily exec pulse (full Related path)
+# Flows: Run path · Demo path
+# FR: 004, 005, 008, 009, 013
+
++------------------+----------------------------------------------------------+
+| [S0] SITE NAV    | [S1] BREADCRUMB                                          |
+|                  | Overview / Executive dashboards / Daily exec pulse       |
+| Dataviz Kit      |----------------------------------------------------------|
+| by The Hooman Loop | [S2] PAGE HEADER                              FR-004/008|
+|                  | EXECUTIVE DASHBOARDS                                     |
+| |  Overview      | Daily exec pulse                                         |
+| |  Experts       | Morning pulse for ops leaders                            |
+| |  Critique      | `skills/10-exec-dashboards/daily-exec-pulse.skill.md`    |
+| |  Dataviz rigor | [sample] [HTML]                                          |
+| |  Consulting    |----------------------------------------------------------|
+| |› Executive [A3]| [S3] PURPOSE (.module.accent-left)                       |
+| |  Global        | +------------------------------------------------------+ |
+| |  Router        | |║ Short purpose from .skill.md                        | |
+|                  | +------------------------------------------------------+ |
+|                  |----------------------------------------------------------|
+|                  | [S4] WHEN TO USE                                         |
+|                  | +------------------------------------------------------+ |
+|                  | | · When morning ops need a pulse                      | |
+|                  | | · …                                                  | |
+|                  | +------------------------------------------------------+ |
+|                  |----------------------------------------------------------|
+|                  | [S5] INPUTS                                              |
+|                  | +----------+-------------------------------------------+ |
+|                  | | Input    | Notes                                     | |
+|                  | |----------|-------------------------------------------| |
+|                  | | …        | …                                         | |
+|                  | +----------+-------------------------------------------+ |
+|                  |----------------------------------------------------------|
+|                  | [S6] PROMPT (quieter / collapsible)                      |
+|                  | +------------------------------------------------------+ |
+|                  | | [ mono prompt text ]                                 | |
+|                  | +------------------------------------------------------+ |
+|                  |----------------------------------------------------------|
+|                  | [S7] OUTPUT FORMAT          [S8] ANTI-PATTERNS           |
+|                  | +------------------------+  +------------------------+   |
+|                  | | Spec / artifact shape  |  | Don't …                |   |
+|                  | +------------------------+  +------------------------+   |
+|                  |----------------------------------------------------------|
+|                  | [S9] EXAMPLE INVOCATION (optional)                       |
+|                  | +------------------------------------------------------+ |
+|                  | | Cursor / CLI style example                           | |
+|                  | +------------------------------------------------------+ |
+|                  |----------------------------------------------------------|
+|                  | [S10] RELATED                                 FR-005/013 |
+|                  | +------------------+ +------------------+                |
+|                  | | > Template       | | > Sample         |                |
+|                  | | daily-dashboard… | | sample-daily…    |                |
+|                  | +------------------+ +------------------+                |
+|                  | +------------------+ +------------------+                |
+|                  | | > HTML demo      | | > Expert profile | [A7]           |
+|                  | | daily-exec-pulse | | (mapped author)  |                |
+|                  | +------------------+ +------------------+                |
+|                  | +----------------------------------------+               |
+|                  | | > Principles for specs → reference/…   | [A7]          |
+|                  | +----------------------------------------+               |
++------------------+----------------------------------------------------------+
+
+[A1] Same app-shell as Overview
+[A3] aria-current on Executive (or category of current skill)
+[A5] Empty Related pattern → skill-profile-empty-related-*
+[A7] Expert vs checklist are separate links
+[A8] HTML/demo/template/sample are external or static file links
+
+[→ flow: run] modules top→bottom
+[→ flow: demo] Related sample/HTML
+[→ flow: theory] Expert / Principles

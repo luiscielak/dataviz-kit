@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cole Nussbaumer Knaflic — Action title and focus</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-ink: #0f172a;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-accent: #b45309;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-ink)] min-h-screen antialiased">
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <header class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">Cole Nussbaumer Knaflic · Storytelling with data</p>
+      <h1 class="text-xl font-semibold tracking-tight">Say what matters, show where</h1>
+      <p class="text-sm text-[var(--color-muted)]">New MRR by quarter ($k) from the "Revenue pulse" SaaS — same data, two levels of guidance.</p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <!-- BEFORE -->
+      <figure aria-label="Before: a cluttered chart with a neutral title and every bar competing" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-red-700 bg-red-50 border border-red-200 rounded px-1.5 py-0.5">Before · clutter</span>
+          <span class="text-xs text-[var(--color-muted)]">label title, all bars loud</span>
+        </figcaption>
+        <div class="p-4">
+          <p class="text-sm font-semibold">New MRR by Quarter</p>
+          <div class="mt-3 relative h-44 rounded border border-neutral-300 p-2">
+            <div class="absolute inset-2 grid grid-rows-4">
+              <span class="border-t border-neutral-200"></span><span class="border-t border-neutral-200"></span>
+              <span class="border-t border-neutral-200"></span><span class="border-t border-neutral-200"></span>
+            </div>
+            <div class="relative h-full flex items-end justify-around gap-3">
+              <span class="w-9 rounded-t bg-blue-500" style="height: 62%"></span>
+              <span class="w-9 rounded-t bg-orange-500" style="height: 75%"></span>
+              <span class="w-9 rounded-t bg-green-500" style="height: 80%"></span>
+              <span class="w-9 rounded-t bg-purple-500" style="height: 100%"></span>
+            </div>
+          </div>
+          <div class="mt-2 flex justify-around text-xs text-neutral-500"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div>
+        </div>
+      </figure>
+
+      <!-- AFTER -->
+      <figure aria-label="After: an action title, one highlighted bar, and a direct annotation" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5">After · focus</span>
+          <span class="text-xs text-[var(--color-muted)]">action title, gray + 1 accent</span>
+        </figcaption>
+        <div class="p-4">
+          <p class="text-sm font-semibold">Q4 new MRR hit a record $512k, up 25% QoQ</p>
+          <div class="mt-3 h-44 flex items-end justify-around gap-3 border-b border-neutral-300">
+            <span class="w-9 bg-neutral-300" style="height: 62%"></span>
+            <span class="w-9 bg-neutral-300" style="height: 75%"></span>
+            <span class="w-9 bg-neutral-300" style="height: 80%"></span>
+            <span class="relative w-9 bg-amber-500" style="height: 100%">
+              <span class="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-semibold text-amber-700">$512k</span>
+            </span>
+          </div>
+          <div class="mt-2 flex justify-around text-xs text-neutral-600"><span>Q1</span><span>Q2</span><span>Q3</span><span class="font-semibold text-amber-700">Q4</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <p class="text-sm bg-[var(--color-card)] border-l-4 border-[var(--color-accent)] border border-[var(--color-border)] rounded-[var(--radius-card)] px-4 py-3">
+      <strong>What to notice:</strong> the title now states the takeaway instead of naming the axes, everything fades to gray except the one bar that matters, and a single annotation points to it — the reader is told what to see.
+    </p>
+
+    <footer class="pt-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+      <p>Rules live in <code class="font-mono">reference/principles-storytelling-with-data.md</code>.</p>
+      <p>Original educational example for Dataviz Kit. Placeholder data; not a reproduction of any published figure.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,34 @@
+# Skill profile — Empty Related — Desktop
+# Example: Tufte cleanup (no sample / template / HTML in v1 map)
+# FR: 005
+
++------------------+----------------------------------------------------------+
+| SITE NAV         | Overview / Dataviz rigor / Tufte cleanup                 |
+| |  Overview      |----------------------------------------------------------|
+| |  Experts       |                                                          |
+| |  Critique      |                                                          |
+| |› Dataviz rigor | DATAVIZ RIGOR                                            |
+|                  | Tufte cleanup                                            |
+|                  | Reduce chartjunk; raise data-ink                         |
+|                  | `skills/30-dataviz-rigor/tufte-cleanup.skill.md`         |
+|                  | (no [sample] / [HTML] badges)                            |
+|                  |----------------------------------------------------------|
+|                  | … [S3–S9] same module stack as skill-profile-desktop …   |
+|                  |----------------------------------------------------------|
+|                  | [S10] RELATED                                 FR-005 [A5]|
+|                  | +------------------+ +------------------+                |
+|                  | | (muted)          | | (muted)          |                |
+|                  | | No template yet  | | No sample yet    |                |
+|                  | +------------------+ +------------------+                |
+|                  | +------------------+ +------------------+                |
+|                  | | (muted)          | | > Edward Tufte   |                |
+|                  | | No HTML demo yet | |   Expert profile | [A7]           |
+|                  | +------------------+ +------------------+                |
+|                  | +----------------------------------------+               |
+|                  | | > Principles for specs                 |               |
+|                  | |   reference/principles-tufte.md        |               |
+|                  | +----------------------------------------+               |
++------------------+----------------------------------------------------------+
+
+[A5] Empty states are muted text, not placeholder links
+[A7] Theory links remain when asset map is empty

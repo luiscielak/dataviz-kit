@@ -1,0 +1,98 @@
+# Overview — Desktop (≥1024px)
+# Flows: Browse experts · Discover skills · Ambiguous ask
+# FR: 001, 002, 003, 006, 007, 008, 009, 010, 014
+
++------------------+----------------------------------------------------------+
+| [S1] SITE NAV    | [S2] PAGE HEADER                                         |
+|                  | Dataviz Kit                                              |
+| Dataviz Kit      | Learn from dataviz experts. Run Spec Skills with clarity.|
+| by The Hooman Loop | v0.x.x · 7 experts · 16 skills              [A2][A10]    |
+|                  |----------------------------------------------------------|
+| [A1][A2]         | [S3] TWO DOORS                               FR-014      |
+|                  | +---------------------------+ +-------------------------+|
+| |› Overview  [A3]| | Browse experts            | | Browse skills           ||
+| |  Experts       | | Who · works · principles  | | Choose → run prompt     ||
+| |  Critique      | | [Button: View experts]    | | [Button: View skills]   ||
+| |  Dataviz rigor | +---------------------------+ +-------------------------+|
+| |  Consulting    |----------------------------------------------------------|
+| |  Executive     | [S4] EXPERTS GALLERY (flat ×7)               FR-007      |
+| |  Global        | +----------+ +----------+ +----------+ +----------+      |
+| |  Router        | | Edward   | | Ben      | | Ben Fry  | | Stephen  |      |
+|                  | | Tufte    | | Shneider.| |          | | Few      |      |
+|                  | | why…     | | why…     | | why…     | | why…     |      |
+|                  | +----------+ +----------+ +----------+ +----------+      |
+|                  | +----------+ +----------+ +----------+                   |
+|                  | | Tamara   | | Barbara  | | Cole     |                   |
+|                  | | Munzner  | | Minto    | | Knaflic  |                   |
+|                  | | why…     | | why…     | | why…     |                   |
+|                  | +----------+ +----------+ +----------+                   |
+|                  | (no Core/Practice rows; queued authors omitted)          |
+|                  |----------------------------------------------------------|
+|                  | [S5] HOW TO USE (skills pillar)              FR-002      |
+|                  | +--------+ +--------+ +--------+ +------------+          |
+|                  | |1 Choose| |2 Gather| |3 Run   | |4 Optional  |          |
+|                  | | skill  | | inputs | | prompt | | tmpl/rigor/|          |
+|                  | |        | |        | |        | | critique   |          |
+|                  | +--------+ +--------+ +--------+ +------------+          |
+|                  |----------------------------------------------------------|
+|                  | [S6] CRITIQUE                                FR-003      |
+|                  | +------------------+                                     |
+|                  | | Dataviz critique |                                     |
+|                  | | [sample]         | [A8]                                |
+|                  | +------------------+                                     |
+|                  |----------------------------------------------------------|
+|                  | [S7] DATAVIZ RIGOR                                       |
+|                  | +------------+ +------------+ +------------+ +---------+ |
+|                  | | Ben Fry    | | Tufte      | | Munzner    | | Encoding| |
+|                  | | pipeline   | | cleanup    | | why-what-  | | accuracy| |
+|                  | |            | |            | | how        | |[sample] | |
+|                  | |            | |            | |            | |[HTML]   | |
+|                  | +------------+ +------------+ +------------+ +---------+ |
+|                  |----------------------------------------------------------|
+|                  | [S8] CONSULTING STORYTELLING                             |
+|                  | +------------+ +------------+ +------------+             |
+|                  | | Exec slide | | Dashboard  | | Chart      |             |
+|                  | | outline    | | one-pager  | | annotation |             |
+|                  | +------------+ +------------+ +------------+             |
+|                  |----------------------------------------------------------|
+|                  | [S9] EXECUTIVE DASHBOARDS                                |
+|                  | +------------+ +------------+ +------------+             |
+|                  | | Daily exec | | Weekly     | | Monthly    |             |
+|                  | | pulse      | | performance| | strategy   |             |
+|                  | | [sample]   | | [sample]   | | [sample]   | [A8]        |
+|                  | | [HTML]     | | [HTML]     | |            |             |
+|                  | +------------+ +------------+ +------------+             |
+|                  | +------------+ +------------+ +------------+             |
+|                  | | Entity     | | Alerts     | | Metric     |             |
+|                  | | drilldown  | |            | | provenance |             |
+|                  | +------------+ +------------+ +------------+             |
+|                  |----------------------------------------------------------|
+|                  | [S10] GLOBAL                                             |
+|                  | +------------------+                                     |
+|                  | | Global standards |                                     |
+|                  | +------------------+                                     |
+|                  |----------------------------------------------------------|
+|                  | [S11] ROUTER                                             |
+|                  | +------------------+                                     |
+|                  | | Router           |                                     |
+|                  | +------------------+                                     |
+|                  |----------------------------------------------------------|
+|                  | [S12] ROUTER CTA                             FR-006      |
+|                  | +------------------------------------------------------+ |
+|                  | |║ Not sure which skill?                               | |
+|                  | |║ [Button: Open Router profile]                       | |
+|                  | +------------------------------------------------------+ |
++------------------+----------------------------------------------------------+
+
+[A1] Sticky left sidebar
+[A2] nav-brand + by The Hooman Loop
+[A3] aria-current on Overview
+[A4] Expert cards → expert-profile; skill cards → skill-profile
+[A5] No queued author cards
+[A8] card-meta when assets exist
+[A10] meta-row: version · 7 experts · 16 skills
+
+[→ flow: browse-experts] gallery → expert-profile
+[→ flow: discover-skills] catalog → skill-profile
+[→ flow: ambiguous] CTA → router skill-profile
+[→ flow: experts-index] nav Experts → experts-index

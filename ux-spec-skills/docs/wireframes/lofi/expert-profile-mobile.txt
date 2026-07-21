@@ -1,0 +1,72 @@
+# Expert profile — Mobile (~375px)
+# Example: Edward Tufte (Core)
+# Flows: Browse experts · Principles close
+# FR: 011, 013 · US-009, US-010
+
++------------------------------------------+
+| [=]  Dataviz Kit                    [☀]  |
+|      by The Hooman Loop                |
++------------------------------------------+
+|                                          |
+| [S1] BREADCRUMB                          |
+| Overview / Experts / Edward Tufte        |
+|                                          |
+| [S2] PAGE HEADER                         |  FR-011
+| Edward Tufte                             |
+| (optional quiet: Core)                   |
+| Why in this kit: data-ink & chartjunk…   |
+| > Principles checklist                   |  [A7] FR-013
+|                                          |
+| [S2.5] SEE IT — DEMO           accent-left  FR-015 [A9]
+| Data-ink vs chartjunk · what to notice   |
+| +--------------------------------------+ |
+| |║ [iframe: edward-tufte/demo.html]    | |
+| |║  before ▏chartjunk  after ▏data-ink | |
+| +--------------------------------------+ |
+| > Open full demo (new tab)               |
+|                                          |
+| [S3] BIO / CONTEXT              accent-left
+| +--------------------------------------+ |
+| |║ 2–4 short paragraphs max            | |
+| |║ Attribution-level, not a CV         | |
+| +--------------------------------------+ |
+|                                          |
+| [S4] KNOWN WORKS                         |
+| +--------------------------------------+ |
+| | The Visual Display of… (book, year)  | |
+| | Envisioning Information (…)          | |
+| | …                                    | |
+| +--------------------------------------+ |
+|                                          |
+| [S5] WHERE TO LEARN MORE                 |  [A8]
+| +--------------------------------------+ |
+| | > Official site                      | |
+| | > Primary work landing               | |
+| | > Key talk / essay (stable URL)      | |
+| +--------------------------------------+ |
+|                                          |
+| [S6] PRINCIPLES FOR SPECS                |  FR-013 [A7]
+| +--------------------------------------+ |
+| | Spec checklist (rules), not bio.     | |
+| | [Button: Open principles-tufte.md]   | |
+| +--------------------------------------+ |
+|                                          |
+| [S7] RELATED SKILLS                      |
+| +--------------------------------------+ |
+| | > Tufte cleanup                      | |
+| | > Encoding accuracy (if mapped)      | |
+| | > …                                  | |
+| +--------------------------------------+ |
+|                                          |
+| (No portrait / UI-hero image required)   |
++------------------------------------------+
+
+[A3] Experts nav active
+[A7] Profile (who/works) ≠ checklist (rules for specs)
+[A8] Curated external links only; no figure dumps
+[A9] See-it iframe titled; caption = text alt; original demo, light-only; opens full demo in new tab
+
+[→ flow: principles] S6 → reference checklist
+[→ flow: practice] Related skill → skill-profile
+[→ flow: see-it] S2.5 → examples/experts/{slug}/demo.html
+[→ flow: back] breadcrumb → experts-index / overview

@@ -1,0 +1,62 @@
+# Expert profile — Desktop (≥1024px)
+# Example: Edward Tufte (Core)
+# Flows: Browse experts · Principles close
+# FR: 011, 013
+
++------------------+----------------------------------------------------------+
+| SITE NAV         | [S1] BREADCRUMB                                          |
+|                  | Overview / Experts / Edward Tufte                        |
+| Dataviz Kit      |----------------------------------------------------------|
+| by The Hooman Loop | [S2] PAGE HEADER                              FR-011     |
+|                  | Edward Tufte                                             |
+|                  | (optional quiet: Core — not a gallery section)           |
+| |  Overview      | Why in this kit: data-ink ratio, chartjunk, integrity…   |
+| |› Experts   [A3]| > Open principles checklist (reference/principles-tufte) |
+| |  Critique      |----------------------------------------------------------|
+| |  Dataviz rigor | [S2.5] SEE IT — PRINCIPLE DEMO (.module.accent-left)     |
+| |  Consulting    | Data-ink vs chartjunk · what to notice: same numbers     |
+| |  Executive     | +------------------------------------------------------+ |
+| |  Global        | |║ [iframe: examples/experts/edward-tufte/demo.html]   | |
+| |  Router        | |║  before ▏chartjunk       after ▏data-ink            | |
+|                  | +------------------------------------------------------+ |
+|                  | > Open full demo (new tab)                        [A9]   |
+|                  |----------------------------------------------------------|
+|                  | [S3] BIO / CONTEXT (.module.accent-left)                 |
+|                  | +------------------------------------------------------+ |
+|                  | |║ Short factual bio / context (2–4 paragraphs)        | |
+|                  | +------------------------------------------------------+ |
+|                  |----------------------------------------------------------|
+|                  | [S4] KNOWN WORKS                                         |
+|                  | +---------------------------+------+----------+          |
+|                  | | Title                     | Year | Type     |          |
+|                  | |---------------------------|------|----------|          |
+|                  | | The Visual Display of…    | …    | Book     |          |
+|                  | | Envisioning Information   | …    | Book     |          |
+|                  | +---------------------------+------+----------+          |
+|                  |----------------------------------------------------------|
+|                  | [S5] WHERE TO LEARN MORE                      [A8]       |
+|                  | > Official site                                          |
+|                  | > Primary work                                           |
+|                  | > Key essay / talk (stable URL)                          |
+|                  |----------------------------------------------------------|
+|                  | [S6] PRINCIPLES FOR SPECS                     FR-013 [A7]|
+|                  | +------------------------------------------------------+ |
+|                  | | Distinct surface: rules for specs, not biography.    | |
+|                  | | [Button: Open principles-tufte.md]                   | |
+|                  | +------------------------------------------------------+ |
+|                  |----------------------------------------------------------|
+|                  | [S7] RELATED SKILLS                                      |
+|                  | +------------+ +------------+ +------------+             |
+|                  | | Tufte      | | Encoding   | | …          |             |
+|                  | | cleanup    | | accuracy   | |            |             |
+|                  | +------------+ +------------+ +------------+             |
++------------------+----------------------------------------------------------+
+
+[A3] aria-current on Experts
+[A7] Checklist link separate from bio modules
+[A8] Prefer primary / stable URLs; no copyrighted figure dumps
+[A9] See-it iframe has descriptive title; caption is text alt; demo is light-only by design; opens full demo in new tab
+
+[→ flow: principles] S6 → checklist
+[→ flow: practice] Related → skill-profile
+[→ flow: see-it] S2.5 → examples/experts/{slug}/demo.html

@@ -1,0 +1,35 @@
+# Skill profile — Empty Related — Mobile
+# Example: Tufte cleanup / Global standards / Router (no sample/template/HTML)
+# FR: 005 (honest empty states) · US-005
+
++------------------------------------------+
+| [=]  Dataviz Kit                    [☀]  |
++------------------------------------------+
+| Overview / Dataviz rigor / Tufte cleanup |
+|                                          |
+| DATAVIZ RIGOR                            |
+| Tufte cleanup                            |
+| Reduce chartjunk; raise data-ink         |
+| path: skills/30-…/tufte-cleanup…         |
+| (no sample / HTML badges)                |
+|                                          |
+| … Purpose · When · Inputs · Prompt …     |
+| (modules same as skill-profile; omitted) |
+|                                          |
+| [S10] RELATED                            |  FR-005 [A5]
+| +--------------------------------------+ |
+| | (muted) No template yet              | |
+| | (muted) No sample yet                | |
+| | (muted) No HTML demo yet             | |
+| | > Expert    Edward Tufte             | |  [A7] still OK
+| | > Principles → principles-tufte.md   | |
+| +--------------------------------------+ |
+|                                          |
+| [Note] Never render fake hrefs for       |
+| missing assets.                          |
++------------------------------------------+
+
+[A5] Muted meta only — not disabled buttons that look clickable
+[A7] Expert + checklist may still exist when demo assets do not
+
+[→ flow: theory] Expert / Principles still reachable

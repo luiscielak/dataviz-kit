@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tamara Munzner — Match the encoding to the task</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-ink: #0f172a;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-accent: #b45309;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-ink)] min-h-screen antialiased">
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <header class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">Tamara Munzner · Why–what–how</p>
+      <h1 class="text-xl font-semibold tracking-tight">Rank four regions by MRR</h1>
+      <p class="text-sm text-[var(--color-muted)]">The task is <em>ranking</em> (West 512 · North 470 · South 455 · East 430, in $k). The chart type decides whether it's easy.</p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <!-- WRONG -->
+      <figure aria-label="Wrong encoding: a pie chart for a ranking task" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-red-700 bg-red-50 border border-red-200 rounded px-1.5 py-0.5">Wrong · angle/area</span>
+          <span class="text-xs text-[var(--color-muted)]">which slice is biggest?</span>
+        </figcaption>
+        <div class="p-4 flex flex-col items-center">
+          <div class="h-40 w-40 rounded-full" style="background: conic-gradient(#334155 0 99deg, #64748b 99deg 190deg, #94a3b8 190deg 267deg, #cbd5e1 267deg 360deg)"></div>
+          <div class="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#334155"></span>West</span>
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#64748b"></span>North</span>
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#94a3b8"></span>South</span>
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#cbd5e1"></span>East</span>
+          </div>
+          <p class="mt-2 text-xs text-red-700">Slices are near-equal — the ranking is guesswork.</p>
+        </div>
+      </figure>
+
+      <!-- RIGHT -->
+      <figure aria-label="Aligned encoding: a sorted bar chart for a ranking task" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5">Aligned · length/position</span>
+          <span class="text-xs text-[var(--color-muted)]">rank reads top to bottom</span>
+        </figcaption>
+        <div class="p-4 space-y-2.5">
+          <div class="grid grid-cols-[3rem_1fr_2.5rem] items-center gap-3">
+            <span class="text-xs text-right text-[var(--color-muted)]">West</span>
+            <span class="block h-6 rounded-sm bg-neutral-200">
+              <span class="block h-full rounded-sm bg-neutral-900" style="width: 100%"></span>
+            </span>
+            <span class="text-xs text-right tabular-nums font-medium">512</span>
+          </div>
+          <div class="grid grid-cols-[3rem_1fr_2.5rem] items-center gap-3">
+            <span class="text-xs text-right text-[var(--color-muted)]">North</span>
+            <span class="block h-6 rounded-sm bg-neutral-200">
+              <span class="block h-full rounded-sm bg-neutral-700" style="width: 91.8%"></span>
+            </span>
+            <span class="text-xs text-right tabular-nums font-medium">470</span>
+          </div>
+          <div class="grid grid-cols-[3rem_1fr_2.5rem] items-center gap-3">
+            <span class="text-xs text-right text-[var(--color-muted)]">South</span>
+            <span class="block h-6 rounded-sm bg-neutral-200">
+              <span class="block h-full rounded-sm bg-neutral-700" style="width: 88.9%"></span>
+            </span>
+            <span class="text-xs text-right tabular-nums font-medium">455</span>
+          </div>
+          <div class="grid grid-cols-[3rem_1fr_2.5rem] items-center gap-3">
+            <span class="text-xs text-right text-[var(--color-muted)]">East</span>
+            <span class="block h-6 rounded-sm bg-neutral-200">
+              <span class="block h-full rounded-sm bg-neutral-700" style="width: 84.0%"></span>
+            </span>
+            <span class="text-xs text-right tabular-nums font-medium">430</span>
+          </div>
+          <p class="pt-1 text-xs text-emerald-700">Sorted lengths share one baseline and scale — rank is immediate.</p>
+        </div>
+      </figure>
+    </div>
+
+    <p class="text-sm bg-[var(--color-card)] border-l-4 border-[var(--color-accent)] border border-[var(--color-border)] rounded-[var(--radius-card)] px-4 py-3">
+      <strong>What to notice:</strong> the numbers are identical. Angle and area (pie) are weak channels for comparing close values; length on a shared baseline (bar) makes the <em>why</em> — ranking — trivial to read.
+    </p>
+
+    <footer class="pt-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+      <p>Rules live in <code class="font-mono">reference/principles-munzner.md</code>.</p>
+      <p>Original educational example for Dataviz Kit. Placeholder data; not a reproduction of any published figure.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

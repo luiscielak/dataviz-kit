@@ -1,0 +1,31 @@
+# Experts index — Desktop (≥1024px)
+# Flow: Browse experts (entry)
+# FR: 012
+
++------------------+----------------------------------------------------------+
+| SITE NAV         | [S1] PAGE HEADER                                         |
+|                  | Experts                                                  |
+| Dataviz Kit      | Shipped dataviz authors behind kit principles            |
+| by The Hooman Loop | 7 profiles                                               |
+|                  |----------------------------------------------------------|
+|                  | [S2] GALLERY (flat ×7)                        FR-012     |
+| |  Overview      | +----------+ +----------+ +----------+ +----------+      |
+| |› Experts   [A3]| | Edward   | | Ben      | | Ben Fry  | | Stephen  |      |
+| |  Critique      | | Tufte    | | Shneider.| |          | | Few      |      |
+| |  Dataviz rigor | | why…     | | why…     | | why…     | | why…     |      |
+| |  Consulting    | +----------+ +----------+ +----------+ +----------+      |
+| |  Executive     | +----------+ +----------+ +----------+                   |
+| |  Global        | | Tamara   | | Barbara  | | Cole     |                   |
+| |  Router        | | Munzner  | | Minto    | | Knaflic  |                   |
+|                  | | why…     | | why…     | | why…     |                   |
+|                  | +----------+ +----------+ +----------+                   |
+|                  |----------------------------------------------------------|
+|                  | [S3] Queued authors omitted until reference/ ships       |
+|                  | (no Core / Practice section headers)                     |
++------------------+----------------------------------------------------------+
+
+[A3] aria-current on Experts
+[A4] Cards → expert-profile
+[A5] No Felton/Cairo/etc. until shipped
+
+[→ flow: browse-experts] card → expert-profile

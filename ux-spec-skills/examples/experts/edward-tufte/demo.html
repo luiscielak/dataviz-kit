@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edward Tufte — Data-ink vs chartjunk</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-ink: #0f172a;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-accent: #b45309;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-ink)] min-h-screen antialiased">
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <header class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">Edward Tufte · Data-ink vs chartjunk</p>
+      <h1 class="text-xl font-semibold tracking-tight">Same numbers, less ink</h1>
+      <p class="text-sm text-[var(--color-muted)]">New MRR by quarter ($k) — a fictional "Revenue pulse" SaaS. Both charts show the identical values.</p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <!-- BEFORE -->
+      <figure aria-label="Before: a chartjunk bar chart" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-red-700 bg-red-50 border border-red-200 rounded px-1.5 py-0.5">Before · chartjunk</span>
+          <span class="text-xs text-[var(--color-muted)]">gradients, gridlines, box, shadow</span>
+        </figcaption>
+        <div class="p-4">
+          <!-- heavy backdrop + gridlines simulate chartjunk -->
+          <div class="relative h-52 rounded border-2 border-neutral-400 bg-gradient-to-b from-neutral-100 to-neutral-200 p-3 shadow-inner">
+            <div class="absolute inset-3 grid grid-rows-4">
+              <span class="border-t border-dashed border-neutral-400/70"></span>
+              <span class="border-t border-dashed border-neutral-400/70"></span>
+              <span class="border-t border-dashed border-neutral-400/70"></span>
+              <span class="border-t border-dashed border-neutral-400/70"></span>
+            </div>
+            <div class="relative h-full flex items-end justify-around gap-3">
+              <span class="w-10 rounded-t bg-gradient-to-t from-sky-700 to-sky-300 shadow-lg ring-2 ring-white" style="height: 62%"></span>
+              <span class="w-10 rounded-t bg-gradient-to-t from-emerald-700 to-emerald-300 shadow-lg ring-2 ring-white" style="height: 75%"></span>
+              <span class="w-10 rounded-t bg-gradient-to-t from-amber-600 to-amber-300 shadow-lg ring-2 ring-white" style="height: 80%"></span>
+              <span class="w-10 rounded-t bg-gradient-to-t from-fuchsia-700 to-fuchsia-300 shadow-lg ring-2 ring-white" style="height: 100%"></span>
+            </div>
+          </div>
+          <div class="mt-2 flex justify-around text-xs font-medium text-neutral-500">
+            <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
+          </div>
+          <div class="mt-3 flex flex-wrap justify-center gap-2 rounded border border-neutral-300 bg-neutral-50 p-2 text-[10px] text-neutral-500">
+            <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-sky-500"></span>Q1</span>
+            <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-emerald-500"></span>Q2</span>
+            <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-amber-500"></span>Q3</span>
+            <span class="flex items-center gap-1"><span class="h-2 w-2 rounded-full bg-fuchsia-500"></span>Q4</span>
+          </div>
+        </div>
+      </figure>
+
+      <!-- AFTER -->
+      <figure aria-label="After: a cleaned, high data-ink bar chart" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5">After · data-ink</span>
+          <span class="text-xs text-[var(--color-muted)]">one hue, direct labels, no box</span>
+        </figcaption>
+        <div class="p-4">
+          <div class="h-52 flex items-end justify-around gap-3 border-b border-neutral-300">
+            <span class="relative w-10 bg-neutral-800" style="height: 62%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-xs font-medium">320</span></span>
+            <span class="relative w-10 bg-neutral-800" style="height: 75%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-xs font-medium">385</span></span>
+            <span class="relative w-10 bg-neutral-800" style="height: 80%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-xs font-medium">410</span></span>
+            <span class="relative w-10 bg-neutral-900" style="height: 100%"><span class="absolute -top-5 left-1/2 -translate-x-1/2 text-xs font-semibold">512</span></span>
+          </div>
+          <div class="mt-2 flex justify-around text-xs font-medium text-neutral-600">
+            <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <p class="text-sm bg-[var(--color-card)] border-l-4 border-[var(--color-accent)] border border-[var(--color-border)] rounded-[var(--radius-card)] px-4 py-3">
+      <strong>What to notice:</strong> the right chart deletes gradients, gridlines, the box, the shadow, and the redundant legend, then labels bars directly — every remaining drop of ink now carries data.
+    </p>
+
+    <footer class="pt-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+      <p>Rules live in <code class="font-mono">reference/principles-tufte.md</code>.</p>
+      <p>Original educational example for Dataviz Kit. Placeholder data; not a reproduction of any published figure.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Error — Desktop (broken asset / missing page)
+# Core interaction state
+
++------------------+----------------------------------------------------------+
+| SITE NAV         | [S1] ERROR                                               |
+| Dataviz Kit      | +------------------------------------------------------+ |
+| by The Hooman Loop | | Something went wrong                                 | |
+|                  | |                                                      | |
+| |› Overview      | | We couldn't open that page or asset.                 | |
+| |  Experts       | | Prefer honest failure over a blank module.           | |
+| |  Critique      | |                                                      | |
+| |  Dataviz rigor | | [Button: Back to Overview]                           | |
+| |  Consulting    | | > Experts index    > Router                          | |
+| |  Executive     | +------------------------------------------------------+ |
+| |  Global        |                                                          |
+| |  Router        | Optional: missing path / asset id (for maintainers)      |
++------------------+----------------------------------------------------------+
+
+[A5] Related empties on skill-profile avoid most 404s for unmapped assets.
+[→ flow: recover] Overview · Experts · Router

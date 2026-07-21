@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dataviz Kit — Hi-Fi Component Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root, [data-mode="light"] {
+      --bg: #F5F5F0;
+      --surface: #FFFFFF;
+      --ink: #0A0A0A;
+      --muted: #6A6A6A;
+      --accent: #067F8A;
+      --accent-fg: #FFFFFF;
+      --overlay: rgba(0, 0, 0, 0.4);
+      --skeleton: #DDDCD6;
+      --radius: 0;
+      --shadow: none;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-sans: Inter, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", "Fira Code", monospace;
+    }
+    [data-mode="dark"] {
+      --bg: #121212;
+      --surface: #1A1A1A;
+      --ink: #F5F5F0;
+      --muted: #A3A3A3;
+      --accent: #2BB3C0;
+      --accent-fg: #0A0A0A;
+      --overlay: rgba(0, 0, 0, 0.55);
+      --skeleton: #2A2A2A;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--ink);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 70%, #000 4%) 0%, var(--bg) 140px, var(--bg) 100%);
+      line-height: 1.5;
+    }
+    a { color: var(--ink); }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .page { max-width: 1200px; margin: 0 auto; padding: 32px 24px 80px; }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+    .page-lead { margin: 0 0 16px; color: var(--muted); max-width: 52rem; }
+    .toolbar {
+      display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+      margin-bottom: 28px;
+    }
+    .chip {
+      border: 1px solid var(--ink);
+      background: var(--surface);
+      padding: 8px 12px;
+      font-size: 0.8125rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .chip:hover { background: var(--bg); }
+    .chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+
+    .toc {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .toc a {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .toc a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+    .section { margin-bottom: 48px; }
+    .section h2 {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--ink);
+    }
+    .section .note { font-size: 0.8125rem; color: var(--muted); margin: 0 0 16px; }
+    .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; margin-bottom: 16px; }
+    .state-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 6px;
+    }
+    .demo-cell { min-width: 140px; }
+
+    /* —— Primitives —— */
+    .btn {
+      display: inline-block;
+      border: 1px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink);
+      padding: 8px 12px;
+      font-size: 0.875rem;
+      text-decoration: none;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .btn:hover { background: var(--bg); }
+    .btn:active { border-left: 3px solid var(--accent); }
+    .btn:disabled, .btn[aria-disabled="true"] {
+      color: var(--muted); cursor: not-allowed; background: var(--surface);
+    }
+    .btn-link {
+      border: none; background: transparent; text-decoration: underline;
+      padding: 8px 0; color: var(--ink);
+    }
+    .btn-link:hover { color: var(--accent); }
+    .btn-ghost { border: none; background: transparent; text-decoration: underline; }
+
+    .field { display: flex; flex-direction: column; gap: 4px; min-width: 200px; }
+    .field label { font-size: 0.8125rem; font-weight: 600; }
+    .field .hint { font-size: 0.75rem; color: var(--muted); }
+    .field .error { font-size: 0.75rem; color: var(--ink); font-weight: 500; }
+    .input, .select {
+      border: 1px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink);
+      padding: 8px 10px;
+      border-radius: var(--radius);
+      width: 100%;
+    }
+    .input:disabled, .select:disabled { color: var(--muted); background: var(--bg); }
+    .field.is-error .input { border-left: 3px solid var(--accent); }
+
+    .check {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.875rem; cursor: pointer;
+    }
+    .check input {
+      width: 18px; height: 18px;
+      accent-color: var(--accent);
+      border-radius: 0;
+    }
+
+    .index-card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--ink);
+      padding: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      max-width: 240px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .index-card:hover { background: var(--bg); }
+    .card-label {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+    }
+    .index-card h3 {
+      font-family: var(--font-display); font-size: 0.95rem;
+      margin: 0 0 4px; font-weight: 600;
+    }
+    .card-detail { font-size: 0.75rem; color: var(--muted); margin: 0; }
+    .card-meta { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .badge {
+      font-size: 0.65rem; border: 1px solid var(--ink);
+      padding: 2px 6px; background: var(--bg);
+    }
+
+    .tabs { border: 1px solid var(--ink); background: var(--surface); max-width: 420px; }
+    .tablist { display: flex; border-bottom: 1px solid var(--ink); }
+    .tab {
+      flex: 1; border: none; background: transparent; padding: 10px 12px;
+      font-size: 0.8125rem; color: var(--muted); border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+    }
+    .tab:hover { color: var(--ink); background: var(--bg); }
+    .tab[aria-selected="true"] {
+      color: var(--ink); font-weight: 600; border-bottom-color: var(--accent);
+    }
+    .tabpanel { padding: 14px 16px; font-size: 0.875rem; }
+
+    table.data-table {
+      width: 100%; max-width: 520px;
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      background: var(--surface);
+    }
+    .data-table th, .data-table td {
+      border: 1px solid var(--ink); padding: 8px 10px; text-align: left;
+    }
+    .data-table th { background: var(--bg); font-weight: 600; }
+    .data-table tr:hover td { background: color-mix(in srgb, var(--bg) 80%, var(--surface)); }
+
+    .dialog-stage {
+      position: relative;
+      border: 1px solid var(--ink);
+      background: var(--bg);
+      min-height: 220px;
+      padding: 24px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dialog-backdrop {
+      position: absolute; inset: 0; background: var(--overlay);
+    }
+    .dialog {
+      position: relative; z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--ink);
+      padding: 20px;
+      max-width: 360px; width: 100%;
+      box-shadow: var(--shadow);
+    }
+    .dialog h3 {
+      font-family: var(--font-display); margin: 0 0 8px; font-size: 1.1rem;
+    }
+    .dialog p { margin: 0 0 16px; font-size: 0.875rem; color: var(--muted); }
+    .dialog-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .module {
+      background: var(--surface); border: 1px solid var(--ink);
+      padding: 14px 16px; max-width: 360px;
+    }
+    .module.accent-left { border-left: 4px solid var(--accent); }
+    .module h3 { font-family: var(--font-display); font-size: 1rem; margin: 0 0 6px; }
+    .module p { margin: 0; font-size: 0.875rem; color: var(--muted); }
+
+    /* Device frames */
+    .frames {
+      display: grid;
+      grid-template-columns: minmax(280px, 340px) 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .frames { grid-template-columns: 1fr; } }
+    .frame-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin: 0 0 10px; color: var(--muted);
+    }
+    .phone {
+      border: 2px solid var(--ink); background: #1a1a1a;
+      padding: 12px 10px 16px;
+    }
+    .phone-notch {
+      width: 96px; height: 6px; background: #333; margin: 0 auto 10px;
+    }
+    .phone-screen {
+      background: var(--bg); height: 560px; overflow: auto; border: 1px solid #333;
+    }
+    .browser { border: 2px solid var(--ink); background: #e8e8e2; }
+    [data-mode="dark"] .browser { background: #2a2a2a; }
+    .browser-bar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 12px; border-bottom: 1px solid var(--ink);
+      background: #dddcd4;
+    }
+    [data-mode="dark"] .browser-bar { background: #222; }
+    .browser-dots { display: flex; gap: 6px; }
+    .browser-dots span {
+      width: 10px; height: 10px; border: 1px solid var(--ink); background: var(--surface);
+    }
+    .browser-url {
+      flex: 1; background: var(--surface); border: 1px solid var(--ink);
+      padding: 6px 10px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+    }
+    .browser-screen { background: var(--bg); height: 560px; overflow: auto; }
+
+    .mini-app { min-height: 100%; }
+    .mini-desktop { display: grid; grid-template-columns: 160px 1fr; min-height: 560px; }
+    .sidebar {
+      background: var(--surface); border-right: 1px solid var(--ink);
+      padding: 12px 10px;
+    }
+    .brand { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; }
+    .brand-sub { font-size: 0.65rem; color: var(--muted); margin-bottom: 12px; }
+    .nav-list { list-style: none; margin: 0; padding: 0; }
+    .nav-list a {
+      display: block; text-decoration: none; padding: 7px 8px;
+      font-size: 0.8rem; border-left: 3px solid transparent;
+    }
+    .nav-list a[aria-current="page"] { border-left-color: var(--accent); font-weight: 600; }
+    .topbar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 12px; background: var(--surface);
+      border-bottom: 1px solid var(--ink); position: sticky; top: 0; z-index: 2;
+    }
+    .icon-btn {
+      border: 1px solid var(--ink); background: var(--surface);
+      width: 32px; height: 32px; display: inline-flex;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .main-pad { padding: 16px; }
+    .mini-h1 {
+      font-family: var(--font-display); font-size: 1.25rem; margin: 0 0 6px;
+    }
+    .meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-bottom: 14px; }
+    .card-grid { display: grid; gap: 10px; }
+    .mini-desktop .card-grid { grid-template-columns: 1fr 1fr; }
+    .index-card.compact { max-width: none; }
+
+    .legend {
+      margin-top: 40px; padding: 16px; border: 1px solid var(--ink);
+      background: var(--surface); font-size: 0.8125rem;
+    }
+    .legend code { font-family: var(--font-mono); font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+  <a class="chip" href="#main" style="position:absolute;left:-999px;top:8px" onfocus="this.style.left='8px'" onblur="this.style.left='-999px'">Skip to main content</a>
+  <main class="page" id="main">
+    <h1 class="page-title">Dataviz Kit — Component Gallery</h1>
+    <p class="page-lead">
+      Hi-fi kit for engineering handoff. Tokens align with mid-fi Konstrukt variables
+      (<code style="font-family:var(--font-mono);font-size:0.8em">--bg</code>,
+      <code style="font-family:var(--font-mono);font-size:0.8em">--accent #067F8A</code>,
+      <code style="font-family:var(--font-mono);font-size:0.8em">--radius: 0</code>).
+      v1 ships Button, Card, Table, Sheet; Input / Select / Tabs / Dialog shown for API consistency.
+    </p>
+    <div class="toolbar">
+      <button type="button" class="chip" id="modeToggle" aria-pressed="false">Theme: Light</button>
+      <a class="chip" href="./theme.md">theme.md</a>
+      <a class="chip" href="./color-roles.md">color-roles.md</a>
+      <a class="chip" href="./mobile-ui-design.html">Mobile UI</a>
+      <a class="chip" href="../wireframes/midfi/ui.html">Mid-fi ui.html</a>
+    </div>
+
+    <nav class="toc" aria-label="Component sections">
+      <a href="#button">Button</a>
+      <a href="#input">Input</a>
+      <a href="#select">Select</a>
+      <a href="#checkbox">Checkbox</a>
+      <a href="#card">Card</a>
+      <a href="#tabs">Tabs</a>
+      <a href="#table">Table</a>
+      <a href="#dialog">Dialog</a>
+      <a href="#module">Module</a>
+      <a href="#frames">Device frames</a>
+    </nav>
+
+    <!-- Button -->
+    <section class="section" id="button">
+      <h2>Button</h2>
+      <p class="note">Quiet primary · link-as-button · ghost. v1: Two doors, Router CTA, Principles.</p>
+      <div class="row">
+        <div class="demo-cell">
+          <p class="state-label">Default</p>
+          <button type="button" class="btn">Browse experts</button>
+        </div>
+        <div class="demo-cell">
+          <p class="state-label">Hover</p>
+          <button type="button" class="btn" style="background:var(--bg)">Browse skills</button>
+        </div>
+        <div class="demo-cell">
+          <p class="state-label">Focus</p>
+          <button type="button" class="btn" style="outline:2px solid var(--accent);outline-offset:2px">Open Router</button>
+        </div>
+        <div class="demo-cell">
+          <p class="state-label">Active</p>
+          <button type="button" class="btn" style="border-left:3px solid var(--accent)">Open principles</button>
+        </div>
+        <div class="demo-cell">
+          <p class="state-label">Disabled</p>
+          <button type="button" class="btn" disabled>Unavailable</button>
+        </div>
+        <div class="demo-cell">
+          <p class="state-label">Loading</p>
+          <button type="button" class="btn" aria-busy="true">Loading…</button>
+        </div>
+        <div class="demo-cell">
+          <p class="state-label">Link</p>
+          <a class="btn-link" href="#">Related sample</a>
+        </div>
+        <div class="demo-cell">
+          <p class="state-label">Ghost / breadcrumb</p>
+          <button type="button" class="btn-ghost">Overview</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Input -->
+    <section class="section" id="input">
+      <h2>Input</h2>
+      <p class="note">N/A v1 (no search). Spec for later: label above, ink border, accent focus, error under field.</p>
+      <div class="row">
+        <div class="field">
+          <p class="state-label">Default</p>
+          <label for="in-default">Skill name</label>
+          <input class="input" id="in-default" type="text" placeholder="e.g. Daily exec pulse" />
+        </div>
+        <div class="field">
+          <p class="state-label">Focus</p>
+          <label for="in-focus">Filter (future)</label>
+          <input class="input" id="in-focus" type="text" value="Tufte" style="outline:2px solid var(--accent);outline-offset:2px" />
+        </div>
+        <div class="field is-error">
+          <p class="state-label">Error</p>
+          <label for="in-err">Path</label>
+          <input class="input" id="in-err" type="text" value="skills/missing.md" aria-invalid="true" aria-describedby="in-err-msg" />
+          <span class="error" id="in-err-msg">File not found in asset map</span>
+        </div>
+        <div class="field">
+          <p class="state-label">Disabled</p>
+          <label for="in-dis">Locked</label>
+          <input class="input" id="in-dis" type="text" value="—" disabled />
+        </div>
+      </div>
+    </section>
+
+    <!-- Select -->
+    <section class="section" id="select">
+      <h2>Select</h2>
+      <p class="note">N/A v1. Same border / radius / focus rules as Input.</p>
+      <div class="row">
+        <div class="field">
+          <p class="state-label">Default</p>
+          <label for="sel">Category</label>
+          <select class="select" id="sel">
+            <option>Critique</option>
+            <option>Dataviz rigor</option>
+            <option>Consulting</option>
+            <option>Executive</option>
+          </select>
+        </div>
+        <div class="field">
+          <p class="state-label">Disabled</p>
+          <label for="sel-dis">Tier</label>
+          <select class="select" id="sel-dis" disabled>
+            <option>Core</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Checkbox -->
+    <section class="section" id="checkbox">
+      <h2>Checkbox</h2>
+      <p class="note">Not in MVP browse UI; include for shadcn parity. Accent color via <code style="font-family:var(--font-mono);font-size:0.75em">accent-color</code>.</p>
+      <div class="row">
+        <label class="check"><input type="checkbox" checked /> Has sample</label>
+        <label class="check"><input type="checkbox" /> Has HTML demo</label>
+        <label class="check"><input type="checkbox" disabled /> Queued expert</label>
+      </div>
+    </section>
+
+    <!-- Card -->
+    <section class="section" id="card">
+      <h2>Card <span style="font-weight:400;text-transform:none;letter-spacing:0">(.index-card)</span></h2>
+      <p class="note">Whole card is one link. Expert cards: name + detail only. Skill cards may show category + badges.</p>
+      <div class="row">
+        <div>
+          <p class="state-label">Expert · default</p>
+          <a class="index-card" href="#">
+            <h3>Edward Tufte</h3>
+            <p class="card-detail">Data-ink ratio, chartjunk, graphical integrity</p>
+          </a>
+        </div>
+        <div>
+          <p class="state-label">Skill · with badges</p>
+          <a class="index-card" href="#">
+            <div class="card-label">Executive</div>
+            <h3>Daily exec pulse</h3>
+            <p class="card-detail">Morning pulse for overnight change</p>
+            <div class="card-meta">
+              <span class="badge">sample</span>
+              <span class="badge">HTML</span>
+            </div>
+          </a>
+        </div>
+        <div>
+          <p class="state-label">Hover</p>
+          <a class="index-card" href="#" style="background:var(--bg)">
+            <h3>Ben Fry</h3>
+            <p class="card-detail">Acquire → filter → mine → represent → refine → interact</p>
+          </a>
+        </div>
+        <div>
+          <p class="state-label">Loading skeleton</p>
+          <div class="index-card" aria-hidden="true">
+            <div style="height:10px;background:var(--skeleton);margin-bottom:8px;width:40%"></div>
+            <div style="height:14px;background:var(--skeleton);margin-bottom:8px;width:70%"></div>
+            <div style="height:10px;background:var(--skeleton);width:90%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="section" id="tabs">
+      <h2>Tabs</h2>
+      <p class="note">N/A v1 — Overview uses in-page category sections, not tabs. Pattern reserved for future.</p>
+      <div class="tabs">
+        <div class="tablist" role="tablist" aria-label="Catalog">
+          <button type="button" class="tab" role="tab" aria-selected="true" aria-controls="tab-experts" id="t1">Experts</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" aria-controls="tab-skills" id="t2">Skills</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" aria-controls="tab-router" id="t3">Router</button>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="tab-experts" aria-labelledby="t1">
+          Flat gallery of 7 shipped experts. No Core / Practice sectioning.
+        </div>
+        <div class="tabpanel" role="tabpanel" id="tab-skills" aria-labelledby="t2" hidden>
+          Fifteen Spec Skills across rigor, consulting, executive, global, router.
+        </div>
+        <div class="tabpanel" role="tabpanel" id="tab-router" aria-labelledby="t3" hidden>
+          Ambiguous ask → Router skill profile.
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="section" id="table">
+      <h2>Table <span style="font-weight:400;text-transform:none;letter-spacing:0">(.data-table)</span></h2>
+      <p class="note">Known works · skill inputs. Mobile: stack as labeled list.</p>
+      <table class="data-table">
+        <caption class="state-label" style="caption-side:top;text-align:left;margin-bottom:8px">Known works — Edward Tufte</caption>
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Year</th>
+            <th scope="col">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>The Visual Display of Quantitative Information</td>
+            <td>1983</td>
+            <td>Book</td>
+          </tr>
+          <tr>
+            <td>Envisioning Information</td>
+            <td>1990</td>
+            <td>Book</td>
+          </tr>
+          <tr>
+            <td>Beautiful Evidence</td>
+            <td>2006</td>
+            <td>Book</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Dialog -->
+    <section class="section" id="dialog">
+      <h2>Dialog</h2>
+      <p class="note">N/A v1 — prefer full-page error and muted empty Related. Preview for handoff only.</p>
+      <div class="dialog-stage">
+        <div class="dialog-backdrop" aria-hidden="true"></div>
+        <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
+          <h3 id="dlg-title">Leave this page?</h3>
+          <p>Unsaved prototype notes will be discarded. Prefer navigating via the shell instead of modals in production v1.</p>
+          <div class="dialog-actions">
+            <button type="button" class="btn">Stay</button>
+            <button type="button" class="btn-link">Leave</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Module -->
+    <section class="section" id="module">
+      <h2>Module / Badge / Empty</h2>
+      <div class="row">
+        <div class="module accent-left">
+          <h3>Purpose</h3>
+          <p>Morning pulse for ops leaders scanning overnight change across a small KPI set.</p>
+        </div>
+        <div class="module">
+          <h3>Anti-patterns</h3>
+          <p>Don’t overload the pulse with strategy narratives—use weekly / monthly skills instead.</p>
+        </div>
+        <div>
+          <p class="state-label">Badges</p>
+          <div class="card-meta">
+            <span class="badge">sample</span>
+            <span class="badge">HTML</span>
+            <span class="badge">RIGOR</span>
+          </div>
+          <p class="state-label" style="margin-top:16px">Empty Related</p>
+          <p style="font-size:0.8125rem;color:var(--muted);margin:0">No sample yet</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Device frames -->
+    <section class="section" id="frames">
+      <h2>Device frames — Overview composition</h2>
+      <p class="note">Mobile (~375) and desktop (≥1024) shells. Full screen set: <a href="./mobile-ui-design.html">mobile-ui-design.html</a>.</p>
+      <div class="frames">
+        <div>
+          <p class="frame-label">Mobile</p>
+          <div class="phone">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="mini-app">
+                <div class="topbar">
+                  <button type="button" class="icon-btn" aria-label="Open menu" aria-expanded="false">≡</button>
+                  <div style="flex:1;min-width:0">
+                    <div class="brand">Dataviz Kit</div>
+                    <div class="brand-sub" style="margin:0">by The Hooman Loop</div>
+                  </div>
+                  <button type="button" class="icon-btn" aria-label="Switch to dark theme">☀</button>
+                </div>
+                <div class="main-pad">
+                  <h2 class="mini-h1">Dataviz Kit</h2>
+                  <p style="margin:0 0 6px;font-size:0.875rem">Experts to learn from. Skills to run.</p>
+                  <p class="meta">v0.1.0 · 7 experts · 16 skills</p>
+                  <div class="module accent-left" style="margin-bottom:10px;max-width:none">
+                    <h3>Browse experts</h3>
+                    <p style="margin-bottom:10px">Who they are, works, principles.</p>
+                    <span class="btn">View experts</span>
+                  </div>
+                  <div class="module" style="margin-bottom:14px;max-width:none">
+                    <h3>Browse skills</h3>
+                    <p style="margin-bottom:10px">Pick a Spec Skill and run it.</p>
+                    <span class="btn">View skills</span>
+                  </div>
+                  <p class="frame-label" style="margin-top:8px">Experts</p>
+                  <div class="card-grid">
+                    <a class="index-card compact" href="#"><h3>Edward Tufte</h3><p class="card-detail">Data-ink &amp; integrity</p></a>
+                    <a class="index-card compact" href="#"><h3>Ben Fry</h3><p class="card-detail">Computational pipeline</p></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="frame-label">Desktop</p>
+          <div class="browser">
+            <div class="browser-bar">
+              <div class="browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="browser-url">localhost / dataviz-kit / overview</div>
+            </div>
+            <div class="browser-screen">
+              <div class="mini-app mini-desktop">
+                <aside class="sidebar" aria-label="Primary">
+                  <div class="brand">Dataviz Kit</div>
+                  <div class="brand-sub">by The Hooman Loop</div>
+                  <ul class="nav-list">
+                    <li><a href="#" aria-current="page">Overview</a></li>
+                    <li><a href="#">Experts</a></li>
+                    <li><a href="#">Critique</a></li>
+                    <li><a href="#">Dataviz rigor</a></li>
+                    <li><a href="#">Consulting</a></li>
+                    <li><a href="#">Executive</a></li>
+                    <li><a href="#">Global</a></li>
+                    <li><a href="#">Router</a></li>
+                  </ul>
+                </aside>
+                <div class="main-pad">
+                  <h2 class="mini-h1">Dataviz Kit</h2>
+                  <p style="margin:0 0 6px">Experts to learn from. Skills to run in Cursor.</p>
+                  <p class="meta">v0.1.0 · 7 experts · 16 skills</p>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+                    <div class="module accent-left" style="max-width:none">
+                      <h3>Browse experts</h3>
+                      <p style="margin-bottom:10px">Seven shipped authors.</p>
+                      <span class="btn">View experts</span>
+                    </div>
+                    <div class="module" style="max-width:none">
+                      <h3>Browse skills</h3>
+                      <p style="margin-bottom:10px">Fifteen Spec Skills.</p>
+                      <span class="btn">View skills</span>
+                    </div>
+                  </div>
+                  <p class="frame-label">Experts</p>
+                  <div class="card-grid">
+                    <a class="index-card compact" href="#"><h3>Edward Tufte</h3><p class="card-detail">Data-ink ratio</p></a>
+                    <a class="index-card compact" href="#"><h3>Tamara Munzner</h3><p class="card-detail">Why / What / How</p></a>
+                    <a class="index-card compact" href="#"><h3>Stephen Few</h3><p class="card-detail">Dashboard clarity</p></a>
+                    <a class="index-card compact" href="#"><h3>Cole Nussbaumer Knaflic</h3><p class="card-detail">Storytelling with data</p></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="legend">
+      <strong>Handoff</strong> —
+      Implement with Konstrukt <code>tokens.css</code> / shell classes.
+      Map shadcn <code>primary</code> → <code>#067F8A</code>, <code>--radius: 0</code>, strip card shadows.
+      See <a href="./layout-guidelines.md">layout-guidelines.md</a> and
+      <a href="./accessibility-checklist.md">accessibility-checklist.md</a>.
+    </aside>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById("modeToggle");
+    toggle.addEventListener("click", () => {
+      const dark = root.getAttribute("data-mode") !== "dark";
+      root.setAttribute("data-mode", dark ? "dark" : "light");
+      toggle.setAttribute("aria-pressed", String(dark));
+      toggle.textContent = dark ? "Theme: Dark" : "Theme: Light";
+    });
+
+    const tabs = document.querySelectorAll(".tab");
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const panelId = tab.getAttribute("aria-controls");
+        document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", "false"));
+        document.querySelectorAll(".tabpanel").forEach((p) => { p.hidden = true; });
+        tab.setAttribute("aria-selected", "true");
+        document.getElementById(panelId).hidden = false;
+      });
+    });
+  </script>
+</body>
+</html>
