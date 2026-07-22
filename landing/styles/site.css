@@ -183,6 +183,66 @@ section + section { padding-top: 0; }
 .principle .who { font-weight: 700; min-width: 128px; }
 .principle .what { color: var(--fg-muted); font-size: var(--text-sm); }
 
+/* --- Insights & decisions --- */
+.insights-layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+@media (max-width: 860px) { .insights-layout { grid-template-columns: 1fr; gap: var(--space-8); } }
+.insight-list { margin-top: 0; }
+.insight-list li { font-size: var(--text-base); }
+.insight-list strong { color: var(--fg); }
+
+.report-mock {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.report-mock__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+.report-mock__bar .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
+.report-mock__bar .dot--r { background: hsl(4 70% 62%); }
+.report-mock__bar .dot--y { background: hsl(42 85% 60%); }
+.report-mock__bar .dot--g { background: hsl(145 45% 52%); }
+.report-mock__body { padding: var(--space-6); }
+.report-mock__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+.report-mock__title { font-size: var(--text-xl); margin: var(--space-2) 0 var(--space-4); }
+.findings { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); counter-reset: finding; }
+.findings li { display: flex; gap: var(--space-3); font-size: var(--text-sm); color: var(--fg-muted); }
+.findings strong { color: var(--fg); }
+.findings__rank {
+  flex: none;
+  width: 24px; height: 24px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent);
+  font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700;
+}
+.findings__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6); }
+.tag {
+  font-family: var(--font-mono); font-size: var(--text-xs);
+  color: var(--fg-subtle);
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 0.15rem 0.5rem;
+}
+
 /* --- Design system band (palette swatches) --- */
 .ds-band {
   background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
