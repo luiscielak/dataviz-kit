@@ -11,3 +11,4 @@ datasets/dashboard.yaml
 # Generated pipeline output — keep output/.gitkeep
 output/**
 !output/.gitkeep
+.vercel
