@@ -11,4 +11,7 @@ datasets/dashboard.yaml
 # Generated pipeline output — keep output/.gitkeep
 output/**
 !output/.gitkeep
+
+# Local UX crit outputs (often reference private screenshots)
+ux-crits/
 .vercel
