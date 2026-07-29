@@ -41,7 +41,7 @@ All specs and outputs in this repo follow these principles. See `reference/` for
    Copy the matching template from `templates/` and merge the generated spec into it, or use the spec as the source of truth and keep the template for structure.
 
 5. **Refine or critique**  
-   Apply `00-global-standards.skill.md` and any `30-dataviz-rigor/` skills for a single lens, or run `40-critique/dataviz-critique.skill.md` for a full multi-lens review with a scorecard and prioritized findings.
+   Apply `00-global-standards.skill.md` and any `30-dataviz-rigor/` skills for a single lens, or run `40-critique/dataviz-crit.skill.md` for a full multi-lens review with a scorecard and prioritized findings.
 
 ---
 
@@ -68,7 +68,7 @@ Inputs (domain, KPIs, cadence, audience)
 - **"I need a monthly strategy/risk spec"** → `skills/10-exec-dashboards/monthly-strategy-risk.skill.md`
 - **"I need drilldown or alerts"** → `skills/10-exec-dashboards/entity-drilldown.skill.md` or `alerts.skill.md`
 - **"I need an exec slide outline or one-pager"** → `skills/20-consulting-storytelling/`
-- **"Critique / review / audit my dashboard or chart"** → `skills/40-critique/dataviz-critique.skill.md`
+- **"Critique / review / audit my dashboard or chart"** → `skills/40-critique/dataviz-crit.skill.md`
 - **"I’m not sure which skill"** → `skills/99-router.skill.md`
 
 Always run `00-global-standards.skill.md` in mind (or explicitly) so every spec respects Tufte, Shneiderman, and Ben Fry.

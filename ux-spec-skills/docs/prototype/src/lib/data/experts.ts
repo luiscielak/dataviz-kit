@@ -24,7 +24,7 @@ export const experts: Expert[] = [
     ],
     principlesPath: "reference/principles-tufte.md",
     principlesSlug: "tufte",
-    relatedSkillSlugs: ["tufte-cleanup", "global-standards", "encoding-accuracy", "dataviz-critique"],
+    relatedSkillSlugs: ["tufte-cleanup", "global-standards", "encoding-accuracy", "dataviz-crit"],
     demo: {
       slug: "edward-tufte",
       principleLabel: "Data-ink vs chartjunk",
@@ -101,7 +101,7 @@ export const experts: Expert[] = [
     ],
     principlesPath: "reference/principles-stephen-few.md",
     principlesSlug: "stephen-few",
-    relatedSkillSlugs: ["weekly-performance-review", "daily-exec-pulse", "dataviz-critique"],
+    relatedSkillSlugs: ["weekly-performance-review", "daily-exec-pulse", "dataviz-crit"],
     demo: {
       slug: "stephen-few",
       principleLabel: "Uncluttered KPI tiles",
@@ -126,7 +126,7 @@ export const experts: Expert[] = [
     ],
     principlesPath: "reference/principles-munzner.md",
     principlesSlug: "munzner",
-    relatedSkillSlugs: ["munzner-why-what-how", "encoding-accuracy", "dataviz-critique"],
+    relatedSkillSlugs: ["munzner-why-what-how", "encoding-accuracy", "dataviz-crit"],
     demo: {
       slug: "tamara-munzner",
       principleLabel: "Match the encoding to the task",
@@ -175,7 +175,7 @@ export const experts: Expert[] = [
     ],
     principlesPath: "reference/principles-storytelling-with-data.md",
     principlesSlug: "storytelling-with-data",
-    relatedSkillSlugs: ["chart-annotation-plan", "executive-slide-outline", "dataviz-critique"],
+    relatedSkillSlugs: ["chart-annotation-plan", "executive-slide-outline", "dataviz-crit"],
     demo: {
       slug: "cole-nussbaumer-knaflic",
       principleLabel: "Action title and focus",

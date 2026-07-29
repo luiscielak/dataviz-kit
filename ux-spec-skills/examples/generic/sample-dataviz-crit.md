@@ -4,7 +4,7 @@ subject: Operations performance review (weekly dashboard)
 source: examples/html/weekly-performance-review.html
 ---
 
-# Sample: Dataviz critique — Weekly performance review
+# Sample: Dataviz crit — Weekly performance review
 
 **Subject**: Operations performance review (weekly dashboard)
 **Artifact**: `examples/html/weekly-performance-review.html`

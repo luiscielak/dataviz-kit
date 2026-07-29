@@ -50,7 +50,7 @@ All spec-generator skills with paths and one-line descriptions. Use the **router
 
 | Skill | Path | Description |
 |-------|------|-------------|
-| Dataviz critique | `skills/40-critique/dataviz-critique.skill.md` | Multi-lens review of a dashboard/chart/spec: scorecard, severity findings, positives. Orchestrates the rigor skills. |
+| Dataviz crit | `skills/40-critique/dataviz-crit.skill.md` | Multi-lens review of a dashboard/chart/spec: scorecard, severity findings, positives. Orchestrates the rigor skills. |
 
 ---
 

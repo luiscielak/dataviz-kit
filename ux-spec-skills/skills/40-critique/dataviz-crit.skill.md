@@ -1,4 +1,4 @@
-# Skill: Dataviz critique
+# Skill: Dataviz crit
 
 ## Purpose
 

@@ -3,13 +3,13 @@ import { CATEGORY_LABELS, CATEGORY_ORDER } from "./types";
 
 export const skills: Skill[] = [
   {
-    slug: "dataviz-critique",
-    name: "Dataviz critique",
+    slug: "dataviz-crit",
+    name: "Dataviz crit",
     category: "critique",
     categoryLabel: CATEGORY_LABELS.critique,
     description:
       "Multi-lens review of a dashboard/chart/spec: scorecard, severity findings, positives.",
-    path: "skills/40-critique/dataviz-critique.skill.md",
+    path: "skills/40-critique/dataviz-crit.skill.md",
     purpose:
       "Run a multi-lens critique of a rendered dashboard, chart, or spec and produce a client-ready review: scorecard, prioritized findings with severity, and recommendations. Orchestrates rigor skills as lenses.",
     whenToUse: [
@@ -40,7 +40,7 @@ export const skills: Skill[] = [
     example:
       "Critique weekly-performance-review.html for an ops lead. Context: weekly dashboard.",
     related: {
-      sample: "examples/generic/sample-dataviz-critique.md",
+      sample: "examples/generic/sample-dataviz-crit.md",
       html: "examples/html/weekly-performance-review.html",
       expertSlug: "edward-tufte",
       principles: "reference/principles-tufte.md",
@@ -601,7 +601,7 @@ export const skills: Skill[] = [
       "Skipping critique when the ask is clearly a review",
     ],
     example:
-      '"Is this weekly chart OK?" → Dataviz critique (then optional Tufte / encoding).',
+      '"Is this weekly chart OK?" → Dataviz crit (then optional Tufte / encoding).',
     related: {},
   },
 ];

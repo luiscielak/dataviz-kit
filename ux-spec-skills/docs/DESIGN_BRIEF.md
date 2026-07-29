@@ -135,7 +135,7 @@ Source of truth: [`SKILLS_INDEX.md`](../SKILLS_INDEX.md).
 
 | Skill | Path |
 |-------|------|
-| Dataviz critique | `skills/40-critique/dataviz-critique.skill.md` |
+| Dataviz crit | `skills/40-critique/dataviz-crit.skill.md` |
 
 ### Router
 
@@ -181,7 +181,7 @@ Map each profile 1:1 from `.skill.md` plus catalog metadata.
 | Ben Fry pipeline | `sample-ben-fry-pipeline.md` | — | (panel in `rigor-and-consulting-skills.html`) |
 | Munzner why–what–how | `sample-munzner-why-what-how.md` | — | (panel in `rigor-and-consulting-skills.html`) |
 | Encoding accuracy | `sample-encoding-accuracy.md` | — | (panel in `rigor-and-consulting-skills.html`) |
-| Dataviz critique | `sample-dataviz-critique.md` | — | (reviews `weekly-performance-review.html`) |
+| Dataviz crit | `sample-dataviz-crit.md` | — | (reviews `weekly-performance-review.html`) |
 | Tufte cleanup | — | — | — |
 | Global standards | — | — | — |
 | Router | — | — | — |
@@ -334,7 +334,7 @@ Use when presenting Dataviz Kit:
 1. **Overview** — “Dataviz Kit is a tool in The Hooman Loop. Two pillars: learn from dataviz experts, run Spec Skills.”
 2. **Experts gallery** — Point at the flat gallery of 7; open Tufte (or Fry): known works → further reading → principles checklist.
 3. **Two doors** — Show Browse experts vs Browse skills.
-4. **Skills catalog** — Point at Critique first (the "review my viz" door), then Dataviz rigor (not Executive first); open Dataviz critique or Encoding accuracy.
+4. **Skills catalog** — Point at Critique first (the "review my viz" door), then Dataviz rigor (not Executive first); open Dataviz crit or Encoding accuracy.
 5. **Related** — Open sample markdown and/or HTML demo link.
 6. **Router** — “Unclear ask → start here.”
 

@@ -102,7 +102,7 @@ export default function OverviewPage() {
             </li>
             <li>
               <strong>Optional</strong> — apply a template, rigor pass, or
-              Dataviz critique.
+              Dataviz crit.
             </li>
           </ol>
         </ModuleBlock>

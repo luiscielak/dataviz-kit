@@ -48,7 +48,7 @@
 |                                          |
 | [S6] CRITIQUE                            |  FR-003
 | +--------------------------------------+ |
-| | CRITIQUE · Dataviz critique          | |
+| | CRITIQUE · Dataviz crit              | |
 | | [sample]                             | |  [A8]
 | +--------------------------------------+ |
 |                                          |

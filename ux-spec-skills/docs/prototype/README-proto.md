@@ -39,7 +39,7 @@ npm run lint    # ESLint
 
 **Expert slugs:** `edward-tufte`, `ben-shneiderman`, `ben-fry`, `stephen-few`, `tamara-munzner`, `barbara-minto`, `cole-nussbaumer-knaflic`
 
-**Skill slugs:** match `SKILLS_INDEX.md` (e.g. `daily-exec-pulse`, `tufte-cleanup`, `router`, `dataviz-critique`, …)
+**Skill slugs:** match `SKILLS_INDEX.md` (e.g. `daily-exec-pulse`, `tufte-cleanup`, `router`, `dataviz-crit`, …)
 
 ---
 
