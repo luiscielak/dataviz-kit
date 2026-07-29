@@ -52,7 +52,6 @@ See [`pipeline/README.md`](pipeline/README.md) for details.
 | `datasets/` | Pipeline config. `dashboard.example.yaml` is committed; your `dashboard.yaml` is local/gitignored. |
 | `data/` | Your local CSVs. Gitignored so PII never enters the repo (only `data/README.md` is committed). |
 | `output/` | Generated artifacts (gitignored). |
-| `landing/` | Static landing page for the kit (see `landing/README.md`). |
 
 ## Principles
 
