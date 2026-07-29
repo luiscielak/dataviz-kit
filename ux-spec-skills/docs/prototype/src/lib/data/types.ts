@@ -28,6 +28,7 @@ export type Skill = {
   outputFormat: string[];
   antiPatterns: string[];
   example?: string;
+  artifactIntake?: boolean;
   related: {
     template?: string;
     sample?: string;

@@ -39,6 +39,7 @@ export const skills: Skill[] = [
     ],
     example:
       "Critique weekly-performance-review.html for an ops lead. Context: weekly dashboard.",
+    artifactIntake: true,
     related: {
       sample: "examples/generic/sample-dataviz-crit.md",
       html: "examples/html/weekly-performance-review.html",

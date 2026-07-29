@@ -132,7 +132,7 @@ export default async function SkillProfilePage({ params }: Props) {
           </ul>
         </ModuleBlock>
 
-        <PromptPanel prompt={skill.prompt} />
+        <PromptPanel prompt={skill.prompt} artifactIntake={skill.artifactIntake} />
 
         <div className="grid gap-6 lg:grid-cols-2">
           <ModuleBlock title="Output format">

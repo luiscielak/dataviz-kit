@@ -15,6 +15,8 @@ All notable changes to the UX Spec Skills Library.
 - **Index**: new **Critique** section in `SKILLS_INDEX.md`.
 - **Example**: `examples/generic/sample-dataviz-crit.md` reviewing `examples/html/weekly-performance-review.html`.
 - **Rename**: the critique skill and its sample are now `dataviz-crit` (slug, file names, and prototype route `/skills/dataviz-crit`); the "Critique" category label is unchanged. The old `/skills/dataviz-critique` route permanently redirects.
+- **Artifact intake**: the prototype crit page adds a client-side artifact picker (URL field or file upload with image/text/HTML preview) that composes the copy-paste prompt; nothing is uploaded to a server.
+
 ---
 
 ## [0.1.0] – 2025-02-03
