@@ -79,9 +79,61 @@ After producing the critique in chat:
 2. **Contents**: Optional YAML frontmatter (`date`, `subject`, `source`), then summary, scorecard, positives, and findings grouped by lens.
 3. **Confirm** the saved file path in chat.
 
-## Delivery (Phase 2 — deferred)
+## Tool mode (UX Crit app — `review.json`)
 
-Automated capture and client-facing HTML/PDF reports or portals are out of scope for this kit today. If client delivery is needed, reuse the [ux-crit](../../../../ux-crit) app as a dataviz domain pack (swap the principle set and score keys for the lenses above; keep its capture → `review.json` → report → portal shell) rather than cloning it. This skill's finding schema and score keys are intentionally aligned with that shape so the methodology stays the source of truth and the app becomes a thin delivery layer later.
+The [ux-crit](../../../../ux-crit) app is now a kind-aware crit engine: it captures an artifact into `data/reviews/<id>/`, renders a client report, and publishes to a private portal. A `dataviz-crit` review reuses that whole pipeline — only the lens vocabulary and score keys differ (this skill is the source of truth for them).
+
+When the user references `data/reviews/<id>` or a `review.json` with `status: "captured"` and `kind: "dataviz-crit"` exists:
+
+1. **Read** `data/reviews/<id>/review.json` and every screenshot in that folder (e.g. `upload.png`).
+2. **Analyze** using the lenses, severity, and scoring rules above.
+3. **Write findings** directly into `review.json` by updating these fields:
+
+```json
+{
+  "status": "reviewed",
+  "summary": "2–4 sentence executive summary for the client",
+  "scores": {
+    "encodingAccuracy": 3,
+    "dataInkIntegrity": 4,
+    "taskEncodingFit": 2,
+    "provenanceTrust": 3,
+    "cognitiveLoad": 3,
+    "annotationClarity": 2
+  },
+  "scoreRationale": {
+    "encodingAccuracy": "1–2 sentences on why this score, referencing the findings that drove it.",
+    "taskEncodingFit": "e.g. A dual-axis combo chart forces the reader to compare unrelated scales for the core decision."
+  },
+  "positives": [
+    "Specific observation of what works well",
+    "Another specific strength"
+  ],
+  "findings": [
+    {
+      "element": "Revenue vs. churn dual-axis chart",
+      "principle": "Task–Encoding Fit",
+      "severity": "high",
+      "impact": "Readers can't tell whether revenue or churn is driving the trend because two scales share one plot.",
+      "recommendation": "Split into two aligned small multiples with a shared time axis and zero baselines.",
+      "technicalNote": "Use week-over-week (WoW) deltas; keep a zero baseline for the magnitude series.",
+      "screenshot": "upload.png"
+    }
+  ]
+}
+```
+
+4. **Preserve** existing fields: `subject`, `kind`, `sourceType`, `date`, `capturedAt`, `metadata`, `screenshots`. Use the `principle` display labels exactly as they appear in the scorecard (Encoding Accuracy, Data-Ink & Integrity, Task–Encoding Fit, Provenance & Trust, Cognitive Load, Annotation Clarity) so the report groups findings under the right lens.
+5. **Set** `status` to `"reviewed"`.
+6. **Also save** a markdown copy to `docs/dataviz-crits/dataviz-crit-YYYY-MM-DD-<slug>.md` (or `dataviz-crits/` at project root if there is no `docs/`).
+7. **Confirm** in chat: the internal report path (`/report.html?id=<id>`) and the markdown file path. The operator then runs `npm run publish -- <id> --customer "Name"` to push it to the client portal.
+
+`scoreRationale` is optional but recommended — keyed by the same camelCase score keys, each a short justification the report renders under "How we reached each score."
+
+### Finding count guidance
+
+- Aim for **5–12 findings** covering at least **4 lenses**; include at least **1 high** when genuine.
+- Do not invent severity to fill the count.
 
 ## Anti-patterns to avoid
 
