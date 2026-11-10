@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "@/components/app-shell";
@@ -6,6 +7,7 @@ import { IndexCard } from "@/components/index-card";
 import { ModuleBlock } from "@/components/module-block";
 import { PageHeader } from "@/components/page-header";
 import { QuietButton } from "@/components/quiet-button";
+import { withBasePath } from "@/lib/base-path";
 import {
   experts,
   getExpert,
@@ -75,7 +77,7 @@ export default async function ExpertProfilePage({ params }: Props) {
             <p className="text-muted-foreground">{expert.demo.caption}</p>
             <div className="border border-foreground bg-background">
               <iframe
-                src={`/expert-demos/${expert.demo.slug}.html`}
+                src={withBasePath(`/expert-demos/${expert.demo.slug}.html`)}
                 title={`${expert.name} demo: ${expert.demo.principleLabel}`}
                 loading="lazy"
                 className="block h-[420px] w-full"
@@ -83,7 +85,7 @@ export default async function ExpertProfilePage({ params }: Props) {
             </div>
             <div>
               <QuietButton
-                href={`/expert-demos/${expert.demo.slug}.html`}
+                href={withBasePath(`/expert-demos/${expert.demo.slug}.html`)}
                 external
               >
                 Open full demo
@@ -104,6 +106,9 @@ export default async function ExpertProfilePage({ params }: Props) {
               <caption className="sr-only">Known works for {expert.name}</caption>
               <TableHeader>
                 <TableRow className="border-foreground hover:bg-transparent">
+                  <TableHead scope="col" className="w-16 text-foreground">
+                    <span className="sr-only">Cover</span>
+                  </TableHead>
                   <TableHead scope="col" className="text-foreground">
                     Title
                   </TableHead>
@@ -121,6 +126,17 @@ export default async function ExpertProfilePage({ params }: Props) {
                     key={work.title}
                     className="border-foreground/30 hover:bg-background"
                   >
+                    <TableCell className="align-top">
+                      {work.coverId ? (
+                        <Image
+                          src={`https://covers.openlibrary.org/b/id/${work.coverId}-M.jpg`}
+                          alt={`Cover of ${work.title}`}
+                          width={48}
+                          height={72}
+                          className="h-[72px] w-12 border border-foreground/30 object-cover"
+                        />
+                      ) : null}
+                    </TableCell>
                     <TableCell className="font-medium">{work.title}</TableCell>
                     <TableCell>{work.year}</TableCell>
                     <TableCell>{work.type}</TableCell>
@@ -131,14 +147,40 @@ export default async function ExpertProfilePage({ params }: Props) {
           </div>
           <ul className="space-y-3 sm:hidden">
             {expert.works.map((work) => (
-              <li key={work.title} className="border border-foreground/30 p-3">
-                <div className="font-medium">{work.title}</div>
-                <div className="text-sm text-muted-foreground">
-                  {work.year} · {work.type}
+              <li
+                key={work.title}
+                className="flex gap-3 border border-foreground/30 p-3"
+              >
+                {work.coverId ? (
+                  <Image
+                    src={`https://covers.openlibrary.org/b/id/${work.coverId}-M.jpg`}
+                    alt={`Cover of ${work.title}`}
+                    width={48}
+                    height={72}
+                    className="h-[72px] w-12 shrink-0 border border-foreground/30 object-cover"
+                  />
+                ) : null}
+                <div>
+                  <div className="font-medium">{work.title}</div>
+                  <div className="text-sm text-muted-foreground">
+                    {work.year} · {work.type}
+                  </div>
                 </div>
               </li>
             ))}
           </ul>
+          <p className="mt-4 text-xs text-muted-foreground">
+            Cover images via{" "}
+            <a
+              href="https://openlibrary.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline-offset-2 hover:underline"
+            >
+              Open Library
+            </a>
+            .
+          </p>
         </ModuleBlock>
 
         <ModuleBlock title="Where to learn more">

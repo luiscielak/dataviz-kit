@@ -25,7 +25,7 @@
 
 - Ship a documentation-style site that makes Dataviz Kit feel like a native tool in The Hooman Loop (brand, subtitle, Konstrukt chrome).
 - Equal pillars: **Experts** (browse / learn) and **Skills** (discover / run)—Overview must not read as exec-dashboard-only.
-- Surface all **7 shipped** dataviz experts on a **flat** Overview gallery (no Core / Practice UI sections), each linking to an expert profile (bio, works, further reading) separate from the principle checklist.
+- Surface all **11 shipped** dataviz experts on a **flat** Overview gallery (no Core / Practice UI sections), each linking to an expert profile (bio, works, further reading) separate from the principle checklist.
 - Enable skill discovery: overview → category scan → skill profile → related sample / template / HTML demo / experts / principles.
 - Keep `.skill.md` files as the source of truth for prompts and generation; UI is browse-and-explain only.
 
@@ -36,7 +36,7 @@
 - Redesigning `examples/html/` dashboard demos
 - A visual language outside Konstrukt
 - Category-only index pages (sections on overview are enough)
-- Expert or principle cards for authors still in [`PRINCIPLES_QUEUE.md`](./PRINCIPLES_QUEUE.md) (Felton+)
+- Expert or principle cards for authors still in [`PRINCIPLES_QUEUE.md`](./PRINCIPLES_QUEUE.md) (Later queue: Bertin+)
 - Full biographies, academic CVs, or licensed reproductions of copyrighted figures
 - Using “hero” / “heroes” in product UI for people profiles (use **Experts**)
 
@@ -89,9 +89,9 @@
 ### MVP
 
 - Static site under `ux-spec-skills/docs/site/` (HTML + Konstrukt CSS/JS).
-- Overview page: app shell, brand + The Hooman Loop subtitle, generic tagline, meta (version · 7 experts · 16 skills), two doors, **Experts gallery (all 7)**, skills workflow, category card grids (all 16 skills in UI order: Critique → Dataviz rigor → Consulting → Executive → Global → Router), Router CTA.
+- Overview page: app shell, brand + The Hooman Loop subtitle, generic tagline, meta (version · 11 experts · 16 skills), two doors, **Experts gallery (all 11)**, skills workflow, category card grids (all 16 skills in UI order: Critique → Dataviz rigor → Consulting → Executive → Global → Router), Router CTA.
 - Skill profile ×16: modules mapped 1:1 from `.skill.md` + catalog metadata; breadcrumb; related asset map with muted empty states; Related principles link to expert profiles where mapped.
-- **Expert profile ×7** + **Experts index**: bio/context, known works, where to learn more, link to principle checklist, related skills.
+- **Expert profile ×11** + **Experts index**: bio/context, known works, where to learn more, link to principle checklist, related skills.
 - Nav: Overview · Experts · Critique · Dataviz rigor · Consulting · Executive · Global · Router.
 - Content source for experts: short markdown under `reference/experts/` (or equivalent), separate from principle checklists in `reference/principles-*.md`.
 - Version meta from `CHANGELOG.md`; expert + skill counts on Overview.
@@ -113,7 +113,7 @@
 
 - Category-only index pages
 - Client-side search / filter
-- Expert + principle cards when queued authors ship (Felton, Cairo, Duarte, Kirk, …)
+- Expert + principle cards when Later-queue authors ship (Bertin, Cleveland, Lupi, Stefaner, Bremer, Rosling)
 - Build script to regenerate skill/expert profiles from markdown (if hand-maintained HTML becomes painful)
 
 ---
@@ -128,7 +128,7 @@
 | **FR-004** | Each skill has a reachable profile URL; profile modules include Purpose, When to use, Inputs, Prompt, Output format, Anti-patterns, Example (when present), Related. | US-004 | M-003 |
 | **FR-005** | Related section uses the v1 asset map; missing sample/template/HTML shows muted “No … yet”, never a dead fake link. | US-005 | M-004 |
 | **FR-006** | Overview includes Router CTA (`.module.accent-left`) linking to Router profile. | US-006 | M-002 |
-| **FR-007** | Overview Experts gallery shows all 7 shipped experts in one flat grid linking to expert profiles; no Core / Practice sectioning; queued authors excluded. | US-007, US-010, US-011 | M-005 |
+| **FR-007** | Overview Experts gallery shows all 11 shipped experts in one flat grid linking to expert profiles; no Core / Practice sectioning; queued authors excluded. | US-007, US-010, US-011 | M-005 |
 | **FR-008** | Skill cards and profile headers surface badges/meta when sample and/or HTML demo exists. | US-005 | M-004 |
 | **FR-009** | Shell nav marks active page with `aria-current="page"` and left accent; mobile drawer from Konstrukt `shell.css`; nav order Overview · Experts · Critique · Dataviz rigor · Consulting · Executive · Global · Router. | US-008 | M-006 |
 | **FR-010** | Page header meta shows version (from `CHANGELOG.md`), expert count (7), and skill count on Overview; tagline is generic (experts + skills), not exec-dashboard-only. | US-001, US-011 | M-001 |
@@ -215,9 +215,9 @@ Feature: Konstrukt fidelity
 ```gherkin
 Feature: Experts gallery
   Scenario: All shipped experts appear on Overview
-    Given PRINCIPLES_QUEUE.md lists seven Already shipped authors
+    Given PRINCIPLES_QUEUE.md lists eleven Already shipped authors
     When I view the overview Experts gallery
-    Then I see all seven experts in one flat gallery linking to expert profiles
+    Then I see all eleven experts in one flat gallery linking to expert profiles
     And I do not see Core / Practice section headers
     And I do not see invented cards for queued authors
 ```
@@ -227,7 +227,7 @@ Feature: Experts gallery
 ```gherkin
 Feature: Dataviz expert profiles
   Scenario: Every shipped expert is profiled
-    Given seven experts are listed as Already shipped in PRINCIPLES_QUEUE.md
+    Given eleven experts are listed as Already shipped in PRINCIPLES_QUEUE.md
     When I open Experts from the nav
     Then each expert has a profile with bio/context, known works, and where to learn more
     And each profile links to its principle checklist and related skills
@@ -256,9 +256,9 @@ Feature: Dataviz expert profiles
 | **M-002** | Time-to-correct-skill (guided) | ≤2 minutes from Overview to opening the intended profile (or Router when unsure) | MVP acceptance | Timed walkthrough script (§ Design Brief §8) |
 | **M-003** | Catalog coverage | 100% of `SKILLS_INDEX.md` skills have a reachable profile | MVP ship | Checklist vs `SKILLS_INDEX.md` (15/15) |
 | **M-004** | Critical path integrity | Daily exec pulse and Encoding accuracy: Overview → profile → sample and/or HTML demo works; no fake Related links sitewide | MVP ship | Manual QA of asset map + empty-state audit |
-| **M-005** | Experts gallery fidelity | Overview gallery = all 7 shipped; cards open expert profiles; zero queued authors | MVP ship | Diff against `reference/` + `PRINCIPLES_QUEUE.md` + link audit |
+| **M-005** | Experts gallery fidelity | Overview gallery = all 11 shipped; cards open expert profiles; zero queued authors | MVP ship | Diff against `reference/` + `PRINCIPLES_QUEUE.md` + link audit |
 | **M-006** | Mobile browseability | Primary flows (incl. expert profile) completable on a phone-width viewport via shell drawer | MVP ship | Manual QA at ~375px width |
-| **M-007** | Expert catalog coverage | 100% of shipped experts (7/7) have profiles with works + further reading; further-reading links resolve | MVP ship | Checklist vs PRINCIPLES_QUEUE “Already shipped” + spot-check external URLs |
+| **M-007** | Expert catalog coverage | 100% of shipped experts (11/11) have profiles with works + further reading; further-reading links resolve | MVP ship | Checklist vs PRINCIPLES_QUEUE “Already shipped” + spot-check external URLs |
 
 ---
 
@@ -268,7 +268,7 @@ Feature: Dataviz expert profiles
 
 - Konstrukt assets: `css/tokens.css`, `css/base.css`, `css/shell.css`, `js/theme.js` (vendor or link from design system host).
 - Content: `SKILLS_INDEX.md`, all `.skill.md` files, `CHANGELOG.md`, related map in Design Brief §5.
-- Expert content: new `reference/experts/*.md` (or equivalent) for the 7 shipped authors; principle checklists remain in `reference/principles-*.md`.
+- Expert content: new `reference/experts/*.md` (or equivalent) for the 11 shipped authors; principle checklists remain in `reference/principles-*.md`.
 - Optional deep links: `templates/`, `examples/generic/`, `examples/html/`, `reference/`, curated further-reading URLs.
 
 ### Constraints
@@ -291,9 +291,9 @@ Feature: Dataviz expert profiles
 | Milestone | Outcome |
 |-----------|---------|
 | **M0 — Approved brief** | DESIGN_BRIEF + this PRD agreed |
-| **M1 — Shell + Overview** | Konstrukt shell, two doors, 7-expert gallery, reordered skill grids, Router CTA |
+| **M1 — Shell + Overview** | Konstrukt shell, two doors, 11-expert gallery, reordered skill grids, Router CTA |
 | **M2 — Skill profiles** | All 16 skill profiles + Related map |
-| **M2b — Expert profiles** | All 7 shipped expert profiles + Experts index/nav |
+| **M2b — Expert profiles** | All 11 shipped expert profiles + Experts index/nav |
 | **M3 — Acceptance** | Metrics M-001–M-007 pass; walkthrough script runnable |
 
 ---
@@ -305,8 +305,8 @@ Feature: Dataviz expert profiles
 - Static HTML is sufficient for v1; no build pipeline required unless content drift becomes painful.
 - Konstrukt host/assets remain reachable or will be vendored into the repo.
 - Skill count is 16 for MVP; new skills get a profile when added to the index.
-- Expert count for MVP is the 7 shipped authors; all 7 appear on Overview in one flat gallery.
-- Expert markdown will be authored as part of implementation (does not exist yet under `reference/experts/`).
+- Expert count for MVP is the 11 shipped authors; all 11 appear on Overview in one flat gallery.
+- Expert markdown lives under `reference/experts/`.
 
 ### Open questions
 
@@ -324,7 +324,7 @@ Feature: Dataviz expert profiles
 | Content drift between UI and `.skill.md` | Wrong prompts/inputs shown | Treat markdown as source of truth; regenerate or re-copy on skill changes; prefer generator if churn is high |
 | Konstrukt host unavailable | Broken styles | Vendor tokens/base/shell/theme into repo for ship |
 | Fake or stale Related / further-reading links | Trust loss | Enforce asset map + muted empty states; QA M-004 / M-007; prefer stable primary URLs |
-| Scope creep (search, CMS, live run, long bios, Felton+ early) | Delayed MVP | Hold non-goals; keep expert pages short; gate queue on `reference/` ship |
+| Scope creep (search, CMS, live run, long bios, Later-queue authors early) | Delayed MVP | Hold non-goals; keep expert pages short; gate queue on `reference/` ship |
 | Expert vs checklist confusion | Users miss the spec rules | Distinct modules: profile (who/works) vs principles checklist (rules for specs) |
 | Exec-dashboard-first framing | Kit feels too narrow | Two doors + Experts gallery first; skill category UI order starts with Critique then Dataviz rigor |
 

@@ -51,7 +51,7 @@ export type Expert = {
   tier: ExpertTier;
   whyInKit: string;
   bio: string[];
-  works: { title: string; year: string; type: string }[];
+  works: { title: string; year: string; type: string; coverId?: number }[];
   furtherReading: { label: string; href: string }[];
   principlesPath: string;
   principlesSlug: string;
@@ -60,7 +60,7 @@ export type Expert = {
 };
 
 export const VERSION = "0.1.0";
-export const EXPERT_COUNT = 7;
+export const EXPERT_COUNT = 11;
 export const SKILL_COUNT = 16;
 
 export const CATEGORY_NAV: {
@@ -74,7 +74,7 @@ export const CATEGORY_NAV: {
   {
     id: "critique",
     label: "Critique",
-    href: "/#critique",
+    href: "/crit",
     category: "critique",
   },
   {

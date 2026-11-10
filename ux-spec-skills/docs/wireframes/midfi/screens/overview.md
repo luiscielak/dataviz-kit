@@ -36,9 +36,9 @@ First paint for Dataviz Kit: suite brand + two equal pillars (Experts · Skills)
 | ID | Name | Components | Content (short / long) |
 |----|------|------------|------------------------|
 | S1 | Site nav | Navbar, Sidebar / Sheet | Brand “Dataviz Kit” / subtitle “by The Hooman Loop” |
-| S2 | Page header | Page header | H1 Dataviz Kit · tagline · `v0.x.x · 7 experts · 16 skills` |
+| S2 | Page header | Page header | H1 Dataviz Kit · tagline · `v0.x.x · 11 experts · 16 skills` |
 | S3 | Two doors | Module ×2, Button | Browse experts / Browse skills |
-| S4 | Experts gallery | Section label, flat Card grid ×7 | Curated order; no Core/Practice rows; queued omitted |
+| S4 | Experts gallery | Section label, flat Card grid ×11 | Curated order; no Core/Practice rows; queued omitted |
 | S5 | How to use | Module / step list | 1 Choose → 2 Inputs → 3 Prompt → 4 Optional (template / rigor / critique) |
 | S6–S11 | Skill catalogs | Section label, Card grid, Badge | Critique → Rigor → Consulting → Executive → Global → Router |
 | S12 | Router CTA | Module accent-left, Button | “Not sure which skill?” |

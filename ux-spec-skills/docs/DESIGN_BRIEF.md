@@ -30,7 +30,7 @@ Help a designer, engineer, consultant, or learner:
 - Replacing or regenerating `.skill.md` files from the UI
 - Redesigning the dashboard HTML demos
 - A separate visual language outside Konstrukt
-- Expert cards for authors still queued in [`PRINCIPLES_QUEUE.md`](./PRINCIPLES_QUEUE.md) (Felton+)
+- Expert cards for authors still queued in [`PRINCIPLES_QUEUE.md`](./PRINCIPLES_QUEUE.md) (Later queue: Bertin+)
 - Using “hero” in product UI copy for people (collides with UI hero pattern); use **Experts**
 
 ---
@@ -46,9 +46,9 @@ Help a designer, engineer, consultant, or learner:
 | **Audience** | Learners exploring dataviz experts; operators and Cursor users who run Spec Skills |
 | **Pillars** | **Experts** (browse / learn) · **Skills** (discover / run) |
 
-**Experts (MVP):** All 7 already-shipped authors in [`PRINCIPLES_QUEUE.md`](./PRINCIPLES_QUEUE.md) appear in a **flat** Overview Experts gallery and Experts index (no Core / Practice sectioning in the UI). Principle checklists remain a module on the expert profile (and Related on skills), not the only entry point. Core / Practice tiers stay in the queue doc for maintainers; optional quiet micro-label on the expert profile only.
+**Experts (MVP):** All 11 already-shipped authors in [`PRINCIPLES_QUEUE.md`](./PRINCIPLES_QUEUE.md) appear in a **flat** Overview Experts gallery and Experts index (no Core / Practice sectioning in the UI). Principle checklists remain a module on the expert profile (and Related on skills), not the only entry point. Core / Practice tiers stay in the queue doc for maintainers; optional quiet micro-label on the expert profile only.
 
-**Coming soon:** Felton, Cairo, Duarte, Kirk first; Bertin, Cleveland, Lupi, Stefaner, Bremer, Rosling later. Do not invent expert or principle cards until the matching `reference/` docs ship.
+**Coming soon:** Bertin, Cleveland, Lupi, Stefaner, Bremer, Rosling (Later queue). Do not invent expert or principle cards until the matching `reference/` docs ship.
 
 ---
 
@@ -57,7 +57,7 @@ Help a designer, engineer, consultant, or learner:
 ```
 Overview
 ├── Two doors (Browse experts · Browse skills)
-├── Experts gallery (×7 shipped, flat) ──► Expert profile
+├── Experts gallery (×11 shipped, flat) ──► Expert profile
 │         ├── See it: principle demo → examples/experts/<slug>/demo.html
 │         ├── Bio / context
 │         ├── Known works
@@ -84,8 +84,8 @@ Skill profile (×16)
 
 | Page | Role |
 |------|------|
-| **Overview** | Dual entry: Experts gallery (all 7) + Skills catalog (all 16); generic suite brand; Router CTA |
-| **Experts index** | Full flat gallery; same 7 as overview gallery |
+| **Overview** | Dual entry: Experts gallery (all 11) + Skills catalog (all 16); generic suite brand; Router CTA |
+| **Experts index** | Full flat gallery; same 11 as overview gallery |
 | **Expert profile** | Who they are, known works, further reading—distinct from the principle checklist |
 | **Skill profile** | One page per skill; structured modules matching `.skill.md` sections |
 
@@ -216,8 +216,12 @@ Source of truth: short markdown under `reference/experts/` (to be authored). Pri
 | Tamara Munzner | Practice | `principles-munzner.md` | `experts/tamara-munzner.md` |
 | Barbara Minto | Practice | `principles-minto.md` | `experts/barbara-minto.md` |
 | Cole Nussbaumer Knaflic | Practice | `principles-storytelling-with-data.md` | `experts/cole-nussbaumer-knaflic.md` |
+| Nicholas Felton | Practice | `principles-nicholas-felton.md` | `experts/nicholas-felton.md` |
+| Alberto Cairo | Practice | `principles-alberto-cairo.md` | `experts/alberto-cairo.md` |
+| Nancy Duarte | Practice | `principles-nancy-duarte.md` | `experts/nancy-duarte.md` |
+| Andy Kirk | Practice | `principles-andy-kirk.md` | `experts/andy-kirk.md` |
 
-Queued authors (Felton, Cairo, …) get expert profiles only when their principle doc ships—same gate as principle cards. Shipped experts are browse-first on Overview (all 7, flat gallery).
+Queued authors (Later queue: Bertin, Cleveland, …) get expert profiles only when their principle doc ships—same gate as principle cards. Shipped experts are browse-first on Overview (all 11, flat gallery).
 
 ---
 
@@ -234,8 +238,8 @@ Queued authors (Felton, Cairo, …) get expert profiles only when their principl
 
 **Main**
 
-1. `.page-header` — H1 “Dataviz Kit”; tagline e.g. *Learn from dataviz experts. Run Spec Skills with clarity.*; `.meta-row` (version from `CHANGELOG.md`, **7 experts · 16 skills**)
-2. **Two doors** — side-by-side modules: *Browse experts* → in-page gallery / Experts index; *Browse skills* → skills workflow / catalog
+1. `.page-header` — H1 “Dataviz Kit”; tagline e.g. *Learn from dataviz experts. Run Spec Skills with clarity.*; `.meta-row` (version from `CHANGELOG.md`, **11 experts · 16 skills**)
+2. **Three doors** — *Browse experts* → gallery / Experts index; *Browse skills* → skills workflow / catalog; *Get a free critique* → `/crit` (we run it). Keep the long conversion copy and upload form on `/crit`, not on Overview.
 3. **Experts gallery** — all **7** shipped experts as one flat card grid (curated order; no Core / Practice rows or card tier labels). Each card opens the **expert profile**. Queued authors stay out — see [`PRINCIPLES_QUEUE.md`](./PRINCIPLES_QUEUE.md)
 4. **How to use** (skills pillar) — 3–4 steps: Choose skill → Gather inputs → Run prompt → Optional template, rigor, or critique pass
 5. **Skills catalog** — `.section-label` + `.card-grid` of `.index-card`, UI order: **Critique → Dataviz rigor → Consulting storytelling → Executive dashboards → Global → Router**
@@ -345,8 +349,8 @@ Use when presenting Dataviz Kit:
 Suggested location: `ux-spec-skills/docs/site/` (static HTML).
 
 1. Vendor or link Konstrukt `tokens.css`, `base.css`, `shell.css`, `theme.js`
-2. Build overview (two doors + 7-expert gallery + reordered skill grids) + 16 skill profiles
-3. Author `reference/experts/*.md` for the 7 shipped experts; build expert profiles + Experts index
+2. Build overview (two doors + 11-expert gallery + reordered skill grids) + 16 skill profiles
+3. Author `reference/experts/*.md` for the 11 shipped experts; build expert profiles + Experts index
 4. Wire Related links from the asset map; expert gallery cards → expert profiles
 5. Keep dashboard HTML demos as external links under `examples/html/`
 
@@ -359,7 +363,7 @@ The brief does not implement the site.
 - Someone new to The Hooman Loop can tell Dataviz Kit is a suite tool within 5 seconds (brand + subtitle + Konstrukt chrome)
 - Within 5 seconds they can also tell it is an **experts + skills** kit (not exec-dashboard-only)
 - Every skill in `SKILLS_INDEX.md` has a reachable profile
-- Every shipped dataviz expert (7/7) has a reachable profile and appears on the Overview Experts gallery
+- Every shipped dataviz expert (11/11) has a reachable profile and appears on the Overview Experts gallery
 - Overview → skill profile → sample/demo path works for at least Daily exec pulse and Encoding accuracy
 - Overview expert card → expert profile path works across the flat gallery (e.g. Tufte and Knaflic)
 - Visual language matches Konstrukt (fonts, ink rules, zero radius, teal accent) without borrowing demo-dashboard styling

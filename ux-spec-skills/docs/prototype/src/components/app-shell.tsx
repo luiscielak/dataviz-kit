@@ -22,6 +22,7 @@ type AppShellProps = {
 function resolveActiveId(pathname: string, activeNavId?: string): string {
   if (activeNavId) return activeNavId;
   if (pathname.startsWith("/experts")) return "experts";
+  if (pathname === "/crit" || pathname.startsWith("/crit/")) return "critique";
   if (pathname.startsWith("/skills/")) {
     // category set by page via activeNavId
     return "overview";

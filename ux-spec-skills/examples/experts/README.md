@@ -38,6 +38,10 @@ examples/experts/
 | Tamara Munzner | `tamara-munzner` | Wrong encoding for a rank task (pie/angle) vs aligned (bar/position) |
 | Barbara Minto | `barbara-minto` | Evidence-first block vs answer-first pyramid |
 | Cole Nussbaumer Knaflic | `cole-nussbaumer-knaflic` | Cluttered chart vs action title + annotation focus |
+| Nicholas Felton | `nicholas-felton` | One crowded chart vs consistently-framed small multiples |
+| Alberto Cairo | `alberto-cairo` | Truncated axis that lies vs honest zero baseline |
+| Nancy Duarte | `nancy-duarte` | Flat status dump vs what-is / what-could-be contrast |
+| Andy Kirk | `andy-kirk` | Pie forced onto a time series vs a line chart |
 
 ## How to open
 

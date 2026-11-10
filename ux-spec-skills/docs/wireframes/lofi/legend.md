@@ -56,7 +56,7 @@
 | **FR-007** | overview | [S4] Experts gallery (flat ×7) |
 | **FR-008** | overview · skill-profile | card-meta / header badges |
 | **FR-009** | overview · shell-drawer-mobile | nav order + `aria-current` · drawer |
-| **FR-010** | overview | [S2] meta: version · 7 experts · 16 skills + generic tagline |
+| **FR-010** | overview | [S2] meta: version · 11 experts · 16 skills + generic tagline |
 | **FR-011** | expert-profile | expert modules |
 | **FR-012** | experts-index · overview nav | Experts list (flat ×7) |
 | **FR-013** | expert-profile · skill-profile Related | Principles checklist ≠ bio |

@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dataviz Kit — UI Prototype
 
-## Getting Started
+Clickable Next.js prototype for the Dataviz Kit docs shell (experts explorer + skill profiles). See [`README-proto.md`](README-proto.md) for full routes, components, flows, and known gaps.
 
-First, run the development server:
+**Live:** [https://thehoomanloop.com/dataviz](https://thehoomanloop.com/dataviz) (Vercel origin: [dataviz-kit.vercel.app/dataviz](https://dataviz-kit.vercel.app/dataviz))
+
+## Setup
 
 ```bash
+cd ux-spec-skills/docs/prototype
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/dataviz](http://localhost:3000/dataviz). The app uses `basePath: /dataviz` so local, Vercel, and the Netlify proxy share the same paths.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run lint    # ESLint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy (Vercel)
 
-## Learn More
+Hosted on Vercel under the **Hooman Loop** team from the [luiscielak/dataviz-kit](https://github.com/luiscielak/dataviz-kit) repo. Since the app is in a subdirectory, set the **Root Directory** to `ux-spec-skills/docs/prototype` when importing the project; keep the auto-detected Next.js preset. Pushes to `main` publish to [https://dataviz-kit.vercel.app](https://dataviz-kit.vercel.app); other branches get preview URLs.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [`README-proto.md`](README-proto.md#deploy-vercel) for the full deploy table and the experts-explorer access paths.

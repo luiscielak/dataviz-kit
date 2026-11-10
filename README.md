@@ -50,7 +50,7 @@ See [`pipeline/README.md`](pipeline/README.md) for details.
 | Path | Purpose |
 |------|---------|
 | `ux-spec-skills/` | Spec Skills Library: skills, templates, examples, expert demos, principle references. Start at its [`README.md`](ux-spec-skills/README.md). |
-| `ux-spec-skills/docs/prototype/` | Clickable UI prototype — experts explorer (Tufte, Shneiderman, …) + skill profiles. Live: [dataviz-kit.vercel.app](https://dataviz-kit.vercel.app). See [`README-proto.md`](ux-spec-skills/docs/prototype/README-proto.md). |
+| `ux-spec-skills/docs/prototype/` | Clickable UI prototype — experts explorer + skill profiles. Live: [thehoomanloop.com/dataviz](https://thehoomanloop.com/dataviz). See [`README-proto.md`](ux-spec-skills/docs/prototype/README-proto.md). |
 | `pipeline/` | CSV → spec → self-contained HTML pipeline (Python). |
 | `datasets/` | Pipeline config. `dashboard.example.yaml` is committed; your `dashboard.yaml` is local/gitignored. |
 | `data/` | Your local CSVs. Gitignored so PII never enters the repo (only `data/README.md` is committed). |

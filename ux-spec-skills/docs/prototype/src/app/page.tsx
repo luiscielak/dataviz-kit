@@ -41,7 +41,7 @@ export default function OverviewPage() {
         }
       />
 
-      <div className="mb-8 grid gap-4 md:grid-cols-2">
+      <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <ModuleBlock accentLeft title="Browse experts">
           <p>
             Who they are, known works, and where to learn more—separate from
@@ -55,6 +55,13 @@ export default function OverviewPage() {
             run path: inputs → prompt → output.
           </p>
           <QuietButton href="#how-to-use">View skills</QuietButton>
+        </ModuleBlock>
+        <ModuleBlock accentLeft title="Get a free critique">
+          <p>
+            Send one dashboard. We score it across six principles and send a
+            shareable report in a few business days.
+          </p>
+          <QuietButton href="/crit#request">Request a critique</QuietButton>
         </ModuleBlock>
       </div>
 
@@ -115,9 +122,19 @@ export default function OverviewPage() {
           className="mb-10 scroll-mt-20"
           aria-labelledby={`${group.category}-heading`}
         >
-          <h2 id={`${group.category}-heading`} className="section-label mb-3">
-            {group.label}
-          </h2>
+          <div className="mb-3 flex items-baseline justify-between gap-3">
+            <h2 id={`${group.category}-heading`} className="section-label">
+              {group.label}
+            </h2>
+            {group.category === "critique" ? (
+              <Link
+                href="/crit"
+                className="text-sm text-brand underline-offset-2 hover:underline"
+              >
+                We can run it for you
+              </Link>
+            ) : null}
+          </div>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {group.skills.map((skill) => {
               const badges: string[] = [];

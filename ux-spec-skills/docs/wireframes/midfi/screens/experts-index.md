@@ -8,7 +8,7 @@
 
 ## Purpose
 
-Full **flat** gallery of all **7 shipped** experts. Same set and order as Overview gallery; queued authors omitted. No Core / Practice sectioning in the UI.
+Full **flat** gallery of all **11 shipped** experts. Same set and order as Overview gallery; queued authors omitted. No Core / Practice sectioning in the UI.
 
 ---
 
@@ -16,8 +16,8 @@ Full **flat** gallery of all **7 shipped** experts. Same set and order as Overvi
 
 | ID | Section | Spec |
 |----|---------|------|
-| S1 | Page header | H1 Experts · tagline · meta `7 profiles` |
-| S2 | Gallery | Single card grid ×7 (desktop wraps ~4 cols; mobile stack) |
+| S1 | Page header | H1 Experts · tagline · meta `11 profiles` |
+| S2 | Gallery | Single card grid ×11 (desktop wraps ~4 cols; mobile stack) |
 | S3 | Note | Muted: queued authors omitted until `reference/` ships |
 
 Nav: Experts active (`aria-current="page"`).
@@ -26,7 +26,7 @@ Nav: Experts active (`aria-current="page"`).
 
 ## Card content
 
-**Order (curated):** Edward Tufte · Ben Shneiderman · Ben Fry · Stephen Few · Tamara Munzner · Barbara Minto · Cole Nussbaumer Knaflic
+**Order (curated):** Edward Tufte · Ben Shneiderman · Ben Fry · Stephen Few · Tamara Munzner · Barbara Minto · Cole Nussbaumer Knaflic · Nicholas Felton · Alberto Cairo · Nancy Duarte · Andy Kirk
 
 Each card: **name** · why-in-kit one-liner → **expert profile** (not checklist-only). No tier label on cards.
 
@@ -44,10 +44,10 @@ Tier (Core / Practice) stays in `PRINCIPLES_QUEUE.md` for maintainers; optional 
 
 | State | Spec |
 |-------|------|
-| default | 7 cards |
+| default | 11 cards |
 | hover / focus | Card link states |
 | loading | Skeleton cards under real header |
-| empty | N/A for shipped set; never show Felton/Cairo placeholders |
+| empty | N/A for shipped set; never show Bertin/Cleveland placeholders |
 
 ---
 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nancy Duarte — What is vs what could be</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-ink: #0f172a;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-accent: #b45309;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-ink)] min-h-screen antialiased">
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <header class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">Nancy Duarte · Contrast narrative</p>
+      <h1 class="text-xl font-semibold tracking-tight">Move the room, don't just report to it</h1>
+      <p class="text-sm text-[var(--color-muted)]">Same "Revenue pulse" quarterly update, framed two ways for an executive audience.</p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <!-- BEFORE -->
+      <figure aria-label="Before: a flat status dump with no arc or ask" class="h-full bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-red-700 bg-red-50 border border-red-200 rounded px-1.5 py-0.5">Before · status dump</span>
+          <span class="text-xs text-[var(--color-muted)]">no arc, no ask</span>
+        </figcaption>
+        <ul class="p-4 space-y-2 list-none text-sm">
+          <li class="rounded border border-neutral-200 bg-neutral-50 px-3 py-2 text-[var(--color-muted)]">MRR: $110k (+10% QoQ)</li>
+          <li class="rounded border border-neutral-200 bg-neutral-50 px-3 py-2 text-[var(--color-muted)]">Signups: 1,240</li>
+          <li class="rounded border border-neutral-200 bg-neutral-50 px-3 py-2 text-[var(--color-muted)]">Churn: 2.1%</li>
+          <li class="rounded border border-neutral-200 bg-neutral-50 px-3 py-2 text-[var(--color-muted)]">West pipeline coverage: 3.1x</li>
+          <li class="rounded border border-neutral-200 bg-neutral-50 px-3 py-2 text-[var(--color-muted)]">Questions?</li>
+        </ul>
+        <p class="px-4 pb-4 text-xs text-red-700">Every line weighs the same; the audience leaves informed but unmoved.</p>
+      </figure>
+
+      <!-- AFTER -->
+      <figure aria-label="After: a what-is / what-could-be contrast that lands on one ask" class="h-full bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5">After · contrast arc</span>
+          <span class="text-xs text-[var(--color-muted)]">what is → what could be → ask</span>
+        </figcaption>
+        <div class="p-4 space-y-3 text-sm">
+          <div class="rounded border border-neutral-300 bg-neutral-50 px-3 py-2">
+            <span class="block text-[10px] font-semibold uppercase tracking-wide text-[var(--color-muted)]">What is</span>
+            West is our fastest region but capped by seats — coverage sits at 3.1x.
+          </div>
+          <div class="flex justify-center text-neutral-400 text-xs">↓ the gap ↓</div>
+          <div class="rounded border border-neutral-300 bg-white px-3 py-2">
+            <span class="block text-[10px] font-semibold uppercase tracking-wide text-[var(--color-muted)]">What could be</span>
+            Two more West reps could convert that pipeline into <strong>+$180k</strong> next quarter.
+          </div>
+          <div class="rounded border-2 border-neutral-900 bg-white px-3 py-2 text-center font-semibold">Ask: approve two West hires now</div>
+          <p class="text-xs text-emerald-700">One tension, one memorable number, one thing to decide.</p>
+        </div>
+      </figure>
+    </div>
+
+    <p class="text-sm bg-[var(--color-card)] border-l-4 border-[var(--color-accent)] border border-[var(--color-border)] rounded-[var(--radius-card)] px-4 py-3">
+      <strong>What to notice:</strong> the numbers are the same. Pinning "what is" against "what could be" creates a gap the audience wants closed — and the STAR moment (+$180k) makes the ask stick.
+    </p>
+
+    <footer class="pt-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+      <p>Rules live in <code class="font-mono">reference/principles-nancy-duarte.md</code>.</p>
+      <p>Original educational example for Dataviz Kit. Placeholder data; not a reproduction of any published figure.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

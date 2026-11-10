@@ -56,8 +56,8 @@
 
 | Page | Main structure |
 |------|----------------|
-| **Overview** | Header → Two doors → Experts gallery (×7 flat) → How to use → Skill categories (Rigor → … → Router) → Router CTA |
-| **Experts index** | Header → flat card grid ×7 |
+| **Overview** | Header → Two doors → Experts gallery (×11 flat) → How to use → Skill categories (Rigor → … → Router) → Router CTA |
+| **Experts index** | Header → flat card grid ×11 |
 | **Expert profile** | Breadcrumb → Header (+ optional quiet Core/Practice micro-label) → Bio accent-left → Known works table → Further reading → Principles CTA → Related skills |
 | **Skill profile** | Breadcrumb → Header (category micro · path mono · badges) → Purpose accent-left → When → Inputs → Prompt → Output → Anti-patterns → Example → Related |
 | **Error** | Usable nav · alert module · Back to Overview · secondary Experts / Router |
@@ -93,7 +93,7 @@
 
 - Main content fluid inside shell (no narrow marketing column).
 - Tagline max ~52ch for readability when long.
-- Meta row: mono, muted (`v0.x.x · 7 experts · 16 skills`).
+- Meta row: mono, muted (`v0.x.x · 11 experts · 16 skills`).
 - Prompt: quieter module; collapsible OK (`aria-expanded` / `aria-controls`).
 
 ---
@@ -122,4 +122,4 @@ Focus trap only while mobile drawer is open.
 - Prefer Konstrukt classes: `.app-shell`, `.site-nav`, `.index-card`, `.module`, `.badge`, `.data-table`, `.page-header`.
 - Tailwind/shadcn: map to `theme.md` variables; keep `--radius: 0` and `shadow-none`.
 - External Related: if `target="_blank"`, include “opens in new window” in accessible name.
-- Queued experts (Felton+) never appear until `reference/` ships.
+- Queued experts (Later queue: Bertin+) never appear until `reference/` ships.

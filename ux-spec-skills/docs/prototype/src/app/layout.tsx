@@ -19,6 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://thehoomanloop.com/dataviz"),
   title: {
     default: "Dataviz Kit",
     template: "%s · Dataviz Kit",

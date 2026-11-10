@@ -29,7 +29,7 @@ export default function ExpertsIndexPage() {
       </div>
 
       <p className="mt-6 text-sm text-muted-foreground">
-        Queued authors (Felton, Cairo, and others) are omitted until their{" "}
+        Queued authors (Bertin, Cleveland, and others) are omitted until their{" "}
         <code className="font-mono text-xs">reference/</code> docs ship.
       </p>
     </AppShell>

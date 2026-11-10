@@ -5,7 +5,7 @@ Shipped docs live in [`reference/`](../reference/). Core (always on) stays Tufte
 
 **Status key:** `queued` → `in progress` → `shipped` (move to `reference/` + remove from this list).
 
-**Browse vs checklist:** The docs site treats **Experts** as a first-class pillar. All **Already shipped** authors (7) appear in a **flat** Overview Experts gallery and Experts index (no Core / Practice UI sections). Tier in this doc is for maintainers; optional quiet micro-label on the expert profile only. Principle checklists stay in `reference/principles-*.md` and are linked from each expert profile; they are not the only entry point. UI label is **Experts** (not “heroes”—collides with UI hero).
+**Browse vs checklist:** The docs site treats **Experts** as a first-class pillar. All **Already shipped** authors (11) appear in a **flat** Overview Experts gallery and Experts index (no Core / Practice UI sections). Tier in this doc is for maintainers; optional quiet micro-label on the expert profile only. Principle checklists stay in `reference/principles-*.md` and are linked from each expert profile; they are not the only entry point. UI label is **Experts** (not “heroes”—collides with UI hero).
 
 ---
 
@@ -20,28 +20,25 @@ Shipped docs live in [`reference/`](../reference/). Core (always on) stays Tufte
 | Tamara Munzner | `reference/principles-munzner.md` | Practice |
 | Barbara Minto | `reference/principles-minto.md` | Practice |
 | Cole Nussbaumer Knaflic | `reference/principles-storytelling-with-data.md` | Practice |
+| Nicholas Felton | `reference/principles-nicholas-felton.md` | Practice |
+| Alberto Cairo | `reference/principles-alberto-cairo.md` | Practice |
+| Nancy Duarte | `reference/principles-nancy-duarte.md` | Practice |
+| Andy Kirk | `reference/principles-andy-kirk.md` | Practice |
 
-These seven are browse-first on Overview (gallery cards → expert profiles). Expert markdown: `reference/experts/` (planned).
+These eleven are browse-first on Overview (gallery cards → expert profiles). Expert markdown: `reference/experts/`.
 
 ---
 
 ## Queue — Practice / craft (v1 priority)
 
-Add as `reference/principles-*.md` **and** expert markdown under `reference/experts/`, then surface on the docs Overview Experts gallery. Do not invent gallery cards before those docs ship.
+All four v1 Practice authors shipped — see **Already shipped** above. Principles in `reference/principles-*.md`, bios in `reference/experts/`, surfaced on the Overview Experts gallery.
 
 | # | Who | Working title | Why for this kit | Status |
 |---|-----|---------------|------------------|--------|
-| 1 | **Nicholas Felton** | Editorial information design / personal reports | Dense typographic layouts, small multiples as narrative, annual-report craft | queued |
-| 2 | **Alberto Cairo** | Truthfulness + visual form | Bridges academic rigor and day-to-day practice | queued |
-| 3 | **Nancy Duarte** | Executive narrative / slide structure | Pairs with Minto + exec slide outline skill | queued |
-| 4 | **Andy Kirk** | Chart selection & workflow | Practical encoding choices; pairs with encoding-accuracy skill | queued |
-
-**Suggested filenames when shipping**
-
-- `reference/principles-nicholas-felton.md`
-- `reference/principles-alberto-cairo.md`
-- `reference/principles-nancy-duarte.md`
-- `reference/principles-andy-kirk.md`
+| 1 | **Nicholas Felton** | Editorial information design / personal reports | Dense typographic layouts, small multiples as narrative, annual-report craft | shipped |
+| 2 | **Alberto Cairo** | Truthfulness + visual form | Bridges academic rigor and day-to-day practice | shipped |
+| 3 | **Nancy Duarte** | Executive narrative / slide structure | Pairs with Minto + exec slide outline skill | shipped |
+| 4 | **Andy Kirk** | Chart selection & workflow | Practical encoding choices; pairs with encoding-accuracy skill | shipped |
 
 ---
 
