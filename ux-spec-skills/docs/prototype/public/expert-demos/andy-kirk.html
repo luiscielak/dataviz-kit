@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andy Kirk — Match the chart to the relationship</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-ink: #0f172a;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-accent: #b45309;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-ink)] min-h-screen antialiased">
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <header class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">Andy Kirk · Chart selection</p>
+      <h1 class="text-xl font-semibold tracking-tight">Show MRR month over month</h1>
+      <p class="text-sm text-[var(--color-muted)]">The relationship is <em>change over time</em> (Jan 82 · Feb 88 · Mar 91 · Apr 97 · May 104 · Jun 110, in $k). The chart family should follow from that.</p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <!-- WRONG -->
+      <figure aria-label="Wrong family: a pie chart for a time-series relationship" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-red-700 bg-red-50 border border-red-200 rounded px-1.5 py-0.5">Wrong · part-to-whole</span>
+          <span class="text-xs text-[var(--color-muted)]">where is the trend?</span>
+        </figcaption>
+        <div class="p-4 flex flex-col items-center">
+          <div class="h-40 w-40 rounded-full" style="background: conic-gradient(#cbd5e1 0 53deg, #b8c2cf 53deg 110deg, #a3aebd 110deg 169deg, #8b97a8 169deg 232deg, #74839a 232deg 299deg, #5c6b82 299deg 360deg)"></div>
+          <div class="mt-3 grid grid-cols-3 gap-x-3 gap-y-1 text-[11px]">
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#cbd5e1"></span>Jan</span>
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#b8c2cf"></span>Feb</span>
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#a3aebd"></span>Mar</span>
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#8b97a8"></span>Apr</span>
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#74839a"></span>May</span>
+            <span class="flex items-center gap-1"><span class="h-2.5 w-2.5" style="background:#5c6b82"></span>Jun</span>
+          </div>
+          <p class="mt-2 text-xs text-red-700">Slicing months as a whole hides the one thing that matters: the climb.</p>
+        </div>
+      </figure>
+
+      <!-- RIGHT -->
+      <figure aria-label="Right family: a line chart for a time-series relationship" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5">Fits · change over time</span>
+          <span class="text-xs text-[var(--color-muted)]">the trend is the point</span>
+        </figcaption>
+        <div class="p-4">
+          <div class="relative h-40 border-l border-b border-neutral-400">
+            <svg viewBox="0 0 300 150" preserveAspectRatio="none" class="h-full w-full" role="img" aria-label="Line rising from 82 to 110 over six months">
+              <polyline fill="none" stroke="#0f172a" stroke-width="3"
+                points="6,102 64,84 122,75 180,57 238,36 294,18" />
+              <circle cx="6" cy="102" r="3.5" fill="#0f172a" />
+              <circle cx="64" cy="84" r="3.5" fill="#0f172a" />
+              <circle cx="122" cy="75" r="3.5" fill="#0f172a" />
+              <circle cx="180" cy="57" r="3.5" fill="#0f172a" />
+              <circle cx="238" cy="36" r="3.5" fill="#0f172a" />
+              <circle cx="294" cy="18" r="3.5" fill="#0f172a" />
+            </svg>
+          </div>
+          <div class="mt-1 flex justify-between text-[11px] text-[var(--color-muted)]">
+            <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+          </div>
+          <p class="mt-2 text-xs text-emerald-700">A line built on a shared axis makes the +34% climb read instantly.</p>
+        </div>
+      </figure>
+    </div>
+
+    <p class="text-sm bg-[var(--color-card)] border-l-4 border-[var(--color-accent)] border border-[var(--color-border)] rounded-[var(--radius-card)] px-4 py-3">
+      <strong>What to notice:</strong> pick the chart family from the relationship, not from habit. Time series wants a line; a pie answers a part-to-whole question no one asked.
+    </p>
+
+    <footer class="pt-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+      <p>Rules live in <code class="font-mono">reference/principles-andy-kirk.md</code>.</p>
+      <p>Original educational example for Dataviz Kit. Placeholder data; not a reproduction of any published figure.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

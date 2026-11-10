@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alberto Cairo — Same data, honest form</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-ink: #0f172a;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-accent: #b45309;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-ink)] min-h-screen antialiased">
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <header class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">Alberto Cairo · Truthful form</p>
+      <h1 class="text-xl font-semibold tracking-tight">A modest 10% rise, told two ways</h1>
+      <p class="text-sm text-[var(--color-muted)]">New MRR by quarter ($k) for a fictional "Revenue pulse" SaaS: Q1 100 · Q2 103 · Q3 106 · Q4 110. Both charts plot the same numbers.</p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <!-- MISLEADING -->
+      <figure aria-label="Misleading: a truncated axis that exaggerates the change" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-red-700 bg-red-50 border border-red-200 rounded px-1.5 py-0.5">Lies · axis starts at 96</span>
+          <span class="text-xs text-[var(--color-muted)]">looks like it tripled</span>
+        </figcaption>
+        <div class="p-4">
+          <div class="relative h-52">
+            <span class="absolute -left-1 top-0 text-[10px] text-[var(--color-muted)]">112</span>
+            <span class="absolute -left-1 bottom-5 text-[10px] text-[var(--color-muted)]">96</span>
+            <div class="ml-6 h-[calc(100%-1.25rem)] flex items-end justify-around gap-3 border-l border-b border-neutral-400">
+              <span class="w-10 bg-red-400" style="height: 25%"></span>
+              <span class="w-10 bg-red-400" style="height: 43.75%"></span>
+              <span class="w-10 bg-red-400" style="height: 62.5%"></span>
+              <span class="w-10 bg-red-500" style="height: 87.5%"></span>
+            </div>
+            <div class="ml-6 mt-1 flex justify-around text-xs text-[var(--color-muted)]">
+              <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
+            </div>
+          </div>
+          <p class="mt-2 text-xs text-red-700">Cutting the axis at 96 turns +10% into a visual +250%.</p>
+        </div>
+      </figure>
+
+      <!-- TRUTHFUL -->
+      <figure aria-label="Truthful: a zero-baseline chart that shows the real change" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5">Truthful · zero baseline</span>
+          <span class="text-xs text-[var(--color-muted)]">a real, modest rise</span>
+        </figcaption>
+        <div class="p-4">
+          <div class="relative h-52">
+            <span class="absolute -left-1 top-0 text-[10px] text-[var(--color-muted)]">120</span>
+            <span class="absolute -left-1 bottom-5 text-[10px] text-[var(--color-muted)]">0</span>
+            <div class="ml-6 h-[calc(100%-1.25rem)] flex items-end justify-around gap-3 border-l border-b border-neutral-400">
+              <span class="w-10 bg-neutral-800" style="height: 83.3%"></span>
+              <span class="w-10 bg-neutral-800" style="height: 85.8%"></span>
+              <span class="w-10 bg-neutral-800" style="height: 88.3%"></span>
+              <span class="w-10 bg-neutral-900" style="height: 91.7%"></span>
+            </div>
+            <div class="ml-6 mt-1 flex justify-around text-xs text-[var(--color-muted)]">
+              <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
+            </div>
+          </div>
+          <p class="mt-2 text-xs text-emerald-700">From zero, the growth reads as what it is: steady and small.</p>
+        </div>
+      </figure>
+    </div>
+
+    <p class="text-sm bg-[var(--color-card)] border-l-4 border-[var(--color-accent)] border border-[var(--color-border)] rounded-[var(--radius-card)] px-4 py-3">
+      <strong>What to notice:</strong> the values are identical. A truncated axis is not always wrong, but when it silently inflates a comparison it makes the chart lie. If you truncate, say so and justify it.
+    </p>
+
+    <footer class="pt-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+      <p>Rules live in <code class="font-mono">reference/principles-alberto-cairo.md</code>.</p>
+      <p>Original educational example for Dataviz Kit. Placeholder data; not a reproduction of any published figure.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

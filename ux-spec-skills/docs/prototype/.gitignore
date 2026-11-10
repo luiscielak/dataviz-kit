@@ -20,9 +20,6 @@
 # production
 /build
 
-# generated: copied from examples/experts/ by scripts/copy-expert-demos.mjs
-/public/expert-demos/
-
 # misc
 .DS_Store
 *.pem

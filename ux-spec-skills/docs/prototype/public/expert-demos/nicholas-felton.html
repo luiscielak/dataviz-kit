@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nicholas Felton — Small multiples as narrative</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-ink: #0f172a;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-accent: #b45309;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-ink)] min-h-screen antialiased">
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <header class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">Nicholas Felton · Editorial density</p>
+      <h1 class="text-xl font-semibold tracking-tight">A year of "Revenue pulse" in four metrics</h1>
+      <p class="text-sm text-[var(--color-muted)]">MRR, Signups, Churn, and NPS across Q1–Q4. Same four series, two ways to lay them out.</p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <!-- CROWDED -->
+      <figure aria-label="Crowded: four series jammed onto one mismatched axis" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-red-700 bg-red-50 border border-red-200 rounded px-1.5 py-0.5">Crowded · one axis</span>
+          <span class="text-xs text-[var(--color-muted)]">scales don't match</span>
+        </figcaption>
+        <div class="p-4">
+          <div class="relative h-44 border-l border-b border-neutral-400">
+            <svg viewBox="0 0 300 160" preserveAspectRatio="none" class="h-full w-full" role="img" aria-label="Four overlaid lines on incompatible scales">
+              <polyline fill="none" stroke="#334155" stroke-width="2.5" points="8,120 100,104 196,92 292,74" />
+              <polyline fill="none" stroke="#0ea5e9" stroke-width="2.5" points="8,150 100,150 196,148 292,146" />
+              <polyline fill="none" stroke="#ef4444" stroke-width="2.5" points="8,140 100,138 196,141 292,139" />
+              <polyline fill="none" stroke="#10b981" stroke-width="2.5" points="8,60 100,44 196,52 292,30" />
+            </svg>
+          </div>
+          <div class="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-[var(--color-muted)]">
+            <span class="flex items-center gap-1"><span class="h-2 w-2" style="background:#334155"></span>MRR $k</span>
+            <span class="flex items-center gap-1"><span class="h-2 w-2" style="background:#0ea5e9"></span>Signups</span>
+            <span class="flex items-center gap-1"><span class="h-2 w-2" style="background:#ef4444"></span>Churn %</span>
+            <span class="flex items-center gap-1"><span class="h-2 w-2" style="background:#10b981"></span>NPS</span>
+          </div>
+          <p class="mt-2 text-xs text-red-700">Signups and Churn flatline near the floor; you can't compare anything.</p>
+        </div>
+      </figure>
+
+      <!-- SMALL MULTIPLES -->
+      <figure aria-label="Small multiples: four consistently framed mini charts" class="bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5">Read at a glance · small multiples</span>
+          <span class="text-xs text-[var(--color-muted)]">one frame each</span>
+        </figcaption>
+        <div class="p-4 grid grid-cols-2 gap-3">
+          <div class="border border-[var(--color-border)] p-2">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] font-medium">MRR</span>
+              <span class="text-[11px] tabular-nums text-[var(--color-muted)]">$110k</span>
+            </div>
+            <svg viewBox="0 0 100 32" preserveAspectRatio="none" class="mt-1 h-8 w-full" role="img" aria-label="MRR rising"><polyline fill="none" stroke="#0f172a" stroke-width="2.5" points="2,26 34,20 66,15 98,7" /></svg>
+          </div>
+          <div class="border border-[var(--color-border)] p-2">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] font-medium">Signups</span>
+              <span class="text-[11px] tabular-nums text-[var(--color-muted)]">1,240</span>
+            </div>
+            <svg viewBox="0 0 100 32" preserveAspectRatio="none" class="mt-1 h-8 w-full" role="img" aria-label="Signups rising"><polyline fill="none" stroke="#0f172a" stroke-width="2.5" points="2,24 34,18 66,14 98,9" /></svg>
+          </div>
+          <div class="border border-[var(--color-border)] p-2">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] font-medium">Churn</span>
+              <span class="text-[11px] tabular-nums text-[var(--color-muted)]">2.1%</span>
+            </div>
+            <svg viewBox="0 0 100 32" preserveAspectRatio="none" class="mt-1 h-8 w-full" role="img" aria-label="Churn easing down"><polyline fill="none" stroke="#0f172a" stroke-width="2.5" points="2,10 34,14 66,12 98,20" /></svg>
+          </div>
+          <div class="border border-[var(--color-border)] p-2">
+            <div class="flex items-baseline justify-between">
+              <span class="text-[11px] font-medium">NPS</span>
+              <span class="text-[11px] tabular-nums text-[var(--color-muted)]">54</span>
+            </div>
+            <svg viewBox="0 0 100 32" preserveAspectRatio="none" class="mt-1 h-8 w-full" role="img" aria-label="NPS rising"><polyline fill="none" stroke="#0f172a" stroke-width="2.5" points="2,22 34,12 66,16 98,6" /></svg>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <p class="text-sm bg-[var(--color-card)] border-l-4 border-[var(--color-accent)] border border-[var(--color-border)] rounded-[var(--radius-card)] px-4 py-3">
+      <strong>What to notice:</strong> giving each metric its own consistently-framed panel turns a tangle into a scannable narrative. Density works when the grid, type, and scale are disciplined.
+    </p>
+
+    <footer class="pt-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+      <p>Rules live in <code class="font-mono">reference/principles-nicholas-felton.md</code>.</p>
+      <p>Original educational example for Dataviz Kit. Placeholder data; not a reproduction of any published figure.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

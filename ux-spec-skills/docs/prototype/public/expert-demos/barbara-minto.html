@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barbara Minto — Answer first, then support</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-ink: #0f172a;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-accent: #b45309;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-ink)] min-h-screen antialiased">
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <header class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">Barbara Minto · Pyramid principle</p>
+      <h1 class="text-xl font-semibold tracking-tight">Lead with the answer</h1>
+      <p class="text-sm text-[var(--color-muted)]">Same "Revenue pulse" quarterly review, structured two ways for a busy executive.</p>
+    </header>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      <!-- BEFORE -->
+      <figure aria-label="Before: evidence first, with the conclusion buried at the end" class="h-full bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-red-700 bg-red-50 border border-red-200 rounded px-1.5 py-0.5">Before · evidence first</span>
+          <span class="text-xs text-[var(--color-muted)]">answer buried at the bottom</span>
+        </figcaption>
+        <ol class="p-4 space-y-2 list-none text-sm">
+          <li class="rounded border border-neutral-200 bg-neutral-50 px-3 py-2 text-[var(--color-muted)]">Q4 new MRR was $512k…</li>
+          <li class="rounded border border-neutral-200 bg-neutral-50 px-3 py-2 text-[var(--color-muted)]">West outperformed East by 19%…</li>
+          <li class="rounded border border-neutral-200 bg-neutral-50 px-3 py-2 text-[var(--color-muted)]">Churn ticked up 0.4pts…</li>
+          <li class="rounded border border-neutral-200 bg-neutral-50 px-3 py-2 text-[var(--color-muted)]">Pipeline coverage is 3.1x…</li>
+          <li class="rounded border-2 border-neutral-900 bg-white px-3 py-2 font-medium">…so we should raise the West quota.</li>
+        </ol>
+        <p class="px-4 pb-4 text-xs text-red-700">The reader has to hold four facts before learning why any of it matters.</p>
+      </figure>
+
+      <!-- AFTER -->
+      <figure aria-label="After: answer-first pyramid, conclusion on top with grouped support below" class="h-full bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+        <figcaption class="flex items-center gap-2 px-4 py-2 border-b border-[var(--color-border)]">
+          <span class="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5">After · answer first</span>
+          <span class="text-xs text-[var(--color-muted)]">pyramid: claim → support</span>
+        </figcaption>
+        <div class="p-4 space-y-3 text-sm">
+          <div class="rounded border-2 border-neutral-900 bg-white px-3 py-2 text-center font-semibold">Raise the West quota next quarter</div>
+          <div class="flex justify-center text-neutral-400">▲</div>
+          <div class="grid grid-cols-3 gap-2 text-center text-xs">
+            <div class="rounded border border-neutral-300 bg-neutral-50 px-2 py-2">West leads MRR by 19%</div>
+            <div class="rounded border border-neutral-300 bg-neutral-50 px-2 py-2">Pipeline coverage 3.1x</div>
+            <div class="rounded border border-neutral-300 bg-neutral-50 px-2 py-2">Capacity is the constraint</div>
+          </div>
+          <p class="text-xs text-emerald-700">Support hangs under one claim; each box answers "why?".</p>
+        </div>
+      </figure>
+    </div>
+
+    <p class="text-sm bg-[var(--color-card)] border-l-4 border-[var(--color-accent)] border border-[var(--color-border)] rounded-[var(--radius-card)] px-4 py-3">
+      <strong>What to notice:</strong> the pyramid puts the recommendation first and groups the evidence beneath it, so a skim of the top line already carries the decision — the reader opts in to detail rather than assembling it.
+    </p>
+
+    <footer class="pt-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+      <p>Rules live in <code class="font-mono">reference/principles-minto.md</code>.</p>
+      <p>Original educational example for Dataviz Kit. Placeholder data; not a reproduction of any published figure.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

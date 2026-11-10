@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ben Shneiderman — Overview, zoom &amp; filter, details on demand</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-background: #fafafa;
+      --color-card: #ffffff;
+      --color-ink: #0f172a;
+      --color-muted: #737373;
+      --color-border: #e5e5e5;
+      --color-accent: #b45309;
+      --radius-card: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-[var(--color-ink)] min-h-screen antialiased">
+  <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
+
+    <header class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-[var(--color-accent)]">Ben Shneiderman · Information-seeking mantra</p>
+      <h1 class="text-xl font-semibold tracking-tight">Overview first, zoom and filter, then details on demand</h1>
+      <p class="text-sm text-[var(--color-muted)]">New MRR by quarter ($k) — a fictional "Revenue pulse" SaaS. Read the three steps left to right.</p>
+    </header>
+
+    <ol class="grid gap-4 md:grid-cols-3 list-none">
+      <!-- STEP 1 -->
+      <li>
+        <figure aria-label="Step 1: overview of all quarters" class="h-full bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+          <figcaption class="px-4 py-2 border-b border-[var(--color-border)]">
+            <span class="text-xs font-semibold uppercase tracking-wide text-sky-800 bg-sky-50 border border-sky-200 rounded px-1.5 py-0.5">1 · Overview</span>
+          </figcaption>
+          <div class="p-4">
+            <div class="h-28 flex items-end justify-around gap-2 border-b border-neutral-300">
+              <span class="w-6 bg-neutral-300" style="height: 62%"></span>
+              <span class="w-6 bg-neutral-300" style="height: 75%"></span>
+              <span class="w-6 bg-neutral-300" style="height: 80%"></span>
+              <span class="w-6 bg-neutral-700" style="height: 100%"></span>
+            </div>
+            <div class="mt-2 flex justify-around text-xs text-neutral-600"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div>
+            <p class="mt-2 text-xs text-[var(--color-muted)]">See the whole year; Q4 stands out.</p>
+          </div>
+        </figure>
+      </li>
+
+      <!-- STEP 2 -->
+      <li>
+        <figure aria-label="Step 2: zoom and filter to the quarter of interest" class="h-full bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+          <figcaption class="px-4 py-2 border-b border-[var(--color-border)]">
+            <span class="text-xs font-semibold uppercase tracking-wide text-sky-800 bg-sky-50 border border-sky-200 rounded px-1.5 py-0.5">2 · Zoom &amp; filter</span>
+          </figcaption>
+          <div class="p-4">
+            <p class="text-xs text-[var(--color-muted)] mb-2">Filter: <span class="rounded border border-neutral-300 bg-neutral-50 px-1.5 py-0.5">Q4 · monthly</span></p>
+            <div class="h-28 flex items-end justify-around gap-2 border-b border-neutral-300">
+              <span class="w-8 bg-neutral-400" style="height: 70%"></span>
+              <span class="w-8 bg-neutral-600" style="height: 86%"></span>
+              <span class="w-8 bg-neutral-900" style="height: 100%"></span>
+            </div>
+            <div class="mt-2 flex justify-around text-xs text-neutral-600"><span>Oct</span><span>Nov</span><span>Dec</span></div>
+            <p class="mt-2 text-xs text-[var(--color-muted)]">Narrow to Q4's three months.</p>
+          </div>
+        </figure>
+      </li>
+
+      <!-- STEP 3 -->
+      <li>
+        <figure aria-label="Step 3: details on demand for the selected month" class="h-full bg-[var(--color-card)] border border-[var(--color-border)] rounded-[var(--radius-card)] shadow-sm overflow-hidden">
+          <figcaption class="px-4 py-2 border-b border-[var(--color-border)]">
+            <span class="text-xs font-semibold uppercase tracking-wide text-emerald-800 bg-emerald-50 border border-emerald-200 rounded px-1.5 py-0.5">3 · Details on demand</span>
+          </figcaption>
+          <div class="p-4">
+            <p class="text-xs text-[var(--color-muted)] mb-2">Selected: <span class="rounded border border-neutral-300 bg-neutral-50 px-1.5 py-0.5">Dec</span></p>
+            <dl class="text-sm divide-y divide-neutral-200">
+              <div class="flex justify-between py-1.5"><dt class="text-[var(--color-muted)]">New MRR</dt><dd class="font-medium">$198k</dd></div>
+              <div class="flex justify-between py-1.5"><dt class="text-[var(--color-muted)]">New logos</dt><dd class="font-medium">41</dd></div>
+              <div class="flex justify-between py-1.5"><dt class="text-[var(--color-muted)]">Expansion</dt><dd class="font-medium">$63k</dd></div>
+              <div class="flex justify-between py-1.5"><dt class="text-[var(--color-muted)]">Top region</dt><dd class="font-medium">West</dd></div>
+            </dl>
+            <p class="mt-2 text-xs text-[var(--color-muted)]">Full record only when asked for.</p>
+          </div>
+        </figure>
+      </li>
+    </ol>
+
+    <p class="text-sm bg-[var(--color-card)] border-l-4 border-[var(--color-accent)] border border-[var(--color-border)] rounded-[var(--radius-card)] px-4 py-3">
+      <strong>What to notice:</strong> detail is withheld until the last step — the interface starts wide, lets you narrow, and reveals the full record only on demand, so the user is never flooded up front.
+    </p>
+
+    <footer class="pt-2 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] space-y-1">
+      <p>Rules live in <code class="font-mono">reference/principles-shneiderman.md</code>.</p>
+      <p>Original educational example for Dataviz Kit. Placeholder data; not a reproduction of any published figure.</p>
+    </footer>
+
+  </main>
+</body>
+</html>
